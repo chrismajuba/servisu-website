@@ -1,7 +1,7 @@
 .header{
     height: 40vw;
     margin: 30px auto;
-    background: url("../../../public/images/header_background.jpg") no-repeat;
+    background: url("../../../public/images/leaves.jpg") no-repeat;
     background-size: contain;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: relative;
@@ -16,7 +16,7 @@
     gap: 1.5vw;
     max-width: 50%;
     bottom: 35%;
-    left: 35vw;
+    left: 1vw;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -25,16 +25,12 @@
     font-weight: 500;
     color: white;
     font-size: max(3.5vw,22px);
-    outline: 2px solid black;
-    background-color: black;
 }
 
 .header-contents p{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.5vw;
     font-weight: 500;
-    outline: 2px solid black;
-    background-color: black;
 }
 
 .header-contents button{
@@ -50,4 +46,51 @@
 .header-contents button:hover{
     background-color: dimgray;
     cursor: pointer;
+}
+
+
+@media (max-width:1050px) {
+    .header-contents{
+        max-width: 45%;
+    }
+}
+
+@media (max-width:750px) {
+
+    .header-contents{
+        left: 1vw;
+        bottom: 50%;
+        max-width: 75%;
+    }
+
+    .header-contents p{
+        display: none;
+    }
+
+    .header-contents button{
+        padding: 2vw 4vw;
+    }
+}
+
+@media (max-width:481px) {
+    .header-contents{
+        left: 1vw;
+        bottom: 15%;
+        max-width: 75%;
+    }
+
+    .header-contents h2{
+        font-weight: 400;
+        color: white;
+        font-size: max(2.5vw,20px);
+    }
+
+    .header-contents p{
+        display: none;
+    }
+
+    .header-contents button{
+        font-size: max(1vw,10px);
+        padding: 1vw 2vw;
+    }
 }

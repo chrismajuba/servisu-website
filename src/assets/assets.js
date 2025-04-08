@@ -5,6 +5,16 @@ import search_icon from "./search_icon.jpg";
 import handshake from "./handshake.jpg";
 import people_block from "./people.jpg";
 import phone_request from "./phone_request.jpg";
+import facebook_icon from "./facebook_icon.jpg";
+import instagram_icon from "./instagram_icon.jpg";
+import twitter_icon from "./twitter.jpg";
+import connection_you from "./connecting_you.jpg";
+import google_store_logo from "./google_play_logo.wine.png";
+import istore_logo from "./app_store_logo.png";
+import question_mark_icon from "./question_mark.jpg";
+import arrow_wallpaper from "./arrow.jpg";
+import plane_wallpaper from "./plane.jpg";
+import connecting_people_wallpaper from "./connecting_people.jpg";
 
 //Array content
 import car_washer from "./car_washer.jpg";
@@ -15,6 +25,9 @@ import nail_polisher from "./nail_polisher.jpg";
 import outdoor_cleaner from "./outdoor_cleaner.jpg";
 
 export const assets = {
+  arrow_wallpaper,
+  plane_wallpaper,
+  connecting_people_wallpaper,
   weservelogo,
   weservename,
   acccount_icon,
@@ -22,6 +35,14 @@ export const assets = {
   handshake,
   people_block,
   phone_request,
+  facebook_icon,
+  instagram_icon,
+  twitter_icon,
+  window_cleaner,
+  connection_you,
+  google_store_logo,
+  istore_logo,
+  question_mark_icon,
 };
 
 export const explore_page_images = [

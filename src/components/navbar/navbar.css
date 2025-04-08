@@ -10,6 +10,7 @@
 }
 
 .navbar-list{
+    margin-left: 30px;
     display: flex;
     list-style: none;
     gap: 20px;
@@ -21,7 +22,8 @@
 .navbar .navbar-right{
     display: flex;
     align-items: center;
-    gap: 40px;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .navbar .button{
@@ -49,16 +51,9 @@
     cursor: pointer;
 }
 
-.navbar .navbar-search-icon{
-    margin-top: 15px;
-    width: 130px;
-    height: 130px;
-
-}
-
-.navbar .navbar-account-icon{
+.navbar .navbar-right img{
     width: 100px;
-    height: 100px;
+
 }
 
 .navbar .navbar-account-container{
@@ -75,3 +70,128 @@
     top: 20px;
     right: 20px;
 }
+
+
+@media (max-width:1350px) {
+
+    .navbar .logo{
+        width: 140px;
+        margin-right: 10px;
+    }
+    
+    .navbar-list{
+        gap: 10px;
+        font-size: 15px;
+    }
+
+    .navbar-right{
+        gap: 10px;
+    }
+
+    .navbar .navbar-right img{
+        width: 50px;
+    }
+
+    .navbar .navbar-right .dot{
+        width: 8px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .navbar .navbar-right button{
+        font-size: 12px;
+        padding: 10px 25px;
+        border-radius: 50px;
+    }
+
+
+}
+
+@media (max-width:940px) {
+
+    .navbar .logo{
+        width: 120px;
+        margin-right: 10px;
+    }
+    
+    .navbar-list{
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .navbar-right{
+        gap: 10px;
+    }
+
+    .navbar .navbar-right img{
+        width: 40px;
+    }
+
+    .navbar .navbar-right .dot{
+        width: 8px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .navbar .navbar-right button{
+        font-size: 10px;
+        padding: 10px 25px;
+        border-radius: 50px;
+    }
+}
+
+
+@media (max-width:833px) {    
+    .navbar-list{
+        display: none;
+    }
+
+    .navbar .navbar-right img{
+        width: 40px;
+    }
+
+
+    .navbar .navbar-right button{
+        font-size: 8px;
+        padding: 10px 15px;
+        border-radius: 50px;
+    }
+}
+
+
+@media (max-width:483px) {
+
+    .navbar .logo{
+        width: 100px;
+        margin-right: 10px;
+    }
+    
+    .navbar-list{
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .navbar-right{
+        gap: 10px;
+    }
+
+    .navbar .navbar-right img{
+        width: 40px;
+    }
+
+    .navbar .navbar-right .dot{
+        width: 10px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .navbar .navbar-right button{
+        font-size: 10px;
+        padding: 10px 10px;
+        border-radius: 13px;
+    }
+}
+
+
+
+

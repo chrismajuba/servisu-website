@@ -8,17 +8,18 @@ import Providers from "./pages/providers/Providers";
 
 function App() {
   return (
-    <div className="app">
-      <NavBar />
+    <>
+      <div className="app">
+        <NavBar />
 
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/providers" element={<Providers />}></Route>
-      </Routes>
-
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/providers" element={<Providers />}></Route>
+        </Routes>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
