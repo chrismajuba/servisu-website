@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets";
 
 const Information = () => {
   return (
-    <div className="information-content">
+    <div className="information-content" id="quick-start">
       <h2>Quick start</h2>
       <div className="information-content-container">
         <div className="service-providers">

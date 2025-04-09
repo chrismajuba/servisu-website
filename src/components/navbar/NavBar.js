@@ -10,42 +10,48 @@ const NavBar = () => {
     <nav>
       <div className="navbar">
         {/**Container 1 */}
-        <img src={assets.weservename} alt="weservelogo" className="logo" />
+        <Link to="/">
+          <img src={assets.weservename} alt="weservelogo" className="logo" />
+        </Link>
 
         {/**Container 2 Adding fonts at 21:00*/}
         <ul className="navbar-list">
-          <li
+          <Link
+            to="/"
             className={currentPage === "home" ? "active" : ""}
             onClick={() => {
               setCurrentPage("home");
             }}
           >
-            <Link to="/">Home</Link>
-          </li>
-          <li
-            className={currentPage === "user" ? "active" : ""}
+            Home
+          </Link>
+          <a
+            href="#quick-start"
+            className={currentPage === "quick-start" ? "active" : ""}
             onClick={() => {
-              setCurrentPage("user");
+              setCurrentPage("quick-start");
             }}
           >
-            <Link to="/">User</Link>
-          </li>
-          <li
-            className={currentPage === "providers" ? "active" : ""}
+            Quick Start
+          </a>
+          <a
+            href="#mobile-app"
+            className={currentPage === "mobile-app" ? "active" : ""}
             onClick={() => {
-              setCurrentPage("providers");
+              setCurrentPage("mobile-app");
             }}
           >
-            <Link to="/providers">Providers</Link>
-          </li>
-          <li
+            Mobile App
+          </a>
+          <a
+            href="#footer"
             className={currentPage === "contactus" ? "active" : ""}
             onClick={() => {
               setCurrentPage("contactus");
             }}
           >
-            <Link to="/">Contact Us</Link>
-          </li>
+            Contact Us
+          </a>
         </ul>
 
         {/**Container 3 */}
@@ -60,7 +66,6 @@ const NavBar = () => {
             <div className="dot"></div>
           </div>
           <button className="button">Sign in</button>
-          <button className="button">Sign up</button>
         </div>
       </div>
     </nav>

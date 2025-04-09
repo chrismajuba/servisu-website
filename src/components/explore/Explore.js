@@ -4,7 +4,7 @@ import { explore_page_images } from "../../assets/assets";
 
 const Explore = ({ category, setCategory }) => {
   return (
-    <div className="explore-contents">
+    <div className="explore-contents" id="explore">
       <h2>Explore</h2>
       <div className="services-list-1">
         {explore_page_images.map((imageData, index) => {

@@ -25,12 +25,15 @@
     font-weight: 500;
     color: white;
     font-size: max(3.5vw,22px);
+    background-color: #000000;
+
 }
 
 .header-contents p{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.5vw;
     font-weight: 500;
+    background-color: #000000;
 }
 
 .header-contents button{

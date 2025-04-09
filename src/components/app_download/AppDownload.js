@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets";
 
 const AppDownload = () => {
   return (
-    <div className="app-download-contents">
+    <div className="app-download-contents" id="mobile-app">
       <h2>For a smooth experience, download the WE-SERVE app</h2>
       <div className="app-download-images-container">
         <img src={assets.google_store_logo} alt="" />

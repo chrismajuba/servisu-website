@@ -6,10 +6,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer-content">
         <div className="footer-content-left">
           <img src={assets.weservename} alt="" className="logo" />
+          <p>Some text about the Company</p>
           <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="" />
             <img src={assets.instagram_icon} alt="" />
