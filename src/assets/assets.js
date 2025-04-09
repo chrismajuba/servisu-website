@@ -15,6 +15,7 @@ import question_mark_icon from "./question_mark.jpg";
 import arrow_wallpaper from "./arrow.jpg";
 import plane_wallpaper from "./plane.jpg";
 import connecting_people_wallpaper from "./connecting_people.jpg";
+import close_window from "./close-window.png";
 
 //Array content
 import car_washer from "./car_washer.jpg";
@@ -43,6 +44,7 @@ export const assets = {
   google_store_logo,
   istore_logo,
   question_mark_icon,
+  close_window,
 };
 
 export const explore_page_images = [
