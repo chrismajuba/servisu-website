@@ -1,0 +1,152 @@
+[
+    {
+      "id": 1,
+      "name": "Gugu",
+      "surname": "Ndaba",
+      "email": "sibusisochris8@gmail.com",
+      "cellNumber": "0788901122",
+      "rating": 4.1,
+      "calls": 9,
+      "experience": 1,
+      "occupation": {
+        "id": 1,
+        "name": "Cleaner"
+      },
+      "availableWorkDays": "1111100"
+    },
+    {
+      "id": 2,
+      "name": "Tracy",
+      "surname": "Lungi",
+      "email": "tracy@gmail.com",
+      "cellNumber": "0729991014",
+      "rating": 3.1,
+      "calls": 2,
+      "experience": 1,
+      "occupation": {
+        "id": 2,
+        "name": "Gardener"
+      },
+      "availableWorkDays": "1111000"
+    },
+    {
+      "id": 3,
+      "name": "Chris",
+      "surname": "Majuba",
+      "email": "chrisMa@gmail.com",
+      "cellNumber": "0678679119",
+      "rating": 1.4,
+      "calls": 3,
+      "experience": 1,
+      "occupation": {
+        "id": 3,
+        "name": "Lawn-mower"
+      },
+      "availableWorkDays": "1100011"
+    },
+    {
+      "id": 4,
+      "name": "Tyler",
+      "surname": "Kenyu",
+      "email": "tyler@gmail.com",
+      "cellNumber": "0678679229",
+      "rating": 4.5,
+      "calls": 4,
+      "experience": 1,
+      "occupation": {
+        "id": 4,
+        "name": "Photographer"
+      },
+      "availableWorkDays": "1111100"
+    },
+    {
+      "id": 5,
+      "name": "Thabo",
+      "surname": "Xaba",
+      "email": "teebo@gmail.com",
+      "cellNumber": "0778619229",
+      "rating": 4.9,
+      "calls": 15,
+      "experience": 1,
+      "occupation": {
+        "id": 5,
+        "name": "Window Cleaner"
+      },
+      "availableWorkDays": "1101100"
+    },
+    {
+      "id": 6,
+      "name": "Luyanda",
+      "surname": "Ndlovu",
+      "email": "luya@gmail.com",
+      "cellNumber": "0678619229",
+      "rating": 4.1,
+      "calls": 5,
+      "experience": 1,
+      "occupation": {
+        "id": 6,
+        "name": "Painter"
+      },
+      "availableWorkDays": "1101110"
+    },
+    {
+      "id": 7,
+      "name": "Mimi",
+      "surname": "Ntuli",
+      "email": "mimi@gmail.com",
+      "cellNumber": "0781114343",
+      "rating": 4,
+      "calls": 5,
+      "experience": 1,
+      "occupation": {
+        "id": 7,
+        "name": "School Transporter"
+      },
+      "availableWorkDays": "1111100"
+    },
+    {
+      "id": 8,
+      "name": "Pretty",
+      "surname": "Gashu",
+      "email": "tumi@gmail.com",
+      "cellNumber": "0681104443",
+      "rating": 4,
+      "calls": 5,
+      "experience": 1,
+      "occupation": {
+        "id": 8,
+        "name": "Nail Polisher"
+      },
+      "availableWorkDays": "1111100"
+    },
+    {
+      "id": 9,
+      "name": "Will",
+      "surname": "Lama",
+      "email": "will@gmail.com",
+      "cellNumber": "0811012883",
+      "rating": 4.2,
+      "calls": 10,
+      "experience": 0.5,
+      "occupation": {
+        "id": 7,
+        "name": "School Transporter"
+      },
+      "availableWorkDays": "1111100"
+    },
+    {
+      "id": 10,
+      "name": "Thando",
+      "surname": "Mama",
+      "email": "thando@gmail.com",
+      "cellNumber": "0687704443",
+      "rating": 4.9,
+      "calls": 5,
+      "experience": 2,
+      "occupation": {
+        "id": 8,
+        "name": "Nail Polisher"
+      },
+      "availableWorkDays": "1111100"
+    }
+  ]

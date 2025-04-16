@@ -9,7 +9,7 @@ const Explore = ({ category, setCategory }) => {
       <div className="services-list-1">
         {explore_page_images.map((imageData, index) => {
           return (
-            <div className="image-content-container">
+            <div key={index} className="image-content-container">
               <img
                 onClick={() =>
                   category === imageData.category

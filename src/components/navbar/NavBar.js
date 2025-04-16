@@ -72,11 +72,13 @@ const NavBar = () => {
               className="navbar-search-icon"
             />
             <div className="navbar-account-container">
-              <img
-                src={assets.acccount_icon}
-                alt=""
-                className="navbar-account-icon"
-              />
+              <Link to="/user-account">
+                <img
+                  src={assets.acccount_icon}
+                  alt=""
+                  className="navbar-account-icon"
+                />
+              </Link>
               <div className="dot"></div>
             </div>
             <button

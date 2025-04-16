@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./signinPopup.css";
 import { assets } from "../../assets/assets";
+import { APIContext } from "../context/ContextProvider";
 
 const SIGN_IN = "sign-ip";
 const SIGN_UP = "sign-up";
 
 const Signin_popup = ({ setIsSignIn, signInType, setSignInType }) => {
+  //Login hooks
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useContext(APIContext);
+
+  //Trigger login request
+  const triggerLogin = (e) => {
+    //Prevent the page from reloading
+    e.preventDefault();
+
+    //Send a login request
+    login({ email: email, password: password });
+
+    setEmail("");
+    setPassword("");
+  };
+
+  //Trigger registration request
+  const triggerRegistration = (e) => {
+    e.preventDefault();
+    console.log("Registration request");
+  };
+
   return (
     <div className="sign-up">
       <div className="sign-up-contents">
@@ -19,7 +43,10 @@ const Signin_popup = ({ setIsSignIn, signInType, setSignInType }) => {
           />
         </div>
 
-        <form className="sign-up-form">
+        <form
+          onSubmit={signInType === SIGN_UP ? triggerRegistration : triggerLogin}
+          className="sign-up-form"
+        >
           {signInType === SIGN_UP ? (
             <>
               <div className="field-container">
@@ -46,7 +73,13 @@ const Signin_popup = ({ setIsSignIn, signInType, setSignInType }) => {
 
           <div className="field-container">
             <label>Email</label>
-            <input type="email" placeholder="Enter your email" required></input>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            ></input>
           </div>
 
           {signInType === SIGN_UP ? (
@@ -67,6 +100,8 @@ const Signin_popup = ({ setIsSignIn, signInType, setSignInType }) => {
             <input
               type="password"
               placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             ></input>
           </div>
@@ -92,7 +127,7 @@ const Signin_popup = ({ setIsSignIn, signInType, setSignInType }) => {
             <></>
           )}
 
-          <button>
+          <button type="submit">
             {signInType === SIGN_UP ? "Create account" : "Sign in"}
           </button>
 
