@@ -1,0 +1,200 @@
+.user-account{
+    margin-top: 50px;
+}
+
+.user-account-contents{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: space-between;
+}
+
+.user-account-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-account-header h2{
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 450;
+    font-size: 25px;
+}
+
+.user-account-header hr{
+    margin: 5px 0px;
+    height: 2px;
+    background-color: whitesmoke;
+    border: none;
+    width: 100%;
+}
+
+
+.user-account-details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:30px
+}
+
+.user-account-details-header{
+    background-color: black;
+}
+
+.user-account-details h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+    color: white;
+}
+
+.user-account-details-body{
+    background-color: lightgray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 25px;
+    width: 100%;
+
+}
+
+.user-account-details-body input{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    font-weight: 450;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.user-account-details-body input:hover{
+    scale: 1.05;
+    transition: 1s;
+}
+
+.user-account-details-notification{
+    background-color: lightgray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    width: 100%;
+    gap: 10px;
+
+}
+.user-account-details-notification h2{
+    background-color: black;
+}
+
+.user-account-details-notification input{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    font-weight: 450;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.user-account-details-notification input:hover{
+    scale: 1.05;
+    transition: 1s;
+}
+
+.unverified{
+    position: absolute;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 10px;
+    background-color: red;
+    right: 15%;
+    top: 40%;
+}
+
+
+@media (max-width:1350px) {
+
+    .user-account-details{
+        width: 100%;
+    }
+
+    .unverified{
+        right: 15%;
+        top: 35%;
+    }
+    
+
+}
+@media (max-width:953px) {
+
+    .user-account-details{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap:20px
+    }
+    .user-account-details-body{
+        width: 100%;
+    }
+
+    .user-account-details-notification{
+        width: 100%;
+    }
+
+    .user-account-details{
+        width: 100%;
+    }
+
+    .user-account-header h2{
+        font-weight: 400;
+    }
+    
+    .user-account-details h2{
+        font-size: 25px;
+    }
+
+    .user-account-details p{
+        font-size: 21px;
+    }
+
+    .unverified{
+        display: none;
+    }
+}
+
+@media (max-width:750px) {
+
+    .user-account-details{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap:20px
+    }
+    .user-account-details-body{
+        width: 100%;
+    }
+
+    .user-account-details-notification{
+        width: 100%;
+    }
+    
+    .user-account-header h2{
+        font-weight: 400;
+    }
+    
+    .user-account-details h2{
+        font-size: 20px;
+    }
+
+    .user-account-details p{
+        font-size: 19px;
+    }
+    .unverified{
+        display: none;
+    }
+}

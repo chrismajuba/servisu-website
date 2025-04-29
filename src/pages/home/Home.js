@@ -1,10 +1,10 @@
 import React from "react";
-import "./home.css";
-import Header from "../../components/header/Header";
-import Explore from "../../components/explore/Explore";
+import "./Home.css";
+import Header from "../../modules/core/components/header/Header";
+import Explore from "../../modules/core/components/explore/Explore";
 import { useState } from "react";
-import AppDownload from "../../components/app_download/AppDownload";
-import Information from "../../components/information/Information";
+import AppDownload from "../../modules/core/components/app_download/AppDownload";
+import Information from "../../modules/core/components/information/Information";
 
 const Home = () => {
   const [category, setCategory] = useState("all");

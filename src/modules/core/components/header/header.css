@@ -1,0 +1,102 @@
+.header{
+    height: 40vw;
+    margin: 30px auto;
+    background: url("../../../../../public/images/leaves.png") no-repeat;
+    background-size: contain;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    border-bottom: 10px;
+}
+
+.header-contents{
+    animation: fadeIn 3s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1.5vw;
+    max-width: 50%;
+    bottom: 35%;
+    left: 1vw;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header-contents h2{
+    font-weight: 500;
+    color: white;
+    font-size: max(3.5vw,22px);
+
+}
+
+.header-contents p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5vw;
+    font-weight: 500;
+    color: white;
+}
+
+.header-contents button{
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 1vw 2.3vw;
+    background-color: #404040;
+    font-size: max(1.2vw,13px);
+    border-radius: 50px;
+}
+
+.header-contents button:hover{
+    background-color: black;
+    cursor: pointer;
+    scale: 1.05;
+    transition: 1s;
+    border: 2px solid green;
+}
+
+
+@media (max-width:1050px) {
+    .header-contents{
+        max-width: 45%;
+    }
+}
+
+@media (max-width:750px) {
+
+    .header-contents{
+        left: 1vw;
+        bottom: 50%;
+        max-width: 75%;
+    }
+
+    .header-contents p{
+        display: none;
+    }
+
+    .header-contents button{
+        padding: 2vw 4vw;
+    }
+}
+
+@media (max-width:481px) {
+    .header-contents{
+        left: 1vw;
+        bottom: 15%;
+        max-width: 75%;
+    }
+
+    .header-contents h2{
+        font-weight: 400;
+        color: white;
+        font-size: max(2.5vw,20px);
+    }
+
+    .header-contents p{
+        display: none;
+    }
+
+    .header-contents button{
+        font-size: max(1vw,10px);
+        padding: 1vw 2vw;
+    }
+}

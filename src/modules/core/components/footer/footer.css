@@ -1,0 +1,111 @@
+.footer{
+    color: white;
+    background-color: black;
+    padding: 20px 8vw;
+    padding-top: 80px;
+    border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+}
+.footer-content{
+    width: 100%;
+    display: grid;
+    gap: 80px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.footer-text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.footer-content-left .logo{
+    width: 60%;
+}
+
+
+.footer-social-icons img{
+    width: 30px;
+    border-radius: 80px;
+    margin-right: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.footer-social-icons img:hover{
+    scale: 1.05;
+}
+
+.footer-content-left, .footer-content-center, .footer-content-right{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px ;
+} 
+
+.footer-content-left li, .footer-content-center li, .footer-content-right li{
+    list-style: none;
+    margin-bottom: 10px;
+    cursor: pointer; 
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} 
+
+.footer-content-left li:hover, .footer-content-center li:hover, .footer-content-right li:hover{
+    color: greenyellow;
+}
+
+.footer-content-center h2, .footer-content-right h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+} 
+
+.footer hr{
+    width: 100%;
+    height: 2px;
+    margin: 20px 0px;
+    background-color: white;
+    border: none;
+}
+
+@media (max-width:750px){
+
+    .footer-content{
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .footer-content-left .logo{
+        width: 40%;
+    }
+}
+
+
+@media (max-width:480px){
+
+    .footer-content{
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .footer-content-left .logo{
+        width: 40%;
+    }
+
+    .footer-content-left li, .footer-content-center li, .footer-content-right li{
+        font-size: 15px;
+    } 
+
+    .footer-content-center h2, .footer-content-right h2{
+        font-size: 20px;
+    }
+}
