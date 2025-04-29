@@ -54,6 +54,10 @@ export const ContextProvider = (props) => {
           setServiceProviders(response.data);
           setIsloading(false)})
         .catch((error) => {
+          
+          if(error.status === 401){
+            setLoginDetails(null) //To enforce login
+          }
           console.error("Failed to fetch providers:", error);
           setServerError(error.response.data.errorMessage);
           setShowErrorPopup(true);

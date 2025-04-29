@@ -1,199 +1,191 @@
-.providers-content{
-    margin-top: 20px;
-    margin-right: 10px;
-    margin-left: 10px;
+.providers-content {
+  margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
-.providers-header{
-    display: flex;
-    justify-content: center;
-    gap: 5px;
+.providers-header {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
-.providers-header input{
-    width: 50vw;
-    height: 2vw;
-    font-size: 18px;
-    padding: 20px;
-    border: 2px solid green;
-    border-radius: 10px;
+.providers-header input {
+  width: 50vw;
+  height: 2vw;
+  font-size: 18px;
+  padding: 20px;
+  border: 2px solid green;
+  border-radius: 10px;
 }
 
-.providers-header button{
-    width: 10vw;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-    background-color: #404040;
-    color: white;
+.providers-header button {
+  width: 10vw;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  background-color: #404040;
+  color: white;
 }
 
-.providers-header button:hover{
-    background-color: black;
-    cursor: pointer;
-    scale: 1.05;
-    transition: 1s;
+.providers-header button:hover {
+  background-color: black;
+  cursor: pointer;
+  scale: 1.05;
+  transition: 1s;
 }
 
-.providers-content hr{
-    background-color: darkgray;
-    margin-top: 5px;
-    height: 3px;
-    
+.providers-content hr {
+  background-color: darkgray;
+  margin-top: 5px;
+  height: 3px;
 }
 
-.providers-body{
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    align-items: center;
+.providers-body {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
 }
 
-.providers-upper-body{
+.providers-upper-body {
+  margin-top: 50px;
+  display: flex;
+  gap: 10px;
+}
+
+.providers-filter {
+  width: 30vw;
+}
+
+.providers-filter h2 {
+  padding-left: 10px;
+  padding-top: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 550;
+  padding-bottom: 10px;
+  color: white;
+  background-color: black;
+}
+
+.providers-filter .providers-filter-content {
+  padding-top: 10px;
+}
+
+.occupation-filter-container {
+  padding: 5px 5px;
+  background-color: #404040;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.occupation-filter-container h3 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  font-size: 20px;
+  font-weight: 450;
+}
+
+.occupation-filter-container select {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.providers-display {
+  width: 65vw;
+}
+.providers-display h2 {
+  padding-left: 10px;
+  padding-top: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 550;
+  padding-bottom: 10px;
+  color: white;
+  background-color: black;
+}
+
+.load-more button {
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: #404040;
+  color: white;
+}
+
+.load-more button:hover {
+  background-color: black;
+  cursor: pointer;
+  scale: 1.05;
+  transition: 1s;
+}
+
+@media (max-width: 953px) {
+  .providers-upper-body {
     margin-top: 50px;
     display: flex;
+    flex-direction: column;
     gap: 10px;
+  }
+
+  .providers-filter {
+    width: 80vw;
+  }
+
+  .providers-display {
+    margin-top: 10px;
+    width: 80vw;
+  }
+
+  .providers-header button {
+    width: 25vw;
+    font-size: 12px;
+  }
 }
 
-.providers-filter{
-    width: 30vw;
+@media (max-width: 833px) {
 }
 
-.providers-filter h2{
-    padding-left: 10px;
-    padding-top: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
-    font-weight: 550;
-    padding-bottom: 10px;
-    color: white;
-    background-color: black;
-}
-
-.providers-filter .providers-filter-content{
-    padding-top: 10px;
-}
-
-.occupation-filter-container{
-    padding: 5px 5px;
-    background-color: #404040;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    justify-content: space-between;
-}
-
-.occupation-filter-container h3{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    font-size: 20px;
+@media (max-width: 750px) {
+  .providers-filter h2 {
+    font-size: 16px;
     font-weight: 450;
+  }
+
+  .occupation-filter-container h3 {
+    font-size: 15px;
+    font-weight: 450;
+  }
+
+  .providers-display h2 {
+    font-size: 16px;
+    font-weight: 450;
+  }
 }
 
-.occupation-filter-container select{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    padding :5px;
+@media (max-width: 483px) {
+  .providers-filter h2 {
+    font-size: 14px;
+    font-weight: 450;
+  }
+
+  .occupation-filter-container h3 {
+    font-size: 13px;
+    font-weight: 450;
+  }
+
+  .providers-display h2 {
+    font-size: 14px;
+    font-weight: 450;
+  }
+
+  .occupation-filter-container select {
+    font-size: 18px;
+  }
 }
-
-.providers-display{
-    width: 65vw;
-}
-.providers-display h2{
-    padding-left: 10px;
-    padding-top: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
-    font-weight: 550;
-    padding-bottom: 10px;
-    color: white;
-    background-color: black;
-}
-
-.load-more button{
-    width: 150px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    background-color: #404040;
-    color: white;
-}
-
-.load-more button:hover{
-    background-color: black;
-    cursor: pointer;
-    scale: 1.05;
-    transition: 1s;
-}
-
-
-@media (max-width:953px) {
-    .providers-upper-body{
-        margin-top: 50px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .providers-filter{
-        width: 80vw;
-    }
-
-    .providers-display{
-        margin-top: 10px;
-        width: 80vw;
-    }
-
-    .providers-header button{
-        width: 25vw;
-        font-size: 12px;
-    }
-    
-}
-
-
-@media (max-width:833px) {    
-
-}
-
-@media (max-width:750px) {
-
-    .providers-filter h2{
-        font-size: 16px;
-        font-weight: 450;
-    }
-
-    .occupation-filter-container h3{
-        font-size: 15px;
-        font-weight: 450;
-    }
-
-    .providers-display h2{
-        font-size: 16px;
-        font-weight: 450;
-    }
-
-}
-
-@media (max-width:483px) {
-    .providers-filter h2{
-        font-size: 14px;
-        font-weight: 450;
-    }
-
-    .occupation-filter-container h3{
-        font-size: 13px;
-        font-weight: 450;
-    }
-
-    .providers-display h2{
-        font-size: 14px;
-        font-weight: 450;
-    }
-}
-
-
-
-
-

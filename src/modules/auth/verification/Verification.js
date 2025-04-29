@@ -5,7 +5,7 @@ const Verification = () => {
   return (
     <div className="verification">
       <div className="verification-contents">
-        <div className="multi-fields">
+        <div className="multi-fields-v">
           <input type="text" placeholder="Verification Code" />
           <button>Submit</button>
         </div>

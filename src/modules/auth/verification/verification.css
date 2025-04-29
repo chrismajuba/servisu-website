@@ -1,42 +1,61 @@
-.verification{
-    width: 100%;
+.verification {
+  width: 100%;
 }
 
-.verification-contents{
-    width: 80%;
+.verification-contents {
+  width: 100%;
 }
 
-.verification-contents .multi-fields{
-    background-color: lightgray;
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
+.verification-contents .multi-fields-v {
+  background-color: lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
 }
 
-.verification-contents .multi-fields input{
-    width: 80%;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: black;
-    color: white;
-    font-size: 20px;
+.verification-contents .multi-fields-v input {
+  width: 80%;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  font-size: 20px;
 }
 
-.verification-contents .multi-fields button{
-    width: 20%;
-    margin-left: 5px;
-    padding: 20x;
-    font-size: 18px;
-    border-radius: 8px;
-    border: none;
-    color: white;
-    background-color: #404040;
+.verification-contents .multi-fields-v button {
+  width: 20%;
+  margin-left: 5px;
+  padding: 20x;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background-color: #404040;
 }
 
-.verification-contents .multi-fields button:hover{
-    cursor: pointer;
-    scale: 1.05;
-    transition: 1s;
-    background-color: black;
-    border: 2px solid greenyellow;
+.verification-contents .multi-fields-v button:hover {
+  cursor: pointer;
+  scale: 1.05;
+  transition: 1s;
+  background-color: black;
+  border: 2px solid greenyellow;
+}
+
+@media (max-width: 750px) {
+  .verification-contents .multi-fields-v button {
+    width: 40%;
+  }
+}
+
+@media (max-width: 483px) {
+  .verification .verification-contents .multi-fields-v input {
+    font-size: 15px;
+    width: 70%;
+  }
+
+  .verification .verification-contents .multi-fields-v button {
+    font-size: 15px;
+    padding: 10px;
+    width: 30%;
+  }
 }
