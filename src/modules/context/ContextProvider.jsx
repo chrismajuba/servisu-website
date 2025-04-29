@@ -43,7 +43,8 @@ export const ContextProvider = (props) => {
 
   //Logout Method
   const logout = () => {
-    //logout`
+    setLoginDetails(null);
+    setShowPopUp(false);
   };
 
   const requestProviders = () => {
