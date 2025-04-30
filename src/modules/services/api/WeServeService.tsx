@@ -12,8 +12,9 @@ const loginRequest = (loginDto : LoginDto) =>
 const registrationRequest = (userRegistrationResponseDto : UserRegistrationDto) =>
   weServeAPI.post("/we-serve/api/v1/users", userRegistrationResponseDto);
 
-const getProviders = (accessToken :string) =>
-  weServeAPI.get("/we-serve/api/v1/service-providers", {
+
+const getProviders = (accessToken :string, providerPageNo: number, occupationId:number) =>
+  weServeAPI.get(`/we-serve/api/v2/service-providers?pageNo=${providerPageNo}&pageSize=5&occupationId=${occupationId}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },

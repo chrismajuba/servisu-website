@@ -231,4 +231,12 @@
   .unverified {
     display: none;
   }
+
+  .user-account-details-body input {
+    font-size: 18px;
+  }
+
+  .user-account-details-notification input {
+    font-size: 18px;
+  }
 }

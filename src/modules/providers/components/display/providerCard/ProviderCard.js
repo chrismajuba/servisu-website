@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProviderCard.css";
+import "./providerCard.css";
 import { AnimatedImgArray, assets } from "../../../../../assets/assets";
 import { useNavigate } from "react-router-dom";
 
@@ -72,7 +72,7 @@ const ProviderCard = ({ serviceProvider }) => {
   setUpAvailableDays(serviceProvider.availableWorkDays.split(""));
 
   return (
-    <div key={serviceProvider.id} className="provider-card">
+    <div className="provider-card">
       <div className="provider-card-container">
         <div className="provider-img-container">
           <img src={AnimatedImgArray[serviceProvider.occupation.id]} alt="" />
