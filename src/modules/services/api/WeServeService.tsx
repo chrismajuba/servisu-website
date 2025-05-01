@@ -13,11 +13,19 @@ const registrationRequest = (userRegistrationResponseDto : UserRegistrationDto) 
   weServeAPI.post("/we-serve/api/v1/users", userRegistrationResponseDto);
 
 
-const getProviders = (accessToken :string, providerPageNo: number, occupationId:number) =>
-  weServeAPI.get(`/we-serve/api/v2/service-providers?pageNo=${providerPageNo}&pageSize=5&occupationId=${occupationId}`, {
+const getProviders = (accessToken :string,pageSize: number, providerPageNo: number, occupationId:number) =>
+  weServeAPI.get(`/we-serve/api/v2/service-providers?pageNo=${(providerPageNo-1)}&pageSize=${pageSize}&occupationId=${occupationId}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
 
-export { loginRequest, registrationRequest, getProviders };
+const searchProviders = (accessToken :string, keyword :string, pageSize: number, pageNo: number, occupationId:number )=>
+  weServeAPI.get(`/we-serve/api/v1/service-providers/search?keyword=${keyword}&pageNo=${(pageNo-1)}&pageSize=${pageSize}&occupationId=${occupationId}`,{
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+
+export { loginRequest, registrationRequest, getProviders,searchProviders };

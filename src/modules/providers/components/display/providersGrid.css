@@ -73,6 +73,18 @@
   padding-top: 10px;
 }
 
+.providers-filter-content .results {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.providers-filter-content .results p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-weight: 450;
+}
+
 .occupation-filter-container {
   padding: 5px 5px;
   background-color: #404040;
@@ -110,8 +122,38 @@
   background-color: black;
 }
 
-.no-results-found {
+.providers-display-grid .no-results-found {
   box-shadow: 0 2px 12px black;
+}
+
+.providers-display-grid .support {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.providers-display-grid .support p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 450;
+}
+
+.providers-display-grid .support button {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 450;
+  border: none;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: #404040;
+  color: white;
+}
+
+.providers-display-grid .support button:hover {
+  scale: 1.05;
+  transition: 1s;
+  cursor: pointer;
+  background-color: black;
 }
 
 .no-results-found p {
@@ -133,6 +175,11 @@
     width: 80vw;
   }
 
+  .providers-filter-content .results p {
+    font-size: 14px;
+    font-weight: 450;
+  }
+
   .providers-display {
     margin-top: 10px;
     width: 80vw;
@@ -144,6 +191,14 @@
   }
 
   .no-results-found p {
+    font-size: 20px;
+  }
+
+  .providers-display-grid .support p {
+    font-size: 20px;
+  }
+
+  .providers-display-grid .support button {
     font-size: 20px;
   }
 }
@@ -162,9 +217,22 @@
     font-weight: 450;
   }
 
+  .providers-filter-content .results p {
+    font-size: 15px;
+    font-weight: 450;
+  }
+
   .providers-display h2 {
     font-size: 16px;
     font-weight: 450;
+  }
+
+  .providers-display-grid .support p {
+    font-size: 18px;
+  }
+
+  .providers-display-grid .support button {
+    font-size: 18px;
   }
 }
 
@@ -184,6 +252,11 @@
     font-weight: 450;
   }
 
+  .providers-filter-content .results p {
+    font-size: 14px;
+    font-weight: 450;
+  }
+
   .occupation-filter-container h3 {
     font-size: 13px;
     font-weight: 450;
@@ -196,5 +269,17 @@
 
   .occupation-filter-container select {
     font-size: 18px;
+  }
+
+  .providers-display-grid .support {
+    margin-top: 10px;
+  }
+
+  .providers-display-grid .support p {
+    font-size: 16px;
+  }
+
+  .providers-display-grid .support button {
+    font-size: 16px;
   }
 }

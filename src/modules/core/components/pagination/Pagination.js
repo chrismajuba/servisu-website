@@ -1,13 +1,7 @@
 import React from "react";
 import "./pagination.css";
 
-const Pagination = ({
-  currentPage,
-  totalpages,
-  totalElements,
-  pageSize,
-  paginate,
-}) => {
+const Pagination = ({ currentPage, totalpages, paginate }) => {
   const pageNumbers = [];
   if (currentPage === 1) {
     pageNumbers.push(currentPage);
@@ -35,45 +29,44 @@ const Pagination = ({
     }
   }
 
-  /**
-   * "size": 10,
-    "totalElements": 14,
-    "totalPages": 2,
-    "number": 1
-   */
-
   return (
     <div className="pagination">
       <div className="pagination-contents">
         <ul>
-          {currentPage > 0 && (
+          {currentPage > 1 && (
             <li>
-              <button onClick={() => paginate(currentPage - 1)}>Prev</button>
+              <button
+                className={currentPage === 1 ? "highlight" : ""}
+                onClick={() => paginate(1)}
+              >
+                First page
+              </button>
             </li>
           )}
-          {/* {pageNumbers.map((number) => {
+          {pageNumbers.map((number) => {
             return (
               <li key={number}>
-                <button>{number}</button>
+                <button
+                  className={currentPage === number ? "highlight" : ""}
+                  onClick={() => paginate(number)}
+                >
+                  {number}
+                </button>
               </li>
             );
-          })} */}
-          {
-            /**
-   * "size": 10,
-    "totalElements": 14,
-    "totalPages": 2,
-    "number": 1
-   */
-
-            (currentPage + 1) * pageSize < totalElements && (
-              <li>
-                <button onClick={() => paginate(currentPage + 1)}>Next</button>
-              </li>
-            )
-          }
+          })}
+          {currentPage < totalpages && (
+            <li>
+              <button
+                className={currentPage === totalpages ? "highlight" : ""}
+                onClick={() => paginate(totalpages)}
+              >
+                Last page
+              </button>
+            </li>
+          )}
         </ul>
-        <p>Page {currentPage + 1}</p>
+        <p>Page {currentPage}</p>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Footer from "./modules/core/components/footer/Footer";
 import NavBar from "./modules/core/components/navbar/NavBar";
 import Home from "./pages/home/Home";
@@ -13,7 +13,8 @@ function App() {
       <NavBar />
       <div className="app">
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/providers" element={<ProvidersPage />}></Route>
           <Route path="/user-account" element={<UserPage />}></Route>
           <Route

@@ -33,3 +33,9 @@
   scale: 1.05;
   transition: 1s;
 }
+
+.pagination .pagination-contents .highlight {
+  background-color: black;
+  color: white;
+  box-shadow: none;
+}

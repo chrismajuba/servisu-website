@@ -3,7 +3,10 @@ import "./providersGrid.css";
 import { APIContext } from "../../../context/ContextProvider";
 import ProviderCard from "./providerCard/ProviderCard";
 import Pagination from "../../../core/components/pagination/Pagination";
-import { getProviders } from "../../../services/api/WeServeService";
+import {
+  getProviders,
+  searchProviders,
+} from "../../../services/api/WeServeService";
 
 const ProvidersGrid = () => {
   const {
@@ -15,16 +18,22 @@ const ProvidersGrid = () => {
   } = useContext(APIContext);
 
   const [serviceProviders, setServiceProviders] = useState([]);
-  const [providerPageNo, setProviderPageNo] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [totalElements, setTotalElements] = useState(0);
-  const [pageSize, setPageSize] = useState(0);
+  const [pageSize] = useState(5);
   const [occupationId, setOccupationId] = useState(-1);
+  const [keyword, setKeyword] = useState("");
 
   const requestProviders = () => {
     setIsloading(true);
     if (loginDetails !== null) {
-      getProviders(loginDetails.accessToken, providerPageNo, occupationId)
+      getProviders(
+        loginDetails.accessToken,
+        pageSize,
+        currentPage,
+        occupationId
+      )
         .then((response) => {
           if (response.data.hasOwnProperty("_embedded")) {
             setServiceProviders(
@@ -33,9 +42,47 @@ const ProvidersGrid = () => {
           } else {
             setServiceProviders([]);
           }
-          setProviderPageNo(response.data.page.number);
+
           setTotalPages(response.data.page.totalPages);
-          setPageSize(response.data.page.size);
+          setTotalElements(response.data.page.totalElements);
+          setIsloading(false);
+        })
+        .catch((error) => {
+          if (error.status === 401) {
+            setLoginDetails(null); //To enforce login
+          }
+          console.error("Failed to fetch providers:", error);
+          setServerError(error.response.data.errorMessage);
+          setShowErrorPopup(true);
+          setIsloading(false);
+        });
+    } else {
+      setServerError("Please login or register");
+      setShowErrorPopup(true);
+      setIsloading(false);
+    }
+  };
+
+  const searchServiceProviders = () => {
+    setIsloading(true);
+    if (loginDetails !== null) {
+      searchProviders(
+        loginDetails.accessToken,
+        keyword,
+        pageSize,
+        currentPage,
+        occupationId
+      )
+        .then((response) => {
+          if (response.data.hasOwnProperty("_embedded")) {
+            setServiceProviders(
+              response.data._embedded.providerPortfolioDtoList
+            );
+          } else {
+            setServiceProviders([]);
+          }
+
+          setTotalPages(response.data.page.totalPages);
           setTotalElements(response.data.page.totalElements);
           setIsloading(false);
         })
@@ -97,21 +144,38 @@ const ProvidersGrid = () => {
       name: "Plumber",
     },
     {
-      id: 100,
+      id: 10,
       name: "Hair Stylist",
     },
   ];
 
+  const indexOfLastProvider = currentPage * pageSize;
+  const indexOfFirstProvider = indexOfLastProvider - pageSize;
+  let lastProvider =
+    pageSize * currentPage <= totalElements
+      ? currentPage * pageSize
+      : totalElements;
+
   useEffect(() => {
-    requestProviders();
+    if (keyword === "") {
+      requestProviders();
+    } else {
+      searchServiceProviders();
+    }
+
     window.scrollTo(0, 0);
-  }, [providerPageNo, occupationId]);
+  }, [currentPage, occupationId]);
 
   return (
     <div className="providers-content">
       <div className="providers-header">
-        <input type="text" placeholder="Try Gardener..." />
-        <button onClick={() => requestProviders()}>Search</button>
+        <input
+          type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          placeholder="Try Chris..."
+        />
+        <button onClick={() => searchServiceProviders()}>Search</button>
       </div>
       <hr></hr>
 
@@ -135,10 +199,19 @@ const ProvidersGrid = () => {
                   })}
                 </select>
               </div>
+              {totalElements > 0 && (
+                <div className="results">
+                  <p>Results ({totalElements})</p>
+                  <p>
+                    {indexOfFirstProvider + 1} to {lastProvider} of{" "}
+                    {totalElements}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
           <div className="providers-display">
-            <h2>Who do you need help from?</h2>
+            {totalElements > 0 && <h2>Who do you need help from?</h2>}
             <div className="providers-display-grid">
               {serviceProviders.length > 0 ? (
                 serviceProviders.map((serviceProvider) => {
@@ -150,21 +223,27 @@ const ProvidersGrid = () => {
                   );
                 })
               ) : (
-                <div className="no-results-found">
-                  <p>No results found...</p>
+                <div>
+                  <div className="no-results-found">
+                    <p>No results found...</p>
+                  </div>
+                  <div className="support">
+                    <p>Can't find what you are looking for?</p>
+                    <button>Support</button>
+                  </div>
                 </div>
               )}
             </div>
           </div>
         </div>
         <div className="providers-lower-body">
-          <Pagination
-            currentPage={providerPageNo}
-            totalpages={totalPages}
-            totalElements={totalElements}
-            pageSize={pageSize}
-            paginate={setProviderPageNo}
-          />
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalpages={totalPages}
+              paginate={setCurrentPage}
+            />
+          )}
         </div>
       </div>
     </div>
