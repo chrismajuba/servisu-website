@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { loginRequest} from "../services/api/WeServeService";
+import { loginRequest } from "../services/api/WeServeService";
 import { UserRegistrationDto } from "../user/models/UserRegistrationDto";
 import ServiceProvider from "../providers/models/ServiceProvider";
 import { LoginDto } from "../user/models/LoginDto";
@@ -21,31 +21,34 @@ export const ContextProvider = (props) => {
       .then((response) => {
         setLoginDetails(response.data);
         setIsloading(false);
-
         //If the login popup is open
-        if(showPopUp){
-         setShowPopUp(false); //loginPopup
+        if (showPopUp) {
+          setShowPopUp(false); //loginPopup
         }
-    }
-      )
+      })
       .catch((error) => {
-        console.log(error.response.data.errorMessage);
-        setServerError(error.response.data.errorMessage);
+        if (error.code === "ERR_NETWORK") {
+          setServerError(
+            `[${error.message}] Server might be down. Please try again later`
+          );
+        } else if (error.code === "ECONNABORTED") {
+          setServerError(`[${error.message}] Connection timed out.`);
+        } else {
+          setServerError(error.response.data.errorMessage);
+        }
         setShowErrorPopup(true);
-        setIsloading(false);});
-  }
+        setIsloading(false);
+      });
+  };
 
   //registration
-  const register = (UserRegistrationtDto) =>{
-
-  }
+  const register = (UserRegistrationtDto) => {};
 
   //Logout Method
   const logout = () => {
     setLoginDetails(null);
     setShowPopUp(false);
   };
-
 
   const contextValue = {
     loginDetails,
@@ -60,7 +63,7 @@ export const ContextProvider = (props) => {
     showErrorPopup,
     setShowErrorPopup,
     serverError,
-    setServerError
+    setServerError,
   };
 
   return (

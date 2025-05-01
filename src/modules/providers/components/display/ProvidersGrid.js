@@ -48,11 +48,18 @@ const ProvidersGrid = () => {
           setIsloading(false);
         })
         .catch((error) => {
-          if (error.status === 401) {
+          if (error.hasOwnProperty("status") && error.status === 401) {
             setLoginDetails(null); //To enforce login
+            setServerError(error.response.data.errorMessage);
+          } else if (error.code === "ERR_NETWORK") {
+            setServerError(
+              `[${error.message}] Server might be down. Please try again later`
+            );
+          } else if (error.code === "ECONNABORTED") {
+            setServerError(`[${error.message}] Connection timed out.`);
+          } else {
+            setServerError(error.response.data.errorMessage);
           }
-          console.error("Failed to fetch providers:", error);
-          setServerError(error.response.data.errorMessage);
           setShowErrorPopup(true);
           setIsloading(false);
         });
@@ -87,11 +94,18 @@ const ProvidersGrid = () => {
           setIsloading(false);
         })
         .catch((error) => {
-          if (error.status === 401) {
+          if (error.hasOwnProperty("status") && error.status === 401) {
             setLoginDetails(null); //To enforce login
+            setServerError(error.response.data.errorMessage);
+          } else if (error.code === "ERR_NETWORK") {
+            setServerError(
+              `[${error.message}] Server might be down. Please try again later`
+            );
+          } else if (error.code === "ECONNABORTED") {
+            setServerError(`[${error.message}] Connection timed out.`);
+          } else {
+            setServerError(error.response.data.errorMessage);
           }
-          console.error("Failed to fetch providers:", error);
-          setServerError(error.response.data.errorMessage);
           setShowErrorPopup(true);
           setIsloading(false);
         });
