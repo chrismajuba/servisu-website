@@ -1,0 +1,12 @@
+.loading-screen-com .contents {
+  place-self: center;
+  display: flex;
+  animation: fadeIn 0.5s;
+  justify-content: center;
+}
+
+.loading-screen-com .contents img {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 10px;
+}

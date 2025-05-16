@@ -6,7 +6,7 @@ import SignIn from "../../modules/auth/sign_in/SignIn";
 const ProvidersPage = () => {
   const { loginDetails } = useContext(APIContext);
 
-  if (loginDetails === null) {
+  if (loginDetails === null || loginDetails?.isAuthenticated) {
     return (
       <SignIn
         headerMessage={
@@ -14,13 +14,12 @@ const ProvidersPage = () => {
         }
       />
     );
+  } else {
+    return (
+      <div>
+        <ProvidersGrid />
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <ProvidersGrid />
-    </div>
-  );
 };
-
 export default ProvidersPage;

@@ -1,0 +1,54 @@
+.user-nav {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+.user-nav .nav-list {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.user-nav .nav-list li button {
+  text-decoration: none;
+  color: #333;
+  font-weight: 400;
+  border: none;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.user-nav .nav-list li button:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+
+@media (max-width: 953px) {
+  .user-nav .nav-list li button {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  .user-nav .nav-list {
+    gap: 20px;
+  }
+
+  .user-nav .nav-list li button {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 483px) {
+  .user-nav .nav-list {
+    gap: 10px;
+  }
+
+  .user-nav .nav-list li button {
+    font-size: 16px;
+  }
+}

@@ -4,7 +4,7 @@ import { assets } from "../../../../assets/assets";
 import "./navbar.css";
 import SigninPopup from "../../../auth/pop_up/SigninPopup";
 import { APIContext } from "../../../context/ContextProvider";
-import LoadingScreen from "../pop_up/progress_bar/LoadingScreenPopup";
+import LoadingScreenPopup from "../pop_up/progress_bar/LoadingScreenPopup";
 import ErrorMessagePopup from "../pop_up/error_message/ErrorPopup";
 
 const SIGN_IN = "sign-in";
@@ -29,29 +29,39 @@ const NavBar = () => {
     setShowErrorPopup(false);
   };
 
+  const toggleMenu = () => {};
+
   return (
     <>
-      <nav>
-        {showPopUp && (
-          <SigninPopup
-            popUpType={popUpType}
-            setPopUpType={setPopUpType}
-            setShowPopUp={setShowPopUp}
-          />
-        )}
-        {isLoading && <LoadingScreen />}
-        {showErrorPopup && (
-          <ErrorMessagePopup
-            errorMessage={serverError}
-            showErrorPopup={showErrorPopup}
-            onClose={handleClosePopup}
-          />
-        )}
-        <div className="navbar">
-          <Link to="/">
-            <img src={assets.weservename} alt="weservelogo" className="logo" />
-          </Link>
-
+      {showPopUp && (
+        <SigninPopup
+          popUpType={popUpType}
+          setPopUpType={setPopUpType}
+          setShowPopUp={setShowPopUp}
+        />
+      )}
+      {isLoading && <LoadingScreenPopup />}
+      {showErrorPopup && (
+        <ErrorMessagePopup
+          errorMessage={serverError}
+          showErrorPopup={showErrorPopup}
+          onClose={handleClosePopup}
+        />
+      )}
+      <nav className="navbar">
+        <div className="navbar-left">
+          <div>
+            <button className="menu-toggle" onClick={toggleMenu}>
+              ☰
+            </button>
+            <Link to="/">
+              <img
+                src={assets.weservename}
+                alt="weservelogo"
+                className="logo"
+              />
+            </Link>
+          </div>
           <ul className="navbar-list">
             <Link
               to="/"
@@ -81,15 +91,6 @@ const NavBar = () => {
               Providers
             </Link>
             <a
-              href="#mobile-app"
-              className={currentPage === "mobile-app" ? "active" : ""}
-              onClick={() => {
-                setCurrentPage("mobile-app");
-              }}
-            >
-              Mobile App
-            </a>
-            <a
               href="#footer"
               className={currentPage === "contactus" ? "active" : ""}
               onClick={() => {
@@ -99,41 +100,51 @@ const NavBar = () => {
               Contact Us
             </a>
           </ul>
-
-          <div className="navbar-right">
-            <div className="navbar-account-container">
-              <Link to="/user-account">
-                <img
-                  onClick={() => {
-                    setCurrentPage("user-account");
-                  }}
-                  src={assets.acccount_icon}
-                  alt=""
-                  className={
-                    currentPage === "user-account"
-                      ? "navbar-account-icon active-img"
-                      : "navbar-account-icon"
-                  }
-                />
-              </Link>
-              {loginDetails != null ? <div className="dot"></div> : <></>}
-            </div>
-            <button
+        </div>
+        <div className="navbar-right">
+          <div className="my-request">
+            <Link
+              to="/account/my-requests"
+              className={currentPage === "my-requests" ? "active" : ""}
               onClick={() => {
-                setCurrentPage("sign-n");
-                if (loginDetails != null) {
-                  setShowPopUp(true);
-                  setPopUpType(SIGN_OUT);
-                } else {
-                  setShowPopUp(true);
-                  setPopUpType(SIGN_IN);
-                }
+                setCurrentPage("my-requests");
               }}
-              className="button"
             >
-              {loginDetails == null ? "Sign in" : "Sign out"}
-            </button>
+              My Requests
+            </Link>
           </div>
+          <div className="navbar-account-container">
+            <Link to="/account">
+              <img
+                onClick={() => {
+                  setCurrentPage("user-account");
+                }}
+                src={assets.acccount_icon}
+                alt=""
+                className={
+                  currentPage === "user-account"
+                    ? "navbar-account-icon active-img"
+                    : "navbar-account-icon"
+                }
+              />
+            </Link>
+            {loginDetails != null ? <div className="dot"></div> : <></>}
+          </div>
+          <button
+            onClick={() => {
+              setCurrentPage("sign-n");
+              if (loginDetails != null) {
+                setShowPopUp(true);
+                setPopUpType(SIGN_OUT);
+              } else {
+                setShowPopUp(true);
+                setPopUpType(SIGN_IN);
+              }
+            }}
+            className="button"
+          >
+            {loginDetails == null ? "Sign in" : "Sign out"}
+          </button>
         </div>
       </nav>
     </>

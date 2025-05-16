@@ -1,7 +1,8 @@
 .header {
   height: 40vw;
   margin: 30px auto;
-  background: url("../../../../../public/images/leaves.png") no-repeat;
+  background: url("../../../../../public/images/connecting_people_green.jpg")
+    no-repeat;
   background-size: contain;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
@@ -78,7 +79,7 @@
 @media (max-width: 481px) {
   .header-contents {
     left: 1vw;
-    bottom: 30%;
+    bottom: 10%;
     max-width: 75%;
   }
 
@@ -102,7 +103,6 @@
 @media (max-width: 350px) {
   .header-contents {
     left: 1vw;
-    bottom: 20%;
     max-width: 75%;
   }
 

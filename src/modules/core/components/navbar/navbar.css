@@ -6,6 +6,21 @@
   align-items: center;
 }
 
+.navbar .navbar-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20vw;
+}
+
+.navbar .menu-toggle {
+  display: none;
+}
+
+.navbar .menu-toggle {
+  width: 50px;
+}
+
 .navbar .logo {
   width: 250px;
 }
@@ -30,6 +45,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+}
+
+.navbar .navbar-right {
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 450;
 }
 
 .navbar .button {
@@ -80,14 +101,18 @@
   right: 20px;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1550px) {
   .navbar .logo {
     width: 140px;
     margin-right: 10px;
   }
 
   .navbar-list {
-    gap: 30px;
+    gap: 20px;
+    font-size: 15px;
+  }
+
+  .navbar .navbar-right {
     font-size: 15px;
   }
 
@@ -112,10 +137,18 @@
   }
 }
 
-@media (max-width: 953px) {
+@media (max-width: 1200px) {
   .navbar .logo {
     width: 120px;
     margin-right: 10px;
+  }
+
+  .navbar .navbar-left {
+    gap: 5vw;
+  }
+
+  .navbar .navbar-right {
+    font-size: 13px;
   }
 
   .navbar-list {
@@ -157,9 +190,16 @@
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 832px) {
+  .navbar .logo {
+    display: none;
+  }
+
   .navbar-list {
     display: none;
+  }
+  .navbar .menu-toggle {
+    display: block;
   }
 }
 

@@ -1,3 +1,20 @@
+.user-account-dashboard {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-account-dashboard h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 450;
+  font-size: 50px;
+  padding: 20px;
+  background-color: lightgray;
+  border-radius: 10px;
+}
+
 .user-account {
   margin-top: 50px;
 }
@@ -102,6 +119,27 @@
   transition: 1s;
 }
 
+.user-account-details-notification .email-verification-button-container button {
+  width: 20%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  border: none;
+  border-radius: 8px;
+  background-color: #404040;
+  color: white;
+  padding: 5px;
+}
+
+.user-account-details-notification
+  .email-verification-button-container
+  button:hover {
+  cursor: pointer;
+  scale: 1.05;
+  transition: 1s;
+  background-color: black;
+}
+
 .unverified {
   position: absolute;
   width: 1vw;
@@ -200,6 +238,17 @@
   .unverified {
     display: none;
   }
+
+  .user-account-details-notification
+    .email-verification-button-container
+    button {
+    width: 30%;
+    font-size: 18px;
+  }
+
+  .user-account-dashboard h1 {
+    font-size: 40px;
+  }
 }
 
 @media (max-width: 483px) {
@@ -209,6 +258,11 @@
     flex-direction: column;
     gap: 20px;
   }
+
+  .user-account-dashboard h1 {
+    font-size: 30px;
+  }
+
   .user-account-details-body {
     width: 100%;
   }
@@ -238,5 +292,12 @@
 
   .user-account-details-notification input {
     font-size: 18px;
+  }
+
+  .user-account-details-notification
+    .email-verification-button-container
+    button {
+    width: 40%;
+    font-size: 16px;
   }
 }

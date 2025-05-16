@@ -5,7 +5,11 @@ import NavBar from "./modules/core/components/navbar/NavBar";
 import Home from "./pages/home/Home";
 import ProvidersPage from "./pages/providers/ProvidersPage";
 import UserPage from "./pages/user/UserPage";
-import RequestService from "./pages/request_service/RequestService";
+import ViewProviderPage from "./pages/providers/ViewProviderPage";
+import RequestProviderPage from "./pages/providers/RequestProviderPage";
+import "react-datepicker/dist/react-datepicker.css";
+import VerificationPage from "./pages/verification/VerificationPage";
+import MyRequestsPage from "./pages/user/MyRequestPage";
 
 function App() {
   return (
@@ -16,10 +20,19 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/providers" element={<ProvidersPage />}></Route>
-          <Route path="/user-account" element={<UserPage />}></Route>
+          <Route path="/account" element={<UserPage />}></Route>
           <Route
-            path="/request-service/:id"
-            element={<RequestService />}
+            path="/view-provider/:id"
+            element={<ViewProviderPage />}
+          ></Route>
+          <Route
+            path="/request-provider"
+            element={<RequestProviderPage />}
+          ></Route>
+          <Route path="/account/verify" element={<VerificationPage />}></Route>
+          <Route
+            path="/account/my-requests"
+            element={<MyRequestsPage />}
           ></Route>
         </Routes>
       </div>

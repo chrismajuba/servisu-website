@@ -2,6 +2,7 @@ import { React, useContext, useState } from "react";
 import "./signin.css";
 import { APIContext } from "../../context/ContextProvider";
 import { LoginDto } from "../../user/models/LoginDto";
+import { registrationRequest } from "../../services/api/WeServeService";
 
 const SIGN_IN = "signin";
 const SIGN_UP = "signup";
@@ -14,20 +15,55 @@ const SignIn = ({ headerMessage }) => {
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
 
-  const { login, register } = useContext(APIContext);
+  const { login } = useContext(APIContext);
 
   const triggerLogin = (e) => {
-    //Prevent the page from reloading
-    e.preventDefault();
     let loginDto = new LoginDto(email, password);
     login(loginDto);
   };
 
-  const triggerRegistration = () => {};
+  const triggerRegistration = () => {
+    //registration
+    const register = (userRegistrationtDto) => {
+      //setIsloading(true);
+      registrationRequest(userRegistrationtDto)
+        .then((response) => {
+          //setLoginDetails(response.data);
+          //setIsloading(false);
+          //If the login popup is open
+          //if (showPopUp) {
+          //  setShowPopUp(false); //loginPopup
+          //}
+        })
+        .catch((error) => {
+          /*if (error.code === "ERR_NETWORK") {
+            setServerError(
+              `[${error.message}] Server might be down. Please try again later`
+            );
+          } else if (error.code === "ECONNABORTED") {
+            setServerError(`[${error.message}] Connection timed out.`);
+          } else {
+            setServerError(error.response.data.errorMessage);
+          }
+          setShowErrorPopup(true);
+          setIsloading(false); */
+        });
+    };
+  };
+
+  const triggerExecution = (e) => {
+    //Prevent the page from reloading
+    e.preventDefault();
+    if (siginType === SIGN_IN) {
+      triggerLogin();
+    } else {
+      triggerRegistration();
+    }
+  };
 
   return (
     <>
-      <form>
+      <form onSubmit={triggerExecution}>
         <div className="signin-container">
           <h2>{headerMessage}</h2>
           <div className="signin-contents">
@@ -87,15 +123,9 @@ const SignIn = ({ headerMessage }) => {
                 />
               )}
 
-              {siginType === SIGN_IN ? (
-                <button type="submit" onClick={triggerLogin}>
-                  Sign in
-                </button>
-              ) : (
-                <button type="submit" onClick={triggerRegistration}>
-                  Create account
-                </button>
-              )}
+              <button type="submit">
+                {siginType === SIGN_IN ? "Sign in" : "Create account"}
+              </button>
             </div>
             <div className="signin-bottom">
               <p>

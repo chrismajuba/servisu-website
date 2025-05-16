@@ -1,9 +1,5 @@
 import { createContext, useState } from "react";
 import { loginRequest } from "../services/api/WeServeService";
-import { UserRegistrationDto } from "../user/models/UserRegistrationDto";
-import ServiceProvider from "../providers/models/ServiceProvider";
-import { LoginDto } from "../user/models/LoginDto";
-import { LoginDetails } from "../user/models/LoginDetails";
 
 export const APIContext = createContext(null);
 
@@ -21,12 +17,14 @@ export const ContextProvider = (props) => {
       .then((response) => {
         setLoginDetails(response.data);
         setIsloading(false);
+
         //If the login popup is open
         if (showPopUp) {
           setShowPopUp(false); //loginPopup
         }
       })
       .catch((error) => {
+        console.error(error);
         if (error.code === "ERR_NETWORK") {
           setServerError(
             `[${error.message}] Server might be down. Please try again later`
@@ -41,9 +39,6 @@ export const ContextProvider = (props) => {
       });
   };
 
-  //registration
-  const register = (UserRegistrationtDto) => {};
-
   //Logout Method
   const logout = () => {
     setLoginDetails(null);
@@ -54,7 +49,6 @@ export const ContextProvider = (props) => {
     loginDetails,
     setLoginDetails,
     login,
-    register,
     logout,
     isLoading,
     setIsloading,

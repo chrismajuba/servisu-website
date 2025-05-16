@@ -1,10 +1,10 @@
 import React from "react";
-import "./loadingScreenPopup.css";
+import "./loadingScreen.css";
 import { assets } from "../../../../../assets/assets";
 
-const LoadingScreenPopup = () => {
+const LoadingScreen = () => {
   return (
-    <div className="loading-screen">
+    <div className="loading-screen-com">
       <div className="contents">
         <img src={assets.loading_screen} alt="" />
       </div>
@@ -12,4 +12,4 @@ const LoadingScreenPopup = () => {
   );
 };
 
-export default LoadingScreenPopup;
+export default LoadingScreen;

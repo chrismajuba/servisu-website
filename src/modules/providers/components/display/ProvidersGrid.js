@@ -3,19 +3,15 @@ import "./providersGrid.css";
 import { APIContext } from "../../../context/ContextProvider";
 import ProviderCard from "./providerCard/ProviderCard";
 import Pagination from "../../../core/components/pagination/Pagination";
+import LoadingScreen from "../../../core/components/pop_up/progress_bar/LoadingScreen";
 import {
   getProviders,
   searchProviders,
 } from "../../../services/api/WeServeService";
 
 const ProvidersGrid = () => {
-  const {
-    loginDetails,
-    setIsloading,
-    setLoginDetails,
-    setShowErrorPopup,
-    setServerError,
-  } = useContext(APIContext);
+  const { loginDetails, setLoginDetails, setShowErrorPopup, setServerError } =
+    useContext(APIContext);
 
   const [serviceProviders, setServiceProviders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,10 +20,11 @@ const ProvidersGrid = () => {
   const [pageSize] = useState(5);
   const [occupationId, setOccupationId] = useState(-1);
   const [keyword, setKeyword] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const requestProviders = () => {
-    setIsloading(true);
     if (loginDetails !== null) {
+      setIsLoaded(false);
       getProviders(
         loginDetails.accessToken,
         pageSize,
@@ -45,7 +42,7 @@ const ProvidersGrid = () => {
 
           setTotalPages(response.data.page.totalPages);
           setTotalElements(response.data.page.totalElements);
-          setIsloading(false);
+          setIsLoaded(true);
         })
         .catch((error) => {
           if (error.hasOwnProperty("status") && error.status === 401) {
@@ -61,17 +58,17 @@ const ProvidersGrid = () => {
             setServerError(error.response.data.errorMessage);
           }
           setShowErrorPopup(true);
-          setIsloading(false);
+          setIsLoaded(true);
         });
     } else {
       setServerError("Please login or register");
       setShowErrorPopup(true);
-      setIsloading(false);
+      setIsLoaded(true);
     }
   };
 
   const searchServiceProviders = () => {
-    setIsloading(true);
+    setIsLoaded(false);
     if (loginDetails !== null) {
       searchProviders(
         loginDetails.accessToken,
@@ -91,7 +88,7 @@ const ProvidersGrid = () => {
 
           setTotalPages(response.data.page.totalPages);
           setTotalElements(response.data.page.totalElements);
-          setIsloading(false);
+          setIsLoaded(true);
         })
         .catch((error) => {
           if (error.hasOwnProperty("status") && error.status === 401) {
@@ -107,12 +104,12 @@ const ProvidersGrid = () => {
             setServerError(error.response.data.errorMessage);
           }
           setShowErrorPopup(true);
-          setIsloading(false);
+          setIsLoaded(true);
         });
     } else {
       setServerError("Please login or register");
       setShowErrorPopup(true);
-      setIsloading(false);
+      setIsLoaded(true);
     }
   };
 
@@ -179,6 +176,14 @@ const ProvidersGrid = () => {
 
     window.scrollTo(0, 0);
   }, [currentPage, occupationId]);
+
+  if (!isLoaded) {
+    return (
+      <>
+        <LoadingScreen />
+      </>
+    );
+  }
 
   return (
     <div className="providers-content">

@@ -1,19 +1,73 @@
 .verification {
   width: 100%;
+  padding: 30px;
 }
 
 .verification-contents {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-.verification-contents .multi-fields-v {
+.verification .verification-contents h2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 39px;
+  margin-bottom: 20px;
+}
+
+.verification .verification-contents .request-code-container {
+  display: flex;
+  gap: 5px;
+  border: 1px solid whitesmoke;
+  padding: 10px;
+  width: 50%;
+  justify-content: space-between;
+  background-color: lightgray;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.verification .verification-contents .request-code-container p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.verification .verification-contents .request-code-container button {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+}
+
+.verification .verification-contents .request-code-container button:hover {
+  cursor: pointer;
+  scale: 1.05;
+  color: green;
+  transition: 1s;
+}
+
+.verification .verification-contents .submit-code-container {
+  width: 50%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.verification-contents .submit-code-container .multi-fields-v {
   background-color: lightgray;
   padding: 20px;
   border-radius: 5px;
   display: flex;
+  width: 100%;
 }
 
-.verification-contents .multi-fields-v input {
+.verification-contents .submit-code-container .multi-fields-v input {
   width: 80%;
   padding: 5px;
   border-radius: 5px;
@@ -22,8 +76,8 @@
   font-size: 20px;
 }
 
-.verification-contents .multi-fields-v button {
-  width: 20%;
+.verification-contents .submit-code-container .multi-fields-v button {
+  width: 30%;
   margin-left: 5px;
   padding: 20x;
   font-size: 18px;
@@ -33,7 +87,7 @@
   background-color: #404040;
 }
 
-.verification-contents .multi-fields-v button:hover {
+.verification-contents .submit-code-container .multi-fields-v button:hover {
   cursor: pointer;
   scale: 1.05;
   transition: 1s;
@@ -41,9 +95,84 @@
   border: 2px solid greenyellow;
 }
 
-@media (max-width: 750px) {
+.verification .submit-code-container .timer {
+  display: flex;
+}
+
+.verification .submit-code-container .timer p {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.verification .submit-code-container .response-message p {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@media (max-width: 950px) {
+  .verification {
+    margin-top: 10px;
+    align-items: start;
+  }
+
+  .verification .verification-contents .submit-code-container {
+    width: 100%;
+  }
+
+  .verification-contents {
+    align-items: start;
+  }
+
+  .verification .verification-contents .request-code-container {
+    width: 100%;
+    align-items: start;
+  }
+
   .verification-contents .multi-fields-v button {
+    width: 100%;
+  }
+
+  .verification .verification-contents .submit-code-container {
+    align-items: start;
+  }
+
+  .verification-contents {
+    align-items: start;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  .verification {
+    margin-top: 30px;
+    padding: 0px;
+  }
+
+  .verification .verification-contents .multi-fields-v input {
+    font-size: 15px;
+    width: 60%;
+  }
+
+  .verification .verification-contents .multi-fields-v button {
+    font-size: 15px;
     width: 40%;
+  }
+
+  .verification .verification-contents h2 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+  }
+
+  .verification .verification-contents .request-code-container p {
+    font-size: 18px;
+  }
+
+  .verification .verification-contents .request-code-container button {
+    font-size: 18px;
   }
 }
 
@@ -57,5 +186,23 @@
     font-size: 15px;
     padding: 10px;
     width: 30%;
+  }
+
+  .verification .verification-contents h2 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+  }
+
+  .verification .verification-contents .request-code-container p {
+    font-size: 16px;
+  }
+
+  .verification .verification-contents .request-code-container button {
+    font-size: 16px;
+  }
+
+  .verification .submit-code-container .timer {
+    gap: 0px;
+    flex-direction: column;
   }
 }

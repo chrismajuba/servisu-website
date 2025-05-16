@@ -26,12 +26,12 @@
 
 .provider-card-container .provider-details h3 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  color: white;
-  background-color: black;
+  font-size: 22px;
+  font-weight: 400;
+  background-color: whitesmoke;
   padding: 10px;
   border-radius: 10px;
+  color: black;
 }
 
 .provider-card-container .provider-details button {
@@ -55,45 +55,40 @@
 
 .provider-card-container .provider-details .occupation-details {
   margin-top: 10px;
-  display: flex;
 }
 
 .provider-card-container .provider-details .occupation-details h3 {
-  font-size: 17px;
+  font-size: 20px;
   border-radius: 10px;
+  font-weight: 400;
 }
 
-.provider-card-container .provider-details .occupation-details p {
-  font-size: 17px;
-  background-color: black;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.provider-card-container .other-details {
+.provider-card-container .rating-details {
   margin-top: 10px;
   display: flex;
   gap: 5px;
-  background-color: black;
-  padding: 10px;
+  background-color: whitesmoke;
   border-radius: 10px;
+  align-items: center;
 }
 
-.provider-card-container .other-details p {
-  color: white;
+.provider-card-container .rating-details p {
+  font-size: 20px;
+  font-weight: 400;
+  border: none;
 }
 
-.provider-card-container .other-details img {
-  width: 20px;
+.provider-card-container .rating-details img {
+  width: 30px;
+  height: 30px;
 }
 
 .provider-availability {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
   font-weight: 500;
-  color: white;
-  background-color: black;
+  color: black;
+  background-color: whitesmoke;
   padding: 10px;
   border-radius: 10px;
 }
@@ -121,7 +116,7 @@
   }
 
   .provider-card-container .provider-details .occupation-details h3 {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .provider-card-container .provider-details .occupation-details p {
@@ -129,6 +124,10 @@
   }
 
   .provider-card-container .provider-details h3 {
+    font-size: 18px;
+  }
+
+  .provider-card-container .rating-details p {
     font-size: 18px;
   }
 }
@@ -152,6 +151,9 @@
   }
 
   .provider-card-container .provider-details button {
+    font-size: 16px;
+  }
+  .provider-card-container .rating-details p {
     font-size: 16px;
   }
 }
@@ -179,5 +181,9 @@
 
   .provider-card-container {
     gap: 1px;
+  }
+  .provider-card-container .rating-details p {
+    font-size: 16px;
+    font-weight: 400;
   }
 }

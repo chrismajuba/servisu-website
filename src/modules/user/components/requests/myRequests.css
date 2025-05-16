@@ -1,0 +1,53 @@
+.my-requests-container {
+  margin-top: 50px;
+}
+
+.my-requests-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  border-radius: 50px;
+  padding: 50px;
+  box-shadow: 0 0px 12px gray;
+}
+
+.my-request-header {
+  font-size: 30px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.my-requests-contents .provider-details {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.provider-details .names h3 {
+  font-size: 27px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.provider-details p {
+  font-size: 22px;
+  font-weight: 400;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.provider-details label {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 10px;
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 10px;
+}
