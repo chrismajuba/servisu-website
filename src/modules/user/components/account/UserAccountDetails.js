@@ -7,6 +7,7 @@ import { getUpdate } from "../../../services/api/WeServeService";
 import LoadingScreen from "../../../core/components/pop_up/progress_bar/LoadingScreen";
 import MyRequests from "../requests/MyRequests";
 import { useNavigate } from "react-router-dom";
+import SecuritySettings from "../settings/Security";
 
 const UserAccountDetails = () => {
   const {
@@ -22,33 +23,43 @@ const UserAccountDetails = () => {
   const [currentPage, setCurrentPage] = useState("Account");
 
   const getRequestUpdate = () => {
-    setIsLoading(true);
-    getUpdate(authDetails.accessToken, loginDetails.id)
-      .then((response) => {
-        setEventStatusDto(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        if (error?.status === 401) {
-          setLoginDetails(null);
-          setServerError(error.response?.data?.errorMessage);
-        } else if (error.code === "ERR_NETWORK") {
-          setServerError(
-            `[${error.message}] Server might be down. Please try again later`
-          );
-        } else if (error.code === "ECONNABORTED") {
-          setServerError(`[${error.message}] Connection timed out.`);
-        } else {
-          setServerError(
-            error.response?.data?.errorMessage || "Unexpected error"
-          );
-          setEventStatusDto(null);
-        }
-        setShowErrorPopup(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    if (authDetails != null && authDetails.authenticated) {
+      setIsLoading(true);
+      getUpdate(authDetails?.accessToken, loginDetails?.id)
+        .then((response) => {
+          setEventStatusDto(response.data);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          if (error?.status === 401) {
+            setLoginDetails(null);
+            setServerError(error.response?.data?.errorMessage);
+          } else if (error.code === "ERR_NETWORK") {
+            setServerError(
+              `[${error.message}] Server might be down. Please try again later`
+            );
+          } else if (error.code === "ECONNABORTED") {
+            setServerError(`[${error.message}] Connection timed out.`);
+          } else {
+            setServerError(
+              error.response?.data?.errorMessage || "Unexpected error"
+            );
+            setEventStatusDto(null);
+          }
+          setShowErrorPopup(true);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  };
+
+  const emailButtonFunction = () => {
+    if (!loginDetails?.emailVerified) {
+      navigate("/account/verify");
+    } else {
+      //edit function
+    }
   };
 
   useEffect(() => {
@@ -78,49 +89,48 @@ const UserAccountDetails = () => {
       <h1>{currentPage}</h1>
       <UserNav setCurrentPage={setCurrentPage} />
 
-      {(currentPage === "Dashboard" || currentPage === "Account") && (
+      {currentPage === "Account" && (
         <div className="user-account">
           <div className="user-account-contents">
-            <div className="user-account-header">
-              <h2>Hi, {loginDetails?.name + " " + loginDetails?.surname}</h2>
-              <hr></hr>
-            </div>
-            <div className="user-account-details">
-              <div className="user-account-details-body">
-                <div className="user-account-details-header">
-                  <h2>ACCOUNT DETAILS</h2>
-                </div>
-                <input type="text" value={loginDetails?.name} readOnly />
-                <input type="text" value={loginDetails?.surname} readOnly />
-                <input type="text" value={loginDetails?.email} readOnly />
-                <input type="text" value={loginDetails?.cellNumber} readOnly />
+            <div className="details-container">
+              <h2>Full Name</h2>
+              <div className="row">
+                <p>{loginDetails?.name + " " + loginDetails?.surname}</p>
+                <button>Edit</button>
               </div>
+              <hr />
+            </div>
 
-              {!loginDetails?.emailVerified && (
-                <>
-                  <div className="user-account-details-notification">
-                    <div className="user-account-details-header">
-                      <h2>NOTIFICATION</h2>
-                    </div>
-                    <input
-                      type="text"
-                      value={"Please verify your email"}
-                      readOnly
-                    />
-                    <div className="email-verification-button-container">
-                      <button onClick={() => navigate("/account/verify")}>
-                        Verify Email
-                      </button>
-                    </div>
-                  </div>
-                </>
-              )}
+            <div className="details-container">
+              <h2>Email Address</h2>
+              <div className="row">
+                <p>{loginDetails?.email}</p>
+                <button onClick={emailButtonFunction}>
+                  {!loginDetails?.emailVerified ? "Verify Email" : "Edit"}
+                </button>
+                <div className="unverified"></div>
+              </div>
+              <hr />
+            </div>
+
+            <div className="details-container">
+              <h2>Cell Number</h2>
+              <div className="row">
+                <p>{loginDetails?.cellNumber}</p>
+                <button>Edit</button>
+              </div>
+              <hr />
             </div>
           </div>
         </div>
       )}
+
       {currentPage === "Requests" && (
         <MyRequests eventStatusDto={eventStatusDto} />
+      )}
+
+      {currentPage === "Security" && (
+        <SecuritySettings loginDetails={loginDetails} />
       )}
     </div>
   );

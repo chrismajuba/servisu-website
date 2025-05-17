@@ -13,8 +13,13 @@
   justify-content: center;
 }
 
+.current{
+  background-color: lightgreen;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .user-nav .nav-list li button {
-  text-decoration: none;
   color: #333;
   font-weight: 400;
   border: none;
@@ -23,8 +28,8 @@
 }
 
 .user-nav .nav-list li button:hover {
-  color: #007bff;
   cursor: pointer;
+  scale: 1.05;
 }
 
 @media (max-width: 953px) {
@@ -46,6 +51,7 @@
 @media (max-width: 483px) {
   .user-nav .nav-list {
     gap: 10px;
+    flex-direction: column;
   }
 
   .user-nav .nav-list li button {

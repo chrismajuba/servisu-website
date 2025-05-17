@@ -1,21 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import "./userNav.css";
 
 const UserNav = ({ setCurrentPage }) => {
+  const [selected, setSelected] = useState("");
+
   return (
     <nav className="user-nav">
       <ul className="nav-list">
         <li>
-          <button onClick={() => setCurrentPage("Account")}>Account</button>
+          <button
+            className={selected === "account" ? "current" : ""}
+            onClick={() => {
+              setCurrentPage("Account");
+              setSelected("account");
+            }}
+          >
+            Account
+          </button>
         </li>
         <li>
-          <button onClick={() => setCurrentPage("Requests")}>Requests</button>
+          <button
+            className={selected === "requests" ? "current" : ""}
+            onClick={() => {
+              setCurrentPage("Requests");
+              setSelected("requests");
+            }}
+          >
+            Requests
+          </button>
         </li>
         <li>
-          <button onClick={() => setCurrentPage("Security")}>Security</button>
+          <button
+            className={selected === "security" ? "current" : ""}
+            onClick={() => {
+              setCurrentPage("Security");
+              setSelected("security");
+            }}
+          >
+            Security
+          </button>
         </li>
         <li>
-          <button onClick={() => setCurrentPage("Support")}>Support</button>
+          <button
+            className={selected === "support" ? "current" : ""}
+            onClick={() => {
+              setCurrentPage("Support");
+              setSelected("support");
+            }}
+          >
+            Support
+          </button>
         </li>
       </ul>
     </nav>

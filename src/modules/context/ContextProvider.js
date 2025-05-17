@@ -23,7 +23,6 @@ export const ContextProvider = (props) => {
         }
       })
       .catch((error) => {
-        console.error(error);
         if (error.code === "ERR_NETWORK") {
           setServerError(
             `[${error.message}] Server might be down. Please try again later`
@@ -48,12 +47,10 @@ export const ContextProvider = (props) => {
       setIsloading(true);
       getUserAccount(authDetails?.accessToken)
         .then((response) => {
-          console.log(response.data);
           setLoginDetails(response.data);
           setIsloading(false);
         })
         .catch((error) => {
-          console.error(error);
           if (error.code === "ERR_NETWORK") {
             setServerError(
               `[${error.message}] Server might be down. Please try again later`
