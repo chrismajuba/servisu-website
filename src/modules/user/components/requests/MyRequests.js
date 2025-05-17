@@ -1,3 +1,4 @@
+import React from "react";
 import "./myRequests.css";
 
 const MyRequests = ({ eventStatusDto }) => {

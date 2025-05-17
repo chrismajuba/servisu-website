@@ -16,6 +16,7 @@ const NavBar = () => {
   //const [showPopUp, setShowPopUp] = useState(false);
   const [popUpType, setPopUpType] = useState(SIGN_UP);
   const {
+    authDetails,
     showPopUp,
     setShowPopUp,
     loginDetails,
@@ -133,7 +134,7 @@ const NavBar = () => {
           <button
             onClick={() => {
               setCurrentPage("sign-n");
-              if (loginDetails != null) {
+              if (authDetails != null) {
                 setShowPopUp(true);
                 setPopUpType(SIGN_OUT);
               } else {
@@ -143,7 +144,7 @@ const NavBar = () => {
             }}
             className="button"
           >
-            {loginDetails == null ? "Sign in" : "Sign out"}
+            {authDetails == null ? "Sign in" : "Sign out"}
           </button>
         </div>
       </nav>

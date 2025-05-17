@@ -4,9 +4,9 @@ import { APIContext } from "../../modules/context/ContextProvider";
 import SignIn from "../../modules/auth/sign_in/SignIn";
 
 const ProvidersPage = () => {
-  const { loginDetails } = useContext(APIContext);
+  const { authDetails } = useContext(APIContext);
 
-  if (loginDetails === null || loginDetails?.isAuthenticated) {
+  if (authDetails === null || !authDetails?.authenticated) {
     return (
       <SignIn
         headerMessage={

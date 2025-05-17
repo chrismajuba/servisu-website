@@ -10,11 +10,17 @@ import Timer from "../../core/components/utils/Timer";
 import { VerificationDto } from "../models/VerificationDto";
 
 const Verification = () => {
-  const { loginDetails, setLoginDetails, setShowErrorPopup, setServerError } =
-    useContext(APIContext);
+  const {
+    authDetails,
+    loginDetails,
+    getUserAccountDetails,
+    setLoginDetails,
+    setShowErrorPopup,
+    setServerError,
+  } = useContext(APIContext);
   const [requestedCode, setRequestedCode] = useState(false);
   const [responseMessage, setResponseMessage] = useState(
-    "Your e-mail has been verified!"
+    "Your e-mail has already been verified!"
   );
   const [isLoading, setIsLoading] = useState(false);
   const [timer] = useState(600);
@@ -26,10 +32,10 @@ const Verification = () => {
   const accountType = "user";
 
   const requestCode = () => {
-    if (loginDetails != null && loginDetails.authenticated) {
+    if (authDetails != null && authDetails.authenticated) {
       setIsLoading(true);
       getVerificationCode(
-        loginDetails.accessToken,
+        authDetails.accessToken,
         loginDetails.email,
         accountType
       )
@@ -61,15 +67,16 @@ const Verification = () => {
   };
 
   const sendVerificationCode = () => {
-    if (loginDetails != null && loginDetails.authenticated) {
+    if (authDetails != null && authDetails.authenticated) {
+      setIsLoading(true);
+
       const verificationDto = new VerificationDto(
         loginDetails.email,
         verificationCode
       );
 
-      setIsLoading(true);
       submitVerificationCode(
-        loginDetails.accessToken,
+        authDetails.accessToken,
         verificationDto,
         accountType
       )
@@ -106,6 +113,11 @@ const Verification = () => {
     setRequestedCode(false);
   }, [timedOut]);
 
+  useEffect(() => {
+    //Refresh the user details
+    getUserAccountDetails();
+  }, [isVerified]);
+
   if (isLoading) {
     return (
       <>
@@ -114,7 +126,7 @@ const Verification = () => {
     );
   }
 
-  if (loginDetails != null && isVerified) {
+  if (loginDetails != null && loginDetails.emailVerified) {
     return (
       <div className="verification">
         <div className="verification-contents">

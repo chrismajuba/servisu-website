@@ -7,15 +7,20 @@ import LoadingScreen from "../../modules/core/components/pop_up/progress_bar/Loa
 import SignIn from "../../modules/auth/sign_in/SignIn";
 
 const MyRequestsPage = () => {
-  const { loginDetails, setLoginDetails, setServerError, setShowErrorPopup } =
-    useContext(APIContext);
+  const {
+    authDetails,
+    loginDetails,
+    setLoginDetails,
+    setServerError,
+    setShowErrorPopup,
+  } = useContext(APIContext);
   const [isLoading, setIsLoading] = useState(false);
   const [eventStatusDto, setEventStatusDto] = useState(null);
 
   const getRequestUpdate = () => {
-    if (loginDetails != null && loginDetails.authenticated) {
+    if (authDetails != null && authDetails.authenticated) {
       setIsLoading(true);
-      getUpdate(loginDetails.accessToken, loginDetails.id)
+      getUpdate(authDetails.accessToken, loginDetails.id)
         .then((response) => {
           setEventStatusDto(response.data);
           setIsLoading(false);
@@ -48,7 +53,7 @@ const MyRequestsPage = () => {
     getRequestUpdate();
   }, []);
 
-  if (loginDetails == null || !loginDetails.authenticated) {
+  if (authDetails == null || !authDetails.authenticated) {
     return (
       <SignIn
         headerMessage={"Please login to your account or create one to proceed."}

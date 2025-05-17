@@ -13,7 +13,13 @@ const weServeAPI = axios.create({
 });
 
 const loginRequest = (loginDto : LoginDto) =>
-  weServeAPI.post("/we-serve/auth/api/v1/accounts/user-login", loginDto);
+  weServeAPI.post("/we-serve/auth/api/v1/accounts/login", loginDto);
+
+const getUserAccount = (accessToken:string) => weServeAPI.get("/we-serve/api/v1/users/my-account", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
 
 const registrationRequest = (userRegistrationResponseDto : UserRegistrationDto) =>
   weServeAPI.post("/we-serve/api/v1/users", userRegistrationResponseDto);
@@ -63,4 +69,4 @@ const searchProviders = (accessToken :string, keyword :string, pageSize: number,
         Authorization: `Bearer ${accessToken}`,
       },})
 
-export { loginRequest, registrationRequest, getProviders,searchProviders,getProvider,requestService,getUpdate,getVerificationCode, submitVerificationCode };
+export { loginRequest, getUserAccount, registrationRequest, getProviders,searchProviders,getProvider,requestService,getUpdate,getVerificationCode, submitVerificationCode };

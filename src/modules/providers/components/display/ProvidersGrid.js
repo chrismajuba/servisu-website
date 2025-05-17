@@ -10,8 +10,13 @@ import {
 } from "../../../services/api/WeServeService";
 
 const ProvidersGrid = () => {
-  const { loginDetails, setLoginDetails, setShowErrorPopup, setServerError } =
-    useContext(APIContext);
+  const {
+    authDetails,
+    loginDetails,
+    setLoginDetails,
+    setShowErrorPopup,
+    setServerError,
+  } = useContext(APIContext);
 
   const [serviceProviders, setServiceProviders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,14 +28,9 @@ const ProvidersGrid = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const requestProviders = () => {
-    if (loginDetails !== null) {
+    if (authDetails !== null || authDetails?.authenticated) {
       setIsLoaded(false);
-      getProviders(
-        loginDetails.accessToken,
-        pageSize,
-        currentPage,
-        occupationId
-      )
+      getProviders(authDetails.accessToken, pageSize, currentPage, occupationId)
         .then((response) => {
           if (response.data.hasOwnProperty("_embedded")) {
             setServiceProviders(
@@ -69,9 +69,9 @@ const ProvidersGrid = () => {
 
   const searchServiceProviders = () => {
     setIsLoaded(false);
-    if (loginDetails !== null) {
+    if (authDetails !== null || authDetails?.authenticated) {
       searchProviders(
-        loginDetails.accessToken,
+        authDetails.accessToken,
         keyword,
         pageSize,
         currentPage,

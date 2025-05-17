@@ -9,8 +9,13 @@ import MyRequests from "../requests/MyRequests";
 import { useNavigate } from "react-router-dom";
 
 const UserAccountDetails = () => {
-  const { loginDetails, setLoginDetails, setServerError, setShowErrorPopup } =
-    useContext(APIContext);
+  const {
+    authDetails,
+    loginDetails,
+    setLoginDetails,
+    setServerError,
+    setShowErrorPopup,
+  } = useContext(APIContext);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [eventStatusDto, setEventStatusDto] = useState(null);
@@ -18,7 +23,7 @@ const UserAccountDetails = () => {
 
   const getRequestUpdate = () => {
     setIsLoading(true);
-    getUpdate(loginDetails.accessToken, loginDetails.id)
+    getUpdate(authDetails.accessToken, loginDetails.id)
       .then((response) => {
         setEventStatusDto(response.data);
         setIsLoading(false);
@@ -52,7 +57,7 @@ const UserAccountDetails = () => {
     }
   }, [currentPage]);
 
-  if (loginDetails == null) {
+  if (authDetails == null || !authDetails?.authenticated) {
     return (
       <SignIn
         headerMessage={"Please login to access your account or create one."}
@@ -91,7 +96,7 @@ const UserAccountDetails = () => {
                 <input type="text" value={loginDetails?.cellNumber} readOnly />
               </div>
 
-              {!loginDetails.emailVerified && (
+              {!loginDetails?.emailVerified && (
                 <>
                   <div className="user-account-details-notification">
                     <div className="user-account-details-header">

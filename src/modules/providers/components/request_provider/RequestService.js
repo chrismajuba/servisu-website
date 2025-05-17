@@ -10,8 +10,13 @@ import { Address } from "../../models/Address";
 import { GeoLocation } from "../../models/Geolocation";
 
 const RequestService = () => {
-  const { loginDetails, setLoginDetails, setShowErrorPopup, setServerError } =
-    useContext(APIContext);
+  const {
+    authDetails,
+    loginDetails,
+    setLoginDetails,
+    setShowErrorPopup,
+    setServerError,
+  } = useContext(APIContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -81,7 +86,7 @@ const RequestService = () => {
       null
     );
 
-    requestService(loginDetails.accessToken, requestDto)
+    requestService(authDetails.accessToken, requestDto)
       .then((response) => {
         setEventStatusDto(response.data);
         navigate("/account/my-requests");

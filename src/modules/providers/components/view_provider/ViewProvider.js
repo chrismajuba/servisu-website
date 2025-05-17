@@ -8,7 +8,7 @@ import DaysOfWeek from "../../../core/components/utils/DaysOfWeek";
 import { useNavigate } from "react-router-dom";
 
 const RequestService = ({ providerId }) => {
-  const { loginDetails, setLoginDetails, setShowErrorPopup, setServerError } =
+  const { authDetails, setLoginDetails, setShowErrorPopup, setServerError } =
     useContext(APIContext);
 
   const [serviceProvider, setServiceProvider] = useState({});
@@ -16,7 +16,7 @@ const RequestService = ({ providerId }) => {
   const navigate = useNavigate();
 
   const getProviderDetails = () => {
-    getProvider(loginDetails.accessToken, providerId)
+    getProvider(authDetails.accessToken, providerId)
       .then((response) => {
         setServiceProvider(response.data);
         setIsLoaded(true);
