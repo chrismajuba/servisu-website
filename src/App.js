@@ -10,6 +10,7 @@ import RequestProviderPage from "./pages/providers/RequestProviderPage";
 import "react-datepicker/dist/react-datepicker.css";
 import VerificationPage from "./pages/verification/VerificationPage";
 import MyRequestsPage from "./pages/user/MyRequestPage";
+import UserVerificationPage from "./pages/verification/UserVerificationPage";
 
 function App() {
   return (
@@ -23,17 +24,17 @@ function App() {
           <Route path="/account" element={<UserPage />}></Route>
           <Route
             path="/view-provider/:id"
-            element={<ViewProviderPage />}
-          ></Route>
+            element={<ViewProviderPage />}></Route>
           <Route
             path="/request-provider"
-            element={<RequestProviderPage />}
-          ></Route>
+            element={<RequestProviderPage />}></Route>
           <Route path="/account/verify" element={<VerificationPage />}></Route>
           <Route
             path="/account/my-requests"
-            element={<MyRequestsPage />}
-          ></Route>
+            element={<MyRequestsPage />}></Route>
+          <Route
+            path="/account/update/verification"
+            element={<UserVerificationPage />}></Route>
         </Routes>
       </div>
       <Footer />

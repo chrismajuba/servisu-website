@@ -6,10 +6,18 @@ export const APIContext = createContext(null);
 export const ContextProvider = (props) => {
   const [authDetails, setAuthDetails] = useState(null);
   const [loginDetails, setLoginDetails] = useState(null);
+  const [showSignInPopUp, setShowSignInPopUp] = useState(false);
+
+  //Error pop up message
   const [serverError, setServerError] = useState(null);
-  const [isLoading, setIsloading] = useState(false);
-  const [showPopUp, setShowPopUp] = useState(false);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
+
+  //Successful pop up message
+  const [showSuccessfulPopup, setShowSuccessfulPopup] = useState(false);
+  const [popHeaderMessage, setPopHeaderMessage] = useState("");
+  const [successfulPopupMessage, setSuccessfulPopupMessage] = useState("");
+
+  const [isLoading, setIsloading] = useState(false);
 
   //Login Method
   const login = (loginDto) => {
@@ -18,9 +26,10 @@ export const ContextProvider = (props) => {
       .then((response) => {
         setAuthDetails(response.data);
         //If the login popup is open
-        if (showPopUp) {
-          setShowPopUp(false); //loginPopup
+        if (showSignInPopUp) {
+          setShowSignInPopUp(false); //loginPopup
         }
+        setIsloading(false);
       })
       .catch((error) => {
         if (error.code === "ERR_NETWORK") {
@@ -35,6 +44,17 @@ export const ContextProvider = (props) => {
         setShowErrorPopup(true);
         setIsloading(false);
       });
+  };
+
+  const showPopupMessageOnNavbar = (errorMessage) => {
+    setServerError(errorMessage);
+    setShowErrorPopup(true);
+  };
+
+  const showSuccessfulPopupMessageOnNavbar = (headerMessage, message) => {
+    setPopHeaderMessage(headerMessage);
+    setSuccessfulPopupMessage(message);
+    setShowSuccessfulPopup(true);
   };
 
   useEffect(() => {
@@ -70,24 +90,28 @@ export const ContextProvider = (props) => {
   const logout = () => {
     setAuthDetails(null);
     setLoginDetails(null);
-    setShowPopUp(false);
+    setShowSignInPopUp(false);
   };
 
   const contextValue = {
     authDetails,
     loginDetails,
-    setLoginDetails,
     login,
     logout,
     getUserAccountDetails,
     isLoading,
     setIsloading,
-    showPopUp,
-    setShowPopUp,
+    showSignInPopUp,
+    setShowSignInPopUp,
     showErrorPopup,
-    setShowErrorPopup,
     serverError,
-    setServerError,
+    setShowErrorPopup,
+    showPopupMessageOnNavbar,
+    popHeaderMessage,
+    successfulPopupMessage,
+    showSuccessfulPopup,
+    setShowSuccessfulPopup,
+    showSuccessfulPopupMessageOnNavbar,
   };
 
   return (

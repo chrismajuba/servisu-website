@@ -10,13 +10,8 @@ import {
 } from "../../../services/api/WeServeService";
 
 const ProvidersGrid = () => {
-  const {
-    authDetails,
-    loginDetails,
-    setLoginDetails,
-    setShowErrorPopup,
-    setServerError,
-  } = useContext(APIContext);
+  const { authDetails, setLoginDetails, showPopupMessageOnNavbar, logout } =
+    useContext(APIContext);
 
   const [serviceProviders, setServiceProviders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,22 +42,23 @@ const ProvidersGrid = () => {
         .catch((error) => {
           if (error.hasOwnProperty("status") && error.status === 401) {
             setLoginDetails(null); //To enforce login
-            setServerError(error.response.data.errorMessage);
+            showPopupMessageOnNavbar(error.response.data.errorMessage);
           } else if (error.code === "ERR_NETWORK") {
-            setServerError(
+            showPopupMessageOnNavbar(
               `[${error.message}] Server might be down. Please try again later`
             );
           } else if (error.code === "ECONNABORTED") {
-            setServerError(`[${error.message}] Connection timed out.`);
+            showPopupMessageOnNavbar(
+              `[${error.message}] Connection timed out.`
+            );
           } else {
-            setServerError(error.response.data.errorMessage);
+            showPopupMessageOnNavbar(error.response.data.errorMessage);
           }
-          setShowErrorPopup(true);
+          showPopupMessageOnNavbar(true);
           setIsLoaded(true);
         });
     } else {
-      setServerError("Please login or register");
-      setShowErrorPopup(true);
+      showPopupMessageOnNavbar("Please login or register to proceed");
       setIsLoaded(true);
     }
   };
@@ -92,23 +88,23 @@ const ProvidersGrid = () => {
         })
         .catch((error) => {
           if (error.hasOwnProperty("status") && error.status === 401) {
-            setLoginDetails(null); //To enforce login
-            setServerError(error.response.data.errorMessage);
+            logout(); //To enforce login
+            showPopupMessageOnNavbar(error.response.data.errorMessage);
           } else if (error.code === "ERR_NETWORK") {
-            setServerError(
+            showPopupMessageOnNavbar(
               `[${error.message}] Server might be down. Please try again later`
             );
           } else if (error.code === "ECONNABORTED") {
-            setServerError(`[${error.message}] Connection timed out.`);
+            showPopupMessageOnNavbar(
+              `[${error.message}] Connection timed out.`
+            );
           } else {
-            setServerError(error.response.data.errorMessage);
+            showPopupMessageOnNavbar(error.response.data.errorMessage);
           }
-          setShowErrorPopup(true);
           setIsLoaded(true);
         });
     } else {
-      setServerError("Please login or register");
-      setShowErrorPopup(true);
+      showPopupMessageOnNavbar("Please login or register to proceed.");
       setIsLoaded(true);
     }
   };
@@ -207,8 +203,7 @@ const ProvidersGrid = () => {
                 <h3>Occupation</h3>
                 <select
                   value={occupationId}
-                  onChange={(e) => setOccupationId(e.target.value)}
-                >
+                  onChange={(e) => setOccupationId(e.target.value)}>
                   {occupations.map((occupation) => {
                     return (
                       <option value={occupation.id} key={occupation.id}>

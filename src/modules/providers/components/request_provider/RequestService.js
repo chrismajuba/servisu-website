@@ -10,13 +10,8 @@ import { Address } from "../../models/Address";
 import { GeoLocation } from "../../models/Geolocation";
 
 const RequestService = () => {
-  const {
-    authDetails,
-    loginDetails,
-    setLoginDetails,
-    setShowErrorPopup,
-    setServerError,
-  } = useContext(APIContext);
+  const { authDetails, loginDetails, showPopupMessageOnNavbar, logout } =
+    useContext(APIContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -94,23 +89,20 @@ const RequestService = () => {
       })
       .catch((error) => {
         if (error?.status === 401) {
-          setLoginDetails(null);
-          setServerError(error.response?.data?.errorMessage);
+          logout();
+          showPopupMessageOnNavbar(error.response?.data?.errorMessage);
         } else if (error.code === "ERR_NETWORK") {
-          setServerError(
+          showPopupMessageOnNavbar(
             `[${error.message}] Server might be down. Please try again later`
           );
         } else if (error.code === "ECONNABORTED") {
-          setServerError(`[${error.message}] Connection timed out.`);
+          showPopupMessageOnNavbar(`[${error.message}] Connection timed out.`);
         } else {
-          setServerError(
+          showPopupMessageOnNavbar(
             error.response?.data?.errorMessage || "Unexpected error"
           );
         }
-        setShowErrorPopup(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
+        setIsLoading(true);
       });
   };
 

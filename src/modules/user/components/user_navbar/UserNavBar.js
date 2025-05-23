@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import "./userNav.css";
 
-const UserNav = ({ setCurrentPage }) => {
-  const [selected, setSelected] = useState("");
-
+const UserNav = ({ currentPage, setCurrentPage }) => {
   return (
     <nav className="user-nav">
       <ul className="nav-list">
         <li>
           <button
-            className={selected === "account" ? "current" : ""}
+            className={currentPage === "Account" ? "current" : ""}
             onClick={() => {
               setCurrentPage("Account");
-              setSelected("account");
             }}
           >
             Account
@@ -20,10 +17,9 @@ const UserNav = ({ setCurrentPage }) => {
         </li>
         <li>
           <button
-            className={selected === "requests" ? "current" : ""}
+            className={currentPage === "Requests" ? "current" : ""}
             onClick={() => {
               setCurrentPage("Requests");
-              setSelected("requests");
             }}
           >
             Requests
@@ -31,10 +27,9 @@ const UserNav = ({ setCurrentPage }) => {
         </li>
         <li>
           <button
-            className={selected === "security" ? "current" : ""}
+            className={currentPage === "Security" ? "current" : ""}
             onClick={() => {
               setCurrentPage("Security");
-              setSelected("security");
             }}
           >
             Security
@@ -42,10 +37,9 @@ const UserNav = ({ setCurrentPage }) => {
         </li>
         <li>
           <button
-            className={selected === "support" ? "current" : ""}
+            className={currentPage === "Support" ? "current" : ""}
             onClick={() => {
               setCurrentPage("Support");
-              setSelected("support");
             }}
           >
             Support

@@ -5,7 +5,7 @@ import "./navbar.css";
 import SigninPopup from "../../../auth/pop_up/SigninPopup";
 import { APIContext } from "../../../context/ContextProvider";
 import LoadingScreenPopup from "../pop_up/progress_bar/LoadingScreenPopup";
-import ErrorMessagePopup from "../pop_up/error_message/ErrorPopup";
+import MessagePopup from "../pop_up/Popup";
 
 const SIGN_IN = "sign-in";
 const SIGN_UP = "sign-up";
@@ -13,40 +13,54 @@ const SIGN_OUT = "sign-out";
 
 const NavBar = () => {
   const [currentPage, setCurrentPage] = useState("home");
-  //const [showPopUp, setShowPopUp] = useState(false);
   const [popUpType, setPopUpType] = useState(SIGN_UP);
   const {
-    authDetails,
-    showPopUp,
-    setShowPopUp,
+    showSignInPopUp,
+    setShowSignInPopUp,
     loginDetails,
     isLoading,
     showErrorPopup,
     setShowErrorPopup,
     serverError,
+    showSuccessfulPopup,
+    popHeaderMessage,
+    successfulPopupMessage,
+    setShowSuccessfulPopup,
   } = useContext(APIContext);
 
   const handleClosePopup = () => {
     setShowErrorPopup(false);
   };
 
+  const handleCloseSuccessfulPopup = () => {
+    setShowSuccessfulPopup(false);
+  };
+
   const toggleMenu = () => {};
 
   return (
     <>
-      {showPopUp && (
+      {showSignInPopUp && (
         <SigninPopup
           popUpType={popUpType}
           setPopUpType={setPopUpType}
-          setShowPopUp={setShowPopUp}
+          setShowPopUp={setShowSignInPopUp}
         />
       )}
       {isLoading && <LoadingScreenPopup />}
       {showErrorPopup && (
-        <ErrorMessagePopup
-          errorMessage={serverError}
-          showErrorPopup={showErrorPopup}
+        <MessagePopup
+          message={serverError}
+          showPopup={showErrorPopup}
           onClose={handleClosePopup}
+        />
+      )}
+      {showSuccessfulPopup && (
+        <MessagePopup
+          popHeaderMessage={popHeaderMessage}
+          message={successfulPopupMessage}
+          showPopup={showSuccessfulPopup}
+          onClose={handleCloseSuccessfulPopup}
         />
       )}
       <nav className="navbar">
@@ -133,18 +147,18 @@ const NavBar = () => {
           </div>
           <button
             onClick={() => {
-              setCurrentPage("sign-n");
-              if (authDetails != null) {
-                setShowPopUp(true);
+              setCurrentPage("sign-in");
+              if (loginDetails != null) {
+                setShowSignInPopUp(true);
                 setPopUpType(SIGN_OUT);
               } else {
-                setShowPopUp(true);
+                setShowSignInPopUp(true);
                 setPopUpType(SIGN_IN);
               }
             }}
             className="button"
           >
-            {authDetails == null ? "Sign in" : "Sign out"}
+            {loginDetails == null ? "Sign in" : "Sign out"}
           </button>
         </div>
       </nav>

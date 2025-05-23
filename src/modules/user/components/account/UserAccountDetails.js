@@ -6,18 +6,13 @@ import UserNav from "../user_navbar/UserNavBar";
 import { getUpdate } from "../../../services/api/WeServeService";
 import LoadingScreen from "../../../core/components/pop_up/progress_bar/LoadingScreen";
 import MyRequests from "../requests/MyRequests";
-import { useNavigate } from "react-router-dom";
 import SecuritySettings from "../settings/Security";
+import Support from "../support/Support";
+import UserDetails from "../user_details/UserDetails";
 
 const UserAccountDetails = () => {
-  const {
-    authDetails,
-    loginDetails,
-    setLoginDetails,
-    setServerError,
-    setShowErrorPopup,
-  } = useContext(APIContext);
-  const navigate = useNavigate();
+  const { authDetails, loginDetails, logout, showPopupMessageOnNavbar } =
+    useContext(APIContext);
   const [isLoading, setIsLoading] = useState(false);
   const [eventStatusDto, setEventStatusDto] = useState(null);
   const [currentPage, setCurrentPage] = useState("Account");
@@ -32,33 +27,24 @@ const UserAccountDetails = () => {
         })
         .catch((error) => {
           if (error?.status === 401) {
-            setLoginDetails(null);
-            setServerError(error.response?.data?.errorMessage);
+            logout();
+            showPopupMessageOnNavbar(error.response?.data?.errorMessage);
           } else if (error.code === "ERR_NETWORK") {
-            setServerError(
+            showPopupMessageOnNavbar(
               `[${error.message}] Server might be down. Please try again later`
             );
           } else if (error.code === "ECONNABORTED") {
-            setServerError(`[${error.message}] Connection timed out.`);
+            showPopupMessageOnNavbar(
+              `[${error.message}] Connection timed out.`
+            );
           } else {
-            setServerError(
+            showPopupMessageOnNavbar(
               error.response?.data?.errorMessage || "Unexpected error"
             );
             setEventStatusDto(null);
+            setIsLoading(false);
           }
-          setShowErrorPopup(true);
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
-    }
-  };
-
-  const emailButtonFunction = () => {
-    if (!loginDetails?.emailVerified) {
-      navigate("/account/verify");
-    } else {
-      //edit function
     }
   };
 
@@ -68,7 +54,7 @@ const UserAccountDetails = () => {
     }
   }, [currentPage]);
 
-  if (authDetails == null || !authDetails?.authenticated) {
+  if (authDetails === null || !authDetails?.authenticated) {
     return (
       <SignIn
         headerMessage={"Please login to access your account or create one."}
@@ -87,42 +73,15 @@ const UserAccountDetails = () => {
   return (
     <div className="user-account-dashboard">
       <h1>{currentPage}</h1>
-      <UserNav setCurrentPage={setCurrentPage} />
+      <UserNav currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       {currentPage === "Account" && (
-        <div className="user-account">
-          <div className="user-account-contents">
-            <div className="details-container">
-              <h2>Full Name</h2>
-              <div className="row">
-                <p>{loginDetails?.name + " " + loginDetails?.surname}</p>
-                <button>Edit</button>
-              </div>
-              <hr />
-            </div>
-
-            <div className="details-container">
-              <h2>Email Address</h2>
-              <div className="row">
-                <p>{loginDetails?.email}</p>
-                <button onClick={emailButtonFunction}>
-                  {!loginDetails?.emailVerified ? "Verify Email" : "Edit"}
-                </button>
-                <div className="unverified"></div>
-              </div>
-              <hr />
-            </div>
-
-            <div className="details-container">
-              <h2>Cell Number</h2>
-              <div className="row">
-                <p>{loginDetails?.cellNumber}</p>
-                <button>Edit</button>
-              </div>
-              <hr />
-            </div>
-          </div>
-        </div>
+        <UserDetails
+          authDetails={authDetails}
+          loginDetails={loginDetails}
+          showPopupMessageOnNavbar={showPopupMessageOnNavbar}
+          logout={logout}
+        />
       )}
 
       {currentPage === "Requests" && (
@@ -130,8 +89,15 @@ const UserAccountDetails = () => {
       )}
 
       {currentPage === "Security" && (
-        <SecuritySettings loginDetails={loginDetails} />
+        <SecuritySettings
+          loginDetails={loginDetails}
+          showPopupMessageOnNavbar={showPopupMessageOnNavbar}
+          authDetails={authDetails}
+          logout={logout}
+        />
       )}
+
+      {currentPage === "Support" && <Support />}
     </div>
   );
 };

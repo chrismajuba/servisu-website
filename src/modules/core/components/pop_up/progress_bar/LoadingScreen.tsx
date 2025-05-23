@@ -2,7 +2,7 @@ import React from "react";
 import "./loadingScreen.css";
 import { assets } from "../../../../../assets/assets";
 
-const LoadingScreen = () => {
+const LoadingScreen : React.FC<{}> = () => {
   return (
     <div className="loading-screen-com">
       <div className="contents">

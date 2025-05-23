@@ -2,7 +2,9 @@ import { React, useContext, useState } from "react";
 import "./signin.css";
 import { APIContext } from "../../context/ContextProvider";
 import { LoginDto } from "../../user/models/LoginDto";
+import { UserRegistrationDto } from "../../user/models/UserRegistrationDto";
 import { registrationRequest } from "../../services/api/WeServeService";
+import { useNavigate } from "react-router-dom";
 
 const SIGN_IN = "signin";
 const SIGN_UP = "signup";
@@ -12,10 +14,17 @@ const SignIn = ({ headerMessage }) => {
   const [_name, setName] = useState("");
   const [_surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
+  const [cellNumber, setCellNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
+  const [isLoading, setIsloading] = useState(false);
+  const navigate = useNavigate();
 
-  const { login } = useContext(APIContext);
+  const {
+    login,
+    showPopupMessageOnNavbar,
+    showSuccessfulPopupMessageOnNavbar,
+  } = useContext(APIContext);
 
   const triggerLogin = (e) => {
     let loginDto = new LoginDto(email, password);
@@ -23,32 +32,35 @@ const SignIn = ({ headerMessage }) => {
   };
 
   const triggerRegistration = () => {
-    //registration
-    const register = (userRegistrationtDto) => {
-      //setIsloading(true);
-      registrationRequest(userRegistrationtDto)
-        .then((response) => {
-          //setLoginDetails(response.data);
-          //setIsloading(false);
-          //If the login popup is open
-          //if (showPopUp) {
-          //  setShowPopUp(false); //loginPopup
-          //}
-        })
-        .catch((error) => {
-          /*if (error.code === "ERR_NETWORK") {
-            setServerError(
-              `[${error.message}] Server might be down. Please try again later`
-            );
-          } else if (error.code === "ECONNABORTED") {
-            setServerError(`[${error.message}] Connection timed out.`);
-          } else {
-            setServerError(error.response.data.errorMessage);
-          }
-          setShowErrorPopup(true);
-          setIsloading(false); */
-        });
-    };
+    let userRegistrationtDto = new UserRegistrationDto();
+    userRegistrationtDto.name = _name;
+    userRegistrationtDto.surname = _surname;
+    userRegistrationtDto.email = email;
+    userRegistrationtDto.password = password;
+    userRegistrationtDto.cellNumber = cellNumber;
+    register(userRegistrationtDto);
+  };
+
+  const register = (userRegistrationtDto) => {
+    setIsloading(true);
+    registrationRequest(userRegistrationtDto)
+      .then((response) => {
+        showSuccessfulPopupMessageOnNavbar("Success", response.data.response);
+        setSignType(SIGN_IN);
+        setIsloading(false);
+      })
+      .catch((error) => {
+        if (error.code === "ERR_NETWORK") {
+          showPopupMessageOnNavbar(
+            `[${error.message}] Server might be down. Please try again later`
+          );
+        } else if (error.code === "ECONNABORTED") {
+          showPopupMessageOnNavbar(`[${error.message}] Connection timed out.`);
+        } else {
+          showPopupMessageOnNavbar(error.response.data.errorMessage);
+        }
+        setIsloading(false);
+      });
   };
 
   const triggerExecution = (e) => {
@@ -102,6 +114,18 @@ const SignIn = ({ headerMessage }) => {
                 value={email}
                 required
               />
+              {siginType === SIGN_UP && (
+                <input
+                  type="number"
+                  placeholder="Cell Number"
+                  onChange={(e) => {
+                    setCellNumber(e.target.value);
+                  }}
+                  value={cellNumber}
+                  required
+                />
+              )}
+
               <input
                 type="password"
                 placeholder="Password"

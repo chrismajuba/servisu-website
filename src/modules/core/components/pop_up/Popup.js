@@ -1,14 +1,14 @@
 import { React, useState, useEffect } from "react";
-import "./errorPopup.css";
-import { assets } from "../../../../../assets/assets";
+import "./popup.css";
+import { assets } from "../../../../assets/assets";
 
-const ErrorMessagePopup = ({ errorMessage, showErrorPopup, onClose }) => {
+const MessagePopup = ({ popHeaderMessage, message, showPopup, onClose }) => {
   const [countdown, setCountdown] = useState(5);
 
   useEffect(() => {
     let timer, interval;
 
-    if (showErrorPopup) {
+    if (showPopup) {
       setCountdown(5); // reset countdown
       interval = setInterval(() => {
         setCountdown((prev) => prev - 1);
@@ -23,19 +23,21 @@ const ErrorMessagePopup = ({ errorMessage, showErrorPopup, onClose }) => {
       clearTimeout(timer);
       clearInterval(interval);
     };
-  }, [showErrorPopup, onClose]);
+  }, [showPopup, onClose]);
 
   return (
     <>
       <div className="popup show">
         <div className="contents">
           <div className="message-header">
-            <h2>An error has occurred!</h2>
+            <h2>{popHeaderMessage || "An error has occurred!"}</h2>
             <img onClick={onClose} src={assets.close_window} alt="" />
           </div>
-          <div className="message-body">
-            <p>{errorMessage}</p>
-          </div>
+          {message && (
+            <div className="message-body">
+              <p>{message}</p>
+            </div>
+          )}
           <div className="message-close">
             <p>
               <strong>closing in {countdown}</strong> seconds.
@@ -48,4 +50,4 @@ const ErrorMessagePopup = ({ errorMessage, showErrorPopup, onClose }) => {
   );
 };
 
-export default ErrorMessagePopup;
+export default MessagePopup;

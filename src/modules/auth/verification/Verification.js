@@ -13,10 +13,9 @@ const Verification = () => {
   const {
     authDetails,
     loginDetails,
+    logout,
     getUserAccountDetails,
-    setLoginDetails,
-    setShowErrorPopup,
-    setServerError,
+    showPopupMessageOnNavbar,
   } = useContext(APIContext);
   const [requestedCode, setRequestedCode] = useState(false);
   const [responseMessage, setResponseMessage] = useState(
@@ -32,7 +31,11 @@ const Verification = () => {
   const accountType = "user";
 
   const requestCode = () => {
-    if (authDetails != null && authDetails.authenticated) {
+    if (
+      authDetails != null &&
+      authDetails.authenticated &&
+      loginDetails != null
+    ) {
       setIsLoading(true);
       getVerificationCode(
         authDetails.accessToken,
@@ -41,28 +44,27 @@ const Verification = () => {
       )
         .then((response) => {
           setResponseMessage(response.data.message);
-          setIsLoading(false);
           setRequestedCode(true);
         })
         .catch((error) => {
           if (error.hasOwnProperty("status") && error.status === 401) {
-            setLoginDetails(null); //To enforce login
-            setServerError(error.response.data.errorMessage);
+            logout(); //To enforce login
+            showPopupMessageOnNavbar(error.response.data.errorMessage);
           } else if (error.code === "ERR_NETWORK") {
-            setServerError(
+            showPopupMessageOnNavbar(
               `[${error.message}] Server might be down. Please try again later`
             );
           } else if (error.code === "ECONNABORTED") {
-            setServerError(`[${error.message}] Connection timed out.`);
+            showPopupMessageOnNavbar(
+              `[${error.message}] Connection timed out.`
+            );
           } else {
-            setServerError(error.response.data.errorMessage);
+            showPopupMessageOnNavbar(error.response.data.errorMessage);
           }
-          setShowErrorPopup(true);
-          setIsLoading(false);
-        });
+        })
+        .finally(setIsLoading(false));
     } else {
-      setServerError("Please login");
-      setShowErrorPopup(true);
+      showPopupMessageOnNavbar("Please login to proceed.");
     }
   };
 
@@ -82,29 +84,29 @@ const Verification = () => {
       )
         .then((response) => {
           setResponseMessage(response.data.message);
-          setIsLoading(false);
           setRequestedCode(true);
           setIsVerified(true);
+          setIsLoading(false);
         })
         .catch((error) => {
           if (error.hasOwnProperty("status") && error.status === 401) {
-            setLoginDetails(null); //To enforce login
-            setServerError(error.response.data.errorMessage);
+            logout();
+            showPopupMessageOnNavbar(error.response.data.errorMessage);
           } else if (error.code === "ERR_NETWORK") {
-            setServerError(
+            showPopupMessageOnNavbar(
               `[${error.message}] Server might be down. Please try again later`
             );
           } else if (error.code === "ECONNABORTED") {
-            setServerError(`[${error.message}] Connection timed out.`);
+            showPopupMessageOnNavbar(
+              `[${error.message}] Connection timed out.`
+            );
           } else {
-            setServerError(error.response.data.errorMessage);
+            showPopupMessageOnNavbar(error.response.data.errorMessage);
           }
-          setShowErrorPopup(true);
           setIsLoading(false);
         });
     } else {
-      setServerError("Please login");
-      setShowErrorPopup(true);
+      showPopupMessageOnNavbar("Please login to proceed.");
     }
   };
 
@@ -154,18 +156,24 @@ const Verification = () => {
             <div className="response-message">
               <p>{responseMessage}</p>
             </div>
-            <div className="timer">
-              <p>Request another verification code in </p>
-              <Timer initialSeconds={timer} timedOut={setTimedOut} />
-            </div>
-            <form onSubmit={sendVerificationCode} className="multi-fields-v">
-              <input
-                type="text"
-                onChange={(e) => setVerificationCode(e.target.value)}
-                placeholder="Verification Code"
-              />
-              <button type="submit">Submit</button>
-            </form>
+            {!isVerified && (
+              <>
+                <div className="timer">
+                  <p>Request another verification code in </p>
+                  <Timer initialSeconds={timer} timedOut={setTimedOut} />
+                </div>
+                <form
+                  onSubmit={sendVerificationCode}
+                  className="multi-fields-v">
+                  <input
+                    type="text"
+                    onChange={(e) => setVerificationCode(e.target.value)}
+                    placeholder="Verification Code"
+                  />
+                  <button type="submit">Submit</button>
+                </form>
+              </>
+            )}
           </div>
         )}
       </div>

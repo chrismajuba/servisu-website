@@ -15,83 +15,11 @@
   border-radius: 10px;
 }
 
-.user-account {
-  margin-top: 30px;
-}
 
-.user-account-contents {
-  display: grid;
-  flex-direction: 1fr;
-  gap: 20px;
-}
-
-.user-account .user-account-contents{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.user-account-contents .details-container{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
-}
-
-.details-container .row{
-    display: grid;
-    grid-template-columns: 3fr 1fr
-}
-
-
-.details-container h2{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 550;
-    font-size: 25px;
-}
-
-.details-container hr{
-    margin-top: 10px;
-    border: 1px solid whitesmoke;
-}
-
-
-.details-container .row p{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 19px;
-}
-
-.details-container .row button{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 10px;
-    border: none;
-    width: 10vw;
-    height: 2vw;
-    background-color: lightgray;
-    font-size: 16px;
-}
-
-.details-container .row button:hover{
-    cursor: pointer;
-    scale: 1.05;
-    transition: 1s;
-}
-
-.unverified {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 5px;
-  background-color: red;
-  right: 350px;
-  top: 500px;
-}
 
 @media (max-width: 1350px) {
-   .details-container .row button{
-    width: 20vw;
-    height: 4vw;
-} 
+
+ 
 }
 @media (max-width: 953px) {
 
@@ -99,47 +27,21 @@
 
 @media (max-width: 750px) {
 
-  .user-account {
-    margin-top: 0;
+  .user-account-dashboard h1 {
+    font-size: 40px;
   }
 
-.user-account-dashboard h1 {
-  font-size: 40px;
-}
- .details-container .row button{
-    width: 25vw;
-    height: 5vw;
-}
-
-.details-container .row{
-    display: grid;
-    grid-template-columns: 1fr;
-    gap:20px;
-}
-  
 }
 
 @media (max-width: 483px) {
 
   .user-account-dashboard{
     flex-direction: row;
+    margin-top: 40px;
   }
 
   .user-account-dashboard h1 {
     display: none;
-  }
-
-    .details-container h2{
-    font-size: 20px;
-}
-
-  .details-container .row p{
-    font-size: 16px;
-}
-
- .details-container .row button{
-    width: 30vw;
-    height: 8vw;
   }
 
 }

@@ -1,0 +1,90 @@
+.support{
+    margin-top: 30px;
+}
+
+.support .support-contents{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.support .support-contents .support-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.support .support-contents .support-details h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    font-weight: 550;
+}
+
+.support .support-contents .support-details p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 19px;
+}
+
+.support .support-contents .support-details hr{
+    margin-top: 10px;
+    border: 1px solid whitesmoke;
+}
+
+.support-details form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.support-details form input{
+    width: 30vw;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+.support-details form textarea{
+    width: 30vw;
+    height: 10vw;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid grey;
+}
+
+.support-details form button{
+    width: 10vw;
+    border: none;
+    background-color: lightgray;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.support-details form button:hover{
+    scale: 1.05;
+    transition: 1s;
+    cursor: pointer;
+}
+
+
+@media (max-width: 750px) {
+
+}
+
+@media (max-width: 483px) {
+
+    .support{
+        margin-left: 10px;
+        margin-top: 0;
+    }
+
+    .support-details form input{
+        width: 40vw;
+    }
+    .support-details form textarea{
+        width: 40vw;
+    }
+
+    .support-details form button{
+        width: 20vw;
+    }
+}

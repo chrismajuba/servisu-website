@@ -1,0 +1,7 @@
+export enum ModificationType {
+  EMAIL = 'EMAIL',
+  CELL_NUMBER = 'CELL_NUMBER',
+  PASSWORD = 'PASSWORD',
+  WORK_SCHEDULE = 'WORK_SCHEDULE'
+}
+

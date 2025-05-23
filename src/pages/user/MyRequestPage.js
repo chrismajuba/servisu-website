@@ -7,13 +7,8 @@ import LoadingScreen from "../../modules/core/components/pop_up/progress_bar/Loa
 import SignIn from "../../modules/auth/sign_in/SignIn";
 
 const MyRequestsPage = () => {
-  const {
-    authDetails,
-    loginDetails,
-    setLoginDetails,
-    setServerError,
-    setShowErrorPopup,
-  } = useContext(APIContext);
+  const { authDetails, loginDetails, logout, showPopupMessageOnNavbar } =
+    useContext(APIContext);
   const [isLoading, setIsLoading] = useState(false);
   const [eventStatusDto, setEventStatusDto] = useState(null);
 
@@ -27,25 +22,26 @@ const MyRequestsPage = () => {
         })
         .catch((error) => {
           if (error?.status === 401) {
-            setLoginDetails(null);
-            setServerError(error.response?.data?.errorMessage);
+            logout();
+            showPopupMessageOnNavbar(error.response?.data?.errorMessage);
           } else if (error.code === "ERR_NETWORK") {
-            setServerError(
+            showPopupMessageOnNavbar(
               `[${error.message}] Server might be down. Please try again later`
             );
           } else if (error.code === "ECONNABORTED") {
-            setServerError(`[${error.message}] Connection timed out.`);
+            showPopupMessageOnNavbar(
+              `[${error.message}] Connection timed out.`
+            );
           } else {
-            setServerError(
+            showPopupMessageOnNavbar(
               error.response?.data?.errorMessage || "Unexpected error"
             );
             setEventStatusDto(null);
           }
-          setShowErrorPopup(true);
-        })
-        .finally(() => {
           setIsLoading(false);
         });
+    } else {
+      showPopupMessageOnNavbar("Please login to continue");
     }
   };
 
@@ -53,7 +49,11 @@ const MyRequestsPage = () => {
     getRequestUpdate();
   }, []);
 
-  if (authDetails == null || !authDetails.authenticated) {
+  if (
+    authDetails == null ||
+    !authDetails.authenticated ||
+    loginDetails == null
+  ) {
     return (
       <SignIn
         headerMessage={"Please login to your account or create one to proceed."}

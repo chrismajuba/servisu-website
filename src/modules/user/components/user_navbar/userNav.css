@@ -14,13 +14,11 @@
 }
 
 .current{
-  background-color: lightgreen;
   padding: 10px;
-  border-radius: 5px;
+  color: green;
 }
 
 .user-nav .nav-list li button {
-  color: #333;
   font-weight: 400;
   border: none;
   font-size: 20px;

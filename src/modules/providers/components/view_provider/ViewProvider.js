@@ -8,7 +8,7 @@ import DaysOfWeek from "../../../core/components/utils/DaysOfWeek";
 import { useNavigate } from "react-router-dom";
 
 const RequestService = ({ providerId }) => {
-  const { authDetails, setLoginDetails, setShowErrorPopup, setServerError } =
+  const { authDetails, logout, showPopupMessageOnNavbar } =
     useContext(APIContext);
 
   const [serviceProvider, setServiceProvider] = useState({});
@@ -23,22 +23,19 @@ const RequestService = ({ providerId }) => {
       })
       .catch((error) => {
         if (error?.status === 401) {
-          setLoginDetails(null);
-          setServerError(error.response?.data?.errorMessage);
+          logout();
+          showPopupMessageOnNavbar(error.response?.data?.errorMessage);
         } else if (error.code === "ERR_NETWORK") {
-          setServerError(
+          showPopupMessageOnNavbar(
             `[${error.message}] Server might be down. Please try again later`
           );
         } else if (error.code === "ECONNABORTED") {
-          setServerError(`[${error.message}] Connection timed out.`);
+          showPopupMessageOnNavbar(`[${error.message}] Connection timed out.`);
         } else {
-          setServerError(
+          showPopupMessageOnNavbar(
             error.response?.data?.errorMessage || "Unexpected error"
           );
         }
-        setShowErrorPopup(true);
-      })
-      .finally(() => {
         setIsLoaded(true);
       });
   };
@@ -100,8 +97,7 @@ const RequestService = ({ providerId }) => {
         className="continue-btn"
         onClick={() =>
           navigate("/request-provider", { state: serviceProvider })
-        }
-      >
+        }>
         Continue
       </button>
     </div>
