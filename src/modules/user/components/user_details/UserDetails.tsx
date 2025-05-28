@@ -221,9 +221,18 @@ const UserDetails: React.FC<props> = ({
             <h2>Email Address</h2>
             <div className="row">
               <p>{loginDetails?.email}</p>
-              <button onClick={emailButtonFunction}>
-                {!loginDetails?.emailVerified ? "Verify Email" : "Edit"}
-              </button>
+              <div className="column-buttons">
+                <button onClick={emailButtonFunction}>
+                  {!loginDetails?.emailVerified ? "Verify Email" : "Edit"}
+                </button>
+                {!loginDetails?.emailVerified && (
+                  <button
+                    className="green"
+                    onClick={() => setShowVerificationPopup(true)}>
+                    Submit code
+                  </button>
+                )}
+              </div>
             </div>
             <hr />
           </div>

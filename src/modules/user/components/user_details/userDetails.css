@@ -96,6 +96,12 @@
     gap: 10px;
 }
 
+.column-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .cancel{
     background-color: lightcoral;
 }

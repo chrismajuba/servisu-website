@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../../../../assets/assets";
 import "./navbar.css";
 import SigninPopup from "../../../auth/pop_up/SigninPopup";
@@ -14,6 +14,7 @@ const SIGN_OUT = "sign-out";
 const NavBar = () => {
   const [currentPage, setCurrentPage] = useState("home");
   const [popUpType, setPopUpType] = useState(SIGN_UP);
+  const navigate = useNavigate();
   const {
     showSignInPopUp,
     setShowSignInPopUp,
@@ -83,8 +84,7 @@ const NavBar = () => {
               className={currentPage === "home" ? "active" : ""}
               onClick={() => {
                 setCurrentPage("home");
-              }}
-            >
+              }}>
               Home
             </Link>
             <a
@@ -92,8 +92,7 @@ const NavBar = () => {
               className={currentPage === "quick-start" ? "active" : ""}
               onClick={() => {
                 setCurrentPage("quick-start");
-              }}
-            >
+              }}>
               Quick Start
             </a>
             <Link
@@ -101,8 +100,7 @@ const NavBar = () => {
               className={currentPage === "providers" ? "active" : ""}
               onClick={() => {
                 setCurrentPage("providers");
-              }}
-            >
+              }}>
               Providers
             </Link>
             <a
@@ -110,8 +108,7 @@ const NavBar = () => {
               className={currentPage === "contactus" ? "active" : ""}
               onClick={() => {
                 setCurrentPage("contactus");
-              }}
-            >
+              }}>
               Contact Us
             </a>
           </ul>
@@ -123,8 +120,7 @@ const NavBar = () => {
               className={currentPage === "my-requests" ? "active" : ""}
               onClick={() => {
                 setCurrentPage("my-requests");
-              }}
-            >
+              }}>
               My Requests
             </Link>
           </div>
@@ -145,6 +141,15 @@ const NavBar = () => {
             </Link>
             {loginDetails != null ? <div className="dot"></div> : <></>}
           </div>
+          {!loginDetails && (
+            <button
+              onClick={() => {
+                navigate("/register");
+              }}
+              className="button">
+              Create Account
+            </button>
+          )}
           <button
             onClick={() => {
               setCurrentPage("sign-in");
@@ -156,8 +161,7 @@ const NavBar = () => {
                 setPopUpType(SIGN_IN);
               }
             }}
-            className="button"
-          >
+            className="button">
             {loginDetails == null ? "Sign in" : "Sign out"}
           </button>
         </div>

@@ -3,32 +3,33 @@ import "./signin.css";
 import { APIContext } from "../../context/ContextProvider";
 import { LoginDto } from "../../user/models/LoginDto";
 import { UserRegistrationDto } from "../../user/models/UserRegistrationDto";
-import { registrationRequest } from "../../services/api/WeServeService";
 import { useNavigate } from "react-router-dom";
 
 const SIGN_IN = "signin";
 const SIGN_UP = "signup";
 
-const SignIn = ({ headerMessage }) => {
-  const [siginType, setSignType] = useState(SIGN_IN);
+const SignIn = ({ headerMessage, siginT, onSuccess }) => {
+  const [siginType, setSignType] = useState(siginT || SIGN_IN);
+  const navigate = useNavigate();
   const [_name, setName] = useState("");
   const [_surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [cellNumber, setCellNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
-  const [isLoading, setIsloading] = useState(false);
-  const navigate = useNavigate();
 
-  const {
-    login,
-    showPopupMessageOnNavbar,
-    showSuccessfulPopupMessageOnNavbar,
-  } = useContext(APIContext);
+  const { login, register } = useContext(APIContext);
 
   const triggerLogin = (e) => {
     let loginDto = new LoginDto(email, password);
-    login(loginDto);
+    login(loginDto)
+      .then(() => {
+        //if the the method has been passed
+        if (onSuccess) {
+          onSuccess();
+        }
+      })
+      .catch();
   };
 
   const triggerRegistration = () => {
@@ -38,29 +39,9 @@ const SignIn = ({ headerMessage }) => {
     userRegistrationtDto.email = email;
     userRegistrationtDto.password = password;
     userRegistrationtDto.cellNumber = cellNumber;
-    register(userRegistrationtDto);
-  };
-
-  const register = (userRegistrationtDto) => {
-    setIsloading(true);
-    registrationRequest(userRegistrationtDto)
-      .then((response) => {
-        showSuccessfulPopupMessageOnNavbar("Success", response.data.response);
-        setSignType(SIGN_IN);
-        setIsloading(false);
-      })
-      .catch((error) => {
-        if (error.code === "ERR_NETWORK") {
-          showPopupMessageOnNavbar(
-            `[${error.message}] Server might be down. Please try again later`
-          );
-        } else if (error.code === "ECONNABORTED") {
-          showPopupMessageOnNavbar(`[${error.message}] Connection timed out.`);
-        } else {
-          showPopupMessageOnNavbar(error.response.data.errorMessage);
-        }
-        setIsloading(false);
-      });
+    register(userRegistrationtDto)
+      .then(() => onSuccess())
+      .catch();
   };
 
   const triggerExecution = (e) => {
@@ -160,10 +141,9 @@ const SignIn = ({ headerMessage }) => {
                   className="signin-span"
                   onClick={() => {
                     siginType === SIGN_IN
-                      ? setSignType(SIGN_UP)
-                      : setSignType(SIGN_IN);
-                  }}
-                >
+                      ? navigate("/register")
+                      : navigate("/login");
+                  }}>
                   {siginType === SIGN_IN ? "Create account here" : "Login here"}
                 </span>
               </p>

@@ -1,9 +1,16 @@
 import { createContext, useEffect, useState } from "react";
-import { getUserAccount, loginRequest } from "../services/api/WeServeService";
+import {
+  getUserAccount,
+  loginRequest,
+  registrationRequest,
+} from "../services/api/WeServeService";
+import { useNavigate } from "react-router-dom";
 
 export const APIContext = createContext(null);
 
 export const ContextProvider = (props) => {
+  const navigate = useNavigate();
+
   const [authDetails, setAuthDetails] = useState(null);
   const [loginDetails, setLoginDetails] = useState(null);
   const [showSignInPopUp, setShowSignInPopUp] = useState(false);
@@ -16,34 +23,69 @@ export const ContextProvider = (props) => {
   const [showSuccessfulPopup, setShowSuccessfulPopup] = useState(false);
   const [popHeaderMessage, setPopHeaderMessage] = useState("");
   const [successfulPopupMessage, setSuccessfulPopupMessage] = useState("");
-
   const [isLoading, setIsloading] = useState(false);
 
   //Login Method
   const login = (loginDto) => {
-    setIsloading(true);
-    loginRequest(loginDto)
-      .then((response) => {
-        setAuthDetails(response.data);
-        //If the login popup is open
-        if (showSignInPopUp) {
-          setShowSignInPopUp(false); //loginPopup
-        }
-        setIsloading(false);
-      })
-      .catch((error) => {
-        if (error.code === "ERR_NETWORK") {
-          setServerError(
-            `[${error.message}] Server might be down. Please try again later`
-          );
-        } else if (error.code === "ECONNABORTED") {
-          setServerError(`[${error.message}] Connection timed out.`);
-        } else {
-          setServerError(error.response.data.errorMessage);
-        }
-        setShowErrorPopup(true);
-        setIsloading(false);
-      });
+    return new Promise((resolve, reject) => {
+      setIsloading(true);
+      loginRequest(loginDto)
+        .then((response) => {
+          setAuthDetails(response.data);
+          if (showSignInPopUp) {
+            setShowSignInPopUp(false);
+          }
+          setIsloading(false);
+          resolve(response); // Resolve the promise with the response
+        })
+        .catch((error) => {
+          if (error.code === "ERR_NETWORK") {
+            setServerError(
+              `[${error.message}] Server might be down. Please try again later`
+            );
+          } else if (error.code === "ECONNABORTED") {
+            setServerError(`[${error.message}] Connection timed out.`);
+          } else {
+            setServerError(
+              error?.response?.data?.errorMessage || "Unknown error"
+            );
+          }
+          setShowErrorPopup(true);
+          setIsloading(false);
+        });
+    });
+  };
+
+  //Registration
+  const register = (userRegistrationDto) => {
+    return new Promise((resolve, reject) => {
+      setIsloading(true);
+      registrationRequest(userRegistrationDto)
+        .then((response) => {
+          showSuccessfulPopupMessageOnNavbar("Success", response.data.response);
+          setIsloading(false);
+          if (showSignInPopUp) {
+            setShowSignInPopUp(false);
+          }
+          resolve(response); // Resolve with response
+        })
+        .catch((error) => {
+          if (error.code === "ERR_NETWORK") {
+            showPopupMessageOnNavbar(
+              `[${error.message}] Server might be down. Please try again later`
+            );
+          } else if (error.code === "ECONNABORTED") {
+            showPopupMessageOnNavbar(
+              `[${error.message}] Connection timed out.`
+            );
+          } else {
+            showPopupMessageOnNavbar(
+              error?.response?.data?.errorMessage || "Unknown error"
+            );
+          }
+          setIsloading(false);
+        });
+    });
   };
 
   const showPopupMessageOnNavbar = (errorMessage) => {
@@ -98,6 +140,7 @@ export const ContextProvider = (props) => {
     loginDetails,
     login,
     logout,
+    register,
     getUserAccountDetails,
     isLoading,
     setIsloading,

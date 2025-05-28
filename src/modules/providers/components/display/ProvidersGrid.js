@@ -8,9 +8,10 @@ import {
   getProviders,
   searchProviders,
 } from "../../../services/api/WeServeService";
+import { OccupationsList } from "../../../../assets/assets";
 
-const ProvidersGrid = () => {
-  const { authDetails, setLoginDetails, showPopupMessageOnNavbar, logout } =
+const ProvidersGrid = ({ occupation }) => {
+  const { authDetails, showPopupMessageOnNavbar, logout } =
     useContext(APIContext);
 
   const [serviceProviders, setServiceProviders] = useState([]);
@@ -18,9 +19,10 @@ const ProvidersGrid = () => {
   const [totalPages, setTotalPages] = useState(0);
   const [totalElements, setTotalElements] = useState(0);
   const [pageSize] = useState(5);
-  const [occupationId, setOccupationId] = useState(-1);
+  const [occupationId, setOccupationId] = useState(occupation || -1);
   const [keyword, setKeyword] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
+  const occupations = OccupationsList;
 
   const requestProviders = () => {
     if (authDetails !== null || authDetails?.authenticated) {
@@ -41,7 +43,7 @@ const ProvidersGrid = () => {
         })
         .catch((error) => {
           if (error.hasOwnProperty("status") && error.status === 401) {
-            setLoginDetails(null); //To enforce login
+            logout(); //To enforce login
             showPopupMessageOnNavbar(error.response.data.errorMessage);
           } else if (error.code === "ERR_NETWORK") {
             showPopupMessageOnNavbar(
@@ -109,53 +111,6 @@ const ProvidersGrid = () => {
     }
   };
 
-  const occupations = [
-    {
-      id: -1,
-      name: "All",
-    },
-    {
-      id: 1,
-      name: "Cleaner",
-    },
-    {
-      id: 2,
-      name: "Gardener",
-    },
-    {
-      id: 3,
-      name: "Lawn-mower",
-    },
-    {
-      id: 4,
-      name: "Photographer",
-    },
-    {
-      id: 5,
-      name: "Window Cleaner",
-    },
-    {
-      id: 6,
-      name: "Painter",
-    },
-    {
-      id: 7,
-      name: "School Transporter",
-    },
-    {
-      id: 8,
-      name: "Nail Polisher",
-    },
-    {
-      id: 9,
-      name: "Plumber",
-    },
-    {
-      id: 10,
-      name: "Hair Stylist",
-    },
-  ];
-
   const indexOfLastProvider = currentPage * pageSize;
   const indexOfFirstProvider = indexOfLastProvider - pageSize;
   let lastProvider =
@@ -188,7 +143,7 @@ const ProvidersGrid = () => {
           type="text"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
-          placeholder="Try Chris..."
+          placeholder="Try lawn-mower..."
         />
         <button onClick={() => searchServiceProviders()}>Search</button>
       </div>

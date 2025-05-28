@@ -1,32 +1,37 @@
-import React from "react";
+import { React, useState } from "react";
 import "./explore.css";
-import { explore_page_images } from "../../../../assets/assets";
+import { OccupationsList } from "../../../../assets/assets";
+import { useNavigate } from "react-router-dom";
 
-const Explore = ({ category, setCategory }) => {
+const Explore = () => {
+  const [occupation] = useState(-1);
+  const navigate = useNavigate();
+  const handleClick = (id) => {
+    navigate("/providers", { state: id });
+  };
+
   return (
     <div className="explore-contents" id="explore">
       <h2>Explore</h2>
       <div className="services-list-1">
-        {explore_page_images.map((imageData, index) => {
-          return (
-            <div key={index} className="image-content-container">
-              <img
-                onClick={() =>
-                  category === imageData.category
-                    ? setCategory("all")
-                    : setCategory(imageData.category)
-                }
-                key={imageData.id}
-                src={imageData.image}
-                alt=""
-                className={`image ${
-                  category === imageData.category ? "active" : ""
-                }`}
-              />
-              <p>{imageData.description}</p>
-            </div>
-          );
-        })}
+        {OccupationsList.filter((imageData) => imageData?.image != null).map(
+          (imageData, index) => {
+            return (
+              <div key={index} className="image-content-container">
+                <img
+                  onClick={() => handleClick(imageData?.id)}
+                  key={imageData?.id}
+                  src={imageData?.image}
+                  alt=""
+                  className={`image ${
+                    occupation === imageData?.id ? "active" : ""
+                  }`}
+                />
+                <p>{imageData?.description}</p>
+              </div>
+            );
+          }
+        )}
       </div>
       <hr></hr>
     </div>

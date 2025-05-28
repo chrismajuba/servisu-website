@@ -147,6 +147,11 @@
     padding: 15px;
     font-size: 18px;
   }
+
+  .view-provider .continue-btn {
+    padding : 15px;
+    font-size: max(3vw, 13px);
+  }
 }
 
 @media (max-width: 483px) {

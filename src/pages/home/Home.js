@@ -7,13 +7,13 @@ import AppDownload from "../../modules/core/components/app_download/AppDownload"
 import Information from "../../modules/core/components/information/Information";
 
 const Home = () => {
-  const [category, setCategory] = useState("all");
+  const [occupation, setOccupation] = useState(-1);
 
   return (
     <div>
       <Header />
       <Information />
-      <Explore category={category} setCategory={setCategory} />
+      <Explore category={occupation} setCategory={setOccupation} />
       <AppDownload />
     </div>
   );

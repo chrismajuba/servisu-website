@@ -8,13 +8,16 @@ import DatePicker from "react-datepicker";
 import { RequestProviderDto } from "../../models/RequestProviderDto";
 import { Address } from "../../models/Address";
 import { GeoLocation } from "../../models/Geolocation";
+import { format } from "date-fns";
 
 const RequestService = () => {
   const { authDetails, loginDetails, showPopupMessageOnNavbar, logout } =
     useContext(APIContext);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [startDate, setStartDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(
+    format(new Date(), "dd/MM/yyyy")
+  );
   const [eventStatusDto, setEventStatusDto] = useState(null);
   const navLocation = useLocation();
   const serviceProvider = navLocation.state || {};
@@ -53,6 +56,14 @@ const RequestService = () => {
     }
   };
 
+  const handleDateChange = (date) => {
+    if (date != null) {
+      const formattedDate = format(date, "dd/MM/yyyy");
+      console.log(formattedDate);
+      setSelectedDate(formattedDate);
+    }
+  };
+
   const requestAProvider = () => {
     setIsLoading(true);
     let geolocation = null;
@@ -77,7 +88,7 @@ const RequestService = () => {
       email,
       cellNumber,
       serviceProvider.id,
-      "03/11/2025",
+      selectedDate,
       null
     );
 
@@ -201,11 +212,14 @@ const RequestService = () => {
           <div className="date">
             <p>Select date of Service</p>
             <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              selected={
+                selectedDate
+                  ? new Date(selectedDate.split("/").reverse().join("-"))
+                  : null
+              }
+              onChange={handleDateChange}
               minDate={new Date()}
-              showTimeSelect
-              dateFormat="Pp"
+              dateFormat="dd/MM/yyyy"
               showMonthDropdown
               showYearDropdown
               dropdownMode="select"

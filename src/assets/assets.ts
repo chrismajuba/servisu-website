@@ -81,6 +81,23 @@ export const assets = {
   loading_screen,
 };
 
+
+export const OccupationsList = [
+  { id: -1, name: "All"},
+  { id: 1, name: "Cleaner" },
+  { id: 2, name: "Gardener", image: yard,description: "Trying to beat your neighbor's lawn? We'll sort you out!" },
+  { id: 3, name: "Lawn-mower", image: lawn_mower,description: "Yard looking more like a bush? Get it groomed now!" },
+  { id: 4, name: "Photographer" },
+  { id: 5, name: "Window Cleaner",image: window_cleaner,description:"Birds and dust messing with your windows? Get them spotless now." },
+  { id: 6, name: "Painter" },
+  { id: 7, name: "School Transporter" },
+  { id: 8, name: "Nail Polisher" },
+  { id: 9, name: "Plumber" },
+  { id: 10, name: "Hair Stylist"},
+  { id: 11, name: "Car Washer", image: car_washer, description: "Dirty ride? Get it washed with a click of a button.",},
+];
+
+
 export const explore_page_images = [
   {
     id: 1,

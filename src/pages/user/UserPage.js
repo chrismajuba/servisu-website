@@ -1,5 +1,4 @@
 import React from "react";
-import "./userPage.css";
 import UserAccountDetails from "../../modules/user/components/account/UserAccountDetails";
 
 const UserPage = () => {

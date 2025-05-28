@@ -11,6 +11,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import VerificationPage from "./pages/verification/VerificationPage";
 import MyRequestsPage from "./pages/user/MyRequestPage";
 import UserVerificationPage from "./pages/verification/UserVerificationPage";
+import LoginPage from "./pages/user/LoginPage";
+import RegistrationPage from "./pages/user/RegisterPage";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/providers" element={<ProvidersPage />}></Route>
           <Route path="/account" element={<UserPage />}></Route>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/register" element={<RegistrationPage />}></Route>
           <Route
             path="/view-provider/:id"
             element={<ViewProviderPage />}></Route>
