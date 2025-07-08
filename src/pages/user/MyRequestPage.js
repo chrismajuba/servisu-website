@@ -41,7 +41,7 @@ const MyRequestsPage = () => {
           setIsLoading(false);
         });
     } else {
-      showPopupMessageOnNavbar("Please login to continue");
+      //showPopupMessageOnNavbar("Please login to continue");
     }
   };
 

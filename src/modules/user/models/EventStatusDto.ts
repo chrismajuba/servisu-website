@@ -3,8 +3,7 @@ export class EventStatusDto {
   clientID: number;
   status: number;
   providerId?: number;
-  providerName?: string;
-  providerSurname?: string;
+  providerFullName?: string;
   providerOccupation?: string;
   providerResponded: boolean;
   requestedDate?: string;
@@ -16,8 +15,7 @@ export class EventStatusDto {
     status: number,
     providerResponded: boolean,
     providerId?: number,
-    providerName?: string,
-    providerSurname?: string,
+    providerFullName?: string,
     providerOccupation?: string,
     requestedDate?: string,
     message?: string
@@ -26,8 +24,7 @@ export class EventStatusDto {
     this.clientID = clientID;
     this.status = status;
     this.providerId = providerId;
-    this.providerName = providerName;
-    this.providerSurname = providerSurname;
+    this.providerFullName = providerFullName;
     this.providerOccupation = providerOccupation;
     this.providerResponded = providerResponded;
     this.requestedDate = requestedDate;

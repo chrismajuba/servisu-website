@@ -12,9 +12,9 @@ const VerificationPopup = ({
     const {
       authDetails,
       loginDetails,
+      setLoginDetails,
       logout, showPopupMessageOnNavbar, 
     } = useContext(APIContext);
-  const accountType = "user";
   const [isLoading,setIsLoading] = useState(false);
   const [headertext] = useState(headerMessage);
   const [responseMessage, setResponseMessage] = useState();
@@ -33,13 +33,12 @@ const VerificationPopup = ({
 
       submitVerificationCode(
         authDetails.accessToken,
-        verificationDto,
-        accountType
+        verificationDto
       )
         .then((response) => {
           setIsVerified(true);
-          console.log(response.data.message);
-          setResponseMessage(response.data.message);
+          setLoginDetails(response.data);
+          setResponseMessage("Email successfully verified!");
           setIsLoading(false);
         })
         .catch((error) => {

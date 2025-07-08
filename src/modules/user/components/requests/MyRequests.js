@@ -17,9 +17,7 @@ const MyRequests = ({ eventStatusDto }) => {
         <p className="my-request-header">Requested Service Provider</p>
         <div className="provider-details">
           <div className="names">
-            <h3>
-              {`${eventStatusDto.providerName} ${eventStatusDto.providerSurname}`}
-            </h3>
+            <h3>{`${eventStatusDto.providerFullName}`}</h3>
           </div>
           <div className="occupation">
             <label>Occupation</label>

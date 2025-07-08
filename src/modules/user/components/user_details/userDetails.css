@@ -171,6 +171,10 @@
         width: 50vw;
         font-size: 16px;
     }
+
+    .row-buttons{
+      flex-direction: column;
+    }
   
 }
 
@@ -187,10 +191,6 @@
  .details-container .row button{
     width: 30vw;
     height: 8vw;
-  }
-
-  .row-buttons{
-    flex-direction: column;
   }
 
 }

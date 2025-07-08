@@ -1,8 +1,7 @@
 import OccupationDto from "./OccupationDto";
 
 class ServiceProvider {
-  name: string;
-  surname: string;
+  fullName: string;
   email: string;
   cellNUmber: string;
   rating: number;
@@ -12,8 +11,7 @@ class ServiceProvider {
   availableWorkDays: string;
 
   constructor(
-    name: string,
-    surname: string,
+    fullName: string,
     email: string,
     cellNumber: string,
     rating: number,
@@ -22,8 +20,7 @@ class ServiceProvider {
     occupation: OccupationDto,
     availableWorkDays: string
   ) {
-    this.name = name;
-    this.surname = surname;
+    this.fullName = fullName;
     this.email = email;
     this.rating = rating;
     this.calls = calls;

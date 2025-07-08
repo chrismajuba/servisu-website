@@ -14,7 +14,7 @@ const ProviderCard = ({ serviceProvider }) => {
           <img src={AnimatedImgArray[serviceProvider.occupation.id]} alt="" />
         </div>
         <div className="provider-details">
-          <h3>{serviceProvider.name + " " + serviceProvider.surname}</h3>
+          <h3>{serviceProvider.fullName}</h3>
           <div className="occupation-details">
             <h3>{serviceProvider.occupation.name}</h3>
           </div>
@@ -24,9 +24,8 @@ const ProviderCard = ({ serviceProvider }) => {
           </div>
           <div>
             <button
-              onClick={() => navigate("/view-provider/" + serviceProvider.id)}
-            >
-              Request
+              onClick={() => navigate("/view-provider/" + serviceProvider.id)}>
+              View
             </button>
           </div>
         </div>

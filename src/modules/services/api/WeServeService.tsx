@@ -6,7 +6,7 @@ import { VerificationDto } from "../../auth/models/VerificationDto";
 import { ModifyUserAccountDto } from "../../user/models/ModifyUserAccountDto";
 
 const weServeAPI = axios.create({
-  baseURL: "https://localhost:8443",
+  baseURL: "http://localhost:8443",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -103,8 +103,7 @@ const getUpdate = (accessToken: string, client_id: number) =>
 
 const submitVerificationCode = (
   accessToken: string,
-  verificationDto: VerificationDto,
-  accountType: string
+  verificationDto: VerificationDto
 ) =>
   weServeAPI.post(`/we-serve/api/v1/users/verify`, verificationDto, {
     headers: {

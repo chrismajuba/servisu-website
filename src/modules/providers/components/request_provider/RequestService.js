@@ -37,6 +37,12 @@ const RequestService = () => {
   const [houseNumber, setHouseNumber] = useState();
   const [code, setCode] = useState();
 
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  const maxDate = new Date();
+  maxDate.setDate(today.getDate() + 30);
+
   const getLocation = () => {
     if (!navigator.geolocation) {
       //setError("Geolocation is not supported by your browser.");
@@ -113,7 +119,7 @@ const RequestService = () => {
             error.response?.data?.errorMessage || "Unexpected error"
           );
         }
-        setIsLoading(true);
+        setIsLoading(false);
       });
   };
 
@@ -218,11 +224,12 @@ const RequestService = () => {
                   : null
               }
               onChange={handleDateChange}
-              minDate={new Date()}
+              minDate={tomorrow}
               dateFormat="dd/MM/yyyy"
               showMonthDropdown
               showYearDropdown
               dropdownMode="select"
+              maxDate={maxDate}
             />
           </div>
         </div>

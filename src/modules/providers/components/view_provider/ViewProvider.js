@@ -52,7 +52,7 @@ const RequestService = ({ providerId }) => {
     );
   }
 
-  const { name, surname, experience, rating, occupation, availableWorkDays } =
+  const { fullName, experience, rating, occupation, availableWorkDays } =
     serviceProvider || {};
 
   return (
@@ -63,8 +63,7 @@ const RequestService = ({ providerId }) => {
           <div className="view-provider-container">
             <div className="view-provider-details">
               <div className="view-provider-title multi-fields">
-                <p>{name}</p>
-                <p>{surname}</p>
+                <p>{fullName}</p>
               </div>
               <div className="view-provider-occupation">
                 <p>{occupation?.name || "Unknown occupation"}</p>
