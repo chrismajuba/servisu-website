@@ -9,7 +9,7 @@ import { ServiceProviderRegistrationDto } from "../../service_provider/models/Se
 import { ModifyServiceProviderDto } from "../../service_provider/models/ModifyServiceProviderDto";
 
 const servisuAPI = axios.create({
-  baseURL: "http://localhost:8443",
+  baseURL: "https://we-serve-api.onrender.com",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

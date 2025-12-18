@@ -32,6 +32,10 @@ export const routeConfig = {
       element: <Home />,
     },
     {
+      path: ROUTES.HOME_PAGE,
+      element: <Home />,
+    },
+    {
       path: ROUTES.GET_STARTED,
       element: <GetStartedPage />,
     },

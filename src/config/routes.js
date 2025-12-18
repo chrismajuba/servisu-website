@@ -5,6 +5,7 @@
 export const ROUTES = {
   // Public routes
   HOME: "/home",
+  HOME_PAGE: "/servisu-website",
   ROOT: "/",
   PROVIDERS: "/providers",
   VIEW_PROVIDER: "/view-provider/:id",
