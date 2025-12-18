@@ -1,0 +1,145 @@
+.provider-requests-container {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.provider-requests-contents {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.provider-request-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.request-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.request-card h3 {
+  margin: 0;
+  color: #333;
+}
+
+.request-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.request-details .detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.request-details label {
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.request-details p {
+  margin: 0;
+  color: #333;
+}
+
+.request-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.request-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.request-actions .accept-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.request-actions .accept-btn:hover {
+  background-color: #45a049;
+}
+
+.request-actions .reject-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.request-actions .reject-btn:hover {
+  background-color: #da190b;
+}
+
+.request-actions .view-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+.request-actions .view-btn:hover {
+  background-color: #0b7dda;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.status-pending {
+  background-color: #ff9800;
+  color: white;
+}
+
+.status-accepted {
+  background-color: #4caf50;
+  color: white;
+}
+
+.status-rejected {
+  background-color: #f44336;
+  color: white;
+}
+
+.status-completed {
+  background-color: #2196f3;
+  color: white;
+}
+
+.no-requests {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 18px;
+}
+
+@media (max-width: 750px) {
+  .request-details {
+    grid-template-columns: 1fr;
+  }
+
+  .request-actions {
+    flex-direction: column;
+  }
+
+  .request-actions button {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,125 @@
+.provider-security-details {
+  margin-top: 30px;
+}
+
+.provider-security-details .provider-security-details-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.provider-security-details .provider-security-details-content .settings-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.settings-container .row {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.settings-container h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 25px;
+  font-weight: 550;
+}
+
+.settings-container hr {
+  margin-top: 10px;
+  border: 1px solid whitesmoke;
+}
+
+.settings-container .row p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 19px;
+}
+
+.settings-container .row button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  border: none;
+  width: 10vw;
+  height: 2vw;
+  background-color: lightgray;
+  font-size: 16px;
+}
+
+.settings-container .row button:hover {
+  cursor: pointer;
+  scale: 1.05;
+  transition: 1s;
+}
+
+.details-container .editing-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 10px;
+}
+
+.details-container .editing-container input {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  width: 20vw;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.details-container .editing-container button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 10px;
+  border: none;
+  width: 10vw;
+  height: 2vw;
+  font-size: 16px;
+}
+
+.row-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cancel {
+  background-color: lightcoral;
+}
+
+.grey {
+  background-color: lightgray;
+}
+
+@media (max-width: 1350px) {
+  .settings-container .row button {
+    width: 20vw;
+    height: 4vw;
+  }
+}
+
+@media (max-width: 750px) {
+  .provider-security-details {
+    margin-top: 0;
+  }
+
+  .settings-container .row button {
+    width: 30vw;
+    height: 8vw;
+  }
+
+  .settings-container .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 483px) {
+  .settings-container h2 {
+    font-size: 20px;
+  }
+
+  .settings-container .row p {
+    font-size: 16px;
+  }
+}
+

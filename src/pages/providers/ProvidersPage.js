@@ -1,32 +1,28 @@
-import React, { useContext } from "react";
+import React from "react";
 import ProvidersGrid from "../../modules/providers/components/display/ProvidersGrid";
-import { APIContext } from "../../modules/context/ContextProvider";
-import SignIn from "../../modules/auth/sign_in/SignIn";
 import { useLocation } from "react-router-dom";
+import "../legal/LegalPages.css";
 
+/**
+ * ProvidersPage Component
+ * Authentication is handled by ProtectedRoute wrapper
+ */
 const ProvidersPage = () => {
-  const { authDetails, loginDetails } = useContext(APIContext);
   const navLocation = useLocation();
   const occupation = navLocation.state || -1;
 
-  if (
-    authDetails === null ||
-    !authDetails?.authenticated ||
-    loginDetails == null
-  ) {
-    return (
-      <SignIn
-        headerMessage={
-          "Please login to your account or create one to access our services"
-        }
-      />
-    );
-  } else {
-    return (
-      <div>
-        <ProvidersGrid occupation={occupation} />
+  return (
+    <div className="legal-page">
+      <div className="legal-container">
+        <div className="legal-header">
+          <h1>Browse Service Providers</h1>
+        </div>
+        <div className="legal-content">
+          <ProvidersGrid occupation={occupation} />
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 };
+
 export default ProvidersPage;

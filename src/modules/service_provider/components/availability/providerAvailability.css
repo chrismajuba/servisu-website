@@ -1,0 +1,89 @@
+.availability-container {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.availability-contents {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.availability-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.availability-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.days-selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.day-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.day-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.day-checkbox label {
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.save-button {
+  padding: 12px 24px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
+
+.save-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.current-availability {
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+
+.current-availability h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 750px) {
+  .days-selection {
+    grid-template-columns: 1fr;
+  }
+}
+

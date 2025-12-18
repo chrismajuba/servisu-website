@@ -7,6 +7,16 @@ const UserNav = ({ currentPage, setCurrentPage }) => {
       <ul className="nav-list">
         <li>
           <button
+            className={currentPage === "Dashboard" ? "current" : ""}
+            onClick={() => {
+              setCurrentPage("Dashboard");
+            }}
+          >
+            Dashboard
+          </button>
+        </li>
+        <li>
+          <button
             className={currentPage === "Account" ? "current" : ""}
             onClick={() => {
               setCurrentPage("Account");

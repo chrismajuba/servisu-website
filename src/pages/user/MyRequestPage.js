@@ -4,8 +4,11 @@ import { useContext, useState, useEffect } from "react";
 import { APIContext } from "../../modules/context/ContextProvider";
 import { getUpdate } from "../../modules/services/api/WeServeService";
 import LoadingScreen from "../../modules/core/components/pop_up/progress_bar/LoadingScreen";
-import SignIn from "../../modules/auth/sign_in/SignIn";
 
+/**
+ * MyRequestsPage Component
+ * Authentication is handled by ProtectedRoute wrapper
+ */
 const MyRequestsPage = () => {
   const { authDetails, loginDetails, logout, showPopupMessageOnNavbar } =
     useContext(APIContext);
@@ -13,7 +16,7 @@ const MyRequestsPage = () => {
   const [eventStatusDto, setEventStatusDto] = useState(null);
 
   const getRequestUpdate = () => {
-    if (authDetails != null && authDetails.authenticated) {
+    if (authDetails != null && authDetails.authenticated && loginDetails) {
       setIsLoading(true);
       getUpdate(authDetails.accessToken, loginDetails.id)
         .then((response) => {
@@ -40,8 +43,6 @@ const MyRequestsPage = () => {
           }
           setIsLoading(false);
         });
-    } else {
-      //showPopupMessageOnNavbar("Please login to continue");
     }
   };
 
@@ -49,24 +50,8 @@ const MyRequestsPage = () => {
     getRequestUpdate();
   }, []);
 
-  if (
-    authDetails == null ||
-    !authDetails.authenticated ||
-    loginDetails == null
-  ) {
-    return (
-      <SignIn
-        headerMessage={"Please login to your account or create one to proceed."}
-      />
-    );
-  }
-
   if (isLoading) {
-    return (
-      <>
-        <LoadingScreen />
-      </>
-    );
+    return <LoadingScreen />;
   }
 
   return <MyRequests eventStatusDto={eventStatusDto} />;

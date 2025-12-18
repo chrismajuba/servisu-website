@@ -1,5 +1,5 @@
 import React from "react";
-import "./providerCard.css";
+import "./ProviderCard.css";
 import { AnimatedImgArray, assets } from "../../../../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import DaysOfWeek from "../../../../core/components/utils/DaysOfWeek";
@@ -29,10 +29,10 @@ const ProviderCard = ({ serviceProvider }) => {
             </button>
           </div>
         </div>
-        <div className="provider-availability">
+        {/* <div className="provider-availability">
           <h3>Availability</h3>
           <DaysOfWeek availability={serviceProvider?.availableWorkDays} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

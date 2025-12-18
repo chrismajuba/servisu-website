@@ -4,8 +4,11 @@ import { UserRegistrationDto } from "../../user/models/UserRegistrationDto";
 import { RequestProviderDto } from "../../providers/models/RequestProviderDto";
 import { VerificationDto } from "../../auth/models/VerificationDto";
 import { ModifyUserAccountDto } from "../../user/models/ModifyUserAccountDto";
+import { ServiceProviderLoginDto } from "../../service_provider/models/ServiceProviderLoginDto";
+import { ServiceProviderRegistrationDto } from "../../service_provider/models/ServiceProviderRegistrationDto";
+import { ModifyServiceProviderDto } from "../../service_provider/models/ModifyServiceProviderDto";
 
-const weServeAPI = axios.create({
+const servisuAPI = axios.create({
   baseURL: "http://localhost:8443",
   withCredentials: true,
   headers: {
@@ -14,10 +17,10 @@ const weServeAPI = axios.create({
 });
 
 const loginRequest = (loginDto: LoginDto) =>
-  weServeAPI.post("/we-serve/auth/api/v1/accounts/login", loginDto);
+  servisuAPI.post("/servisu/auth/api/v1/accounts/login", loginDto);
 
 const getUserAccount = (accessToken: string) =>
-  weServeAPI.get("/we-serve/api/v1/users/my-account", {
+  servisuAPI.get("/servisu/api/v1/users/my-account", {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -25,7 +28,7 @@ const getUserAccount = (accessToken: string) =>
 
 const registrationRequest = (
   userRegistrationResponseDto: UserRegistrationDto
-) => weServeAPI.post("/we-serve/api/v1/users", userRegistrationResponseDto);
+) => servisuAPI.post("/servisu/api/v1/users", userRegistrationResponseDto);
 
 const getProviders = (
   accessToken: string,
@@ -33,8 +36,8 @@ const getProviders = (
   providerPageNo: number,
   occupationId: number
 ) =>
-  weServeAPI.get(
-    `/we-serve/api/v2/service-providers?pageNo=${
+  servisuAPI.get(
+    `/servisu/api/v1/service-providers?pageNo=${
       providerPageNo - 1
     }&pageSize=${pageSize}&occupationId=${occupationId}`,
     {
@@ -51,8 +54,8 @@ const searchProviders = (
   pageNo: number,
   occupationId: number
 ) =>
-  weServeAPI.get(
-    `/we-serve/api/v1/service-providers/search?keyword=${keyword}&pageNo=${
+  servisuAPI.get(
+    `/servisu/api/v1/service-providers/search?keyword=${keyword}&pageNo=${
       pageNo - 1
     }&pageSize=${pageSize}&occupationId=${occupationId}`,
     {
@@ -63,7 +66,7 @@ const searchProviders = (
   );
 
 const getProvider = (accessToken: string, provider_id: number) =>
-  weServeAPI.get(`/we-serve/api/v1/service-providers/${provider_id}/view`, {
+  servisuAPI.get(`/servisu/api/v1/service-providers/${provider_id}/view`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -73,8 +76,8 @@ const requestService = (
   accessToken: string,
   requestProvider: RequestProviderDto
 ) =>
-  weServeAPI.post(
-    `/we-serve/api/v1/event-monitor/request-service`,
+  servisuAPI.post(
+    `/servisu/api/v1/event-monitor/request-service`,
     requestProvider,
     {
       headers: {
@@ -88,14 +91,14 @@ const getVerificationCode = (
   email: string,
   accountType: string
 ) =>
-  weServeAPI.get(`/we-serve/api/v1/users/verify?email=${email}`, {
+  servisuAPI.get(`/servisu/api/v1/users/verify?email=${email}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
 
 const getUpdate = (accessToken: string, client_id: number) =>
-  weServeAPI.get(`/we-serve/api/v1/event-monitor/check-status/${client_id}`, {
+  servisuAPI.get(`/servisu/api/v1/event-monitor/check-status/${client_id}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -105,7 +108,7 @@ const submitVerificationCode = (
   accessToken: string,
   verificationDto: VerificationDto
 ) =>
-  weServeAPI.post(`/we-serve/api/v1/users/verify`, verificationDto, {
+  servisuAPI.post(`/servisu/api/v1/users/verify`, verificationDto, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -116,11 +119,95 @@ const updateUserAccount = (
   userId: number,
   modifyAccountDto: ModifyUserAccountDto
 ) =>
-  weServeAPI.put(`/we-serve/api/v1/users/${userId}`, modifyAccountDto, {
+  servisuAPI.put(`/servisu/api/v1/users/${userId}`, modifyAccountDto, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
+
+// Service Provider API endpoints
+const serviceProviderLoginRequest = (loginDto: ServiceProviderLoginDto) =>
+  servisuAPI.post("/servisu/auth/api/v1/accounts/login", loginDto);
+
+const getServiceProviderAccount = (accessToken: string) =>
+  servisuAPI.get("/servisu/api/v1/service-providers/my-account", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+const serviceProviderRegistrationRequest = (
+  registrationDto: ServiceProviderRegistrationDto
+) =>
+  servisuAPI.post(
+    "/servisu/api/v1/service-providers",
+    registrationDto
+  );
+
+const updateServiceProviderAccount = (
+  accessToken: string,
+  providerId: number,
+  modifyProviderDto: ModifyServiceProviderDto
+) =>
+  servisuAPI.put(
+    `/servisu/api/v1/service-providers/${providerId}`,
+    modifyProviderDto,
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+const getServiceProviderRequests = (accessToken: string) =>
+  servisuAPI.get("/servisu/api/v1/service-providers/requests", {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+
+const acceptServiceRequest = (accessToken: string, requestId: number) =>
+  servisuAPI.post(
+    `/servisu/api/v1/service-providers/requests/${requestId}/accept`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+const rejectServiceRequest = (accessToken: string, requestId: number) =>
+  servisuAPI.post(
+    `/servisu/api/v1/service-providers/requests/${requestId}/reject`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
+
+  const requestAdminToDeleteUserAccount = (
+    email: string) =>
+    servisuAPI.delete(`/servisu/api/v1/users/delete-account/${email}`);
+
+  const requestAdminToDeleteProviderAccount = (email: string) =>
+    servisuAPI.put(`/servisu/api/v1/service-providers/delete-account/${email}`);
+
+const updateServiceProviderAvailability = (
+  accessToken: string,
+  availability: string
+) =>
+  servisuAPI.put(
+    "/servisu/api/v1/service-providers/availability",
+    { availableWorkDays: availability },
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
 
 export {
   loginRequest,
@@ -134,4 +221,14 @@ export {
   getVerificationCode,
   submitVerificationCode,
   updateUserAccount,
+  serviceProviderLoginRequest,
+  getServiceProviderAccount,
+  serviceProviderRegistrationRequest,
+  updateServiceProviderAccount,
+  getServiceProviderRequests,
+  acceptServiceRequest,
+  rejectServiceRequest,
+  updateServiceProviderAvailability,
+  requestAdminToDeleteUserAccount,
+  requestAdminToDeleteProviderAccount,
 };

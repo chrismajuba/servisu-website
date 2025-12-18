@@ -11,8 +11,8 @@ const Information = () => {
           <img src={assets.window_cleaner} alt="" />
           <h3>What are Service Providers?</h3>
           <p>
-            Service Providers are verified and skilled people who specialize in
-            specific occupations. These occupations can range from Cash-Wash
+            Service Providers are verified and skilled professionals who specialize in
+            specific occupations. These occupations can range from Car-Washing
             Services, Gardening Services, Cleaning Services etc.
           </p>
           <hr />
@@ -20,7 +20,7 @@ const Information = () => {
 
         <div className="we-servce">
           <img src={assets.connection_you} alt="" />
-          <h3>Our goal as WE-SERVE!</h3>
+          <h3>Our goal as Servisu!</h3>
           <p>
             We aim to provide a link between you and a service provider. Our
             systems and mobile applications aim to ensure the process of

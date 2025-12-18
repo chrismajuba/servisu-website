@@ -9,13 +9,14 @@ import MyRequests from "../requests/MyRequests";
 import SecuritySettings from "../settings/Security";
 import Support from "../support/Support";
 import UserDetails from "../user_details/UserDetails";
+import UserDashboard from "../dashboard/UserDashboard";
 
 const UserAccountDetails = () => {
   const { authDetails, loginDetails, logout, showPopupMessageOnNavbar } =
     useContext(APIContext);
   const [isLoading, setIsLoading] = useState(false);
   const [eventStatusDto, setEventStatusDto] = useState(null);
-  const [currentPage, setCurrentPage] = useState("Account");
+  const [currentPage, setCurrentPage] = useState("Dashboard");
 
   const getRequestUpdate = () => {
     if (authDetails != null && authDetails.authenticated) {
@@ -72,8 +73,12 @@ const UserAccountDetails = () => {
 
   return (
     <div className="user-account-dashboard">
-      <h1>{currentPage}</h1>
-      <UserNav currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <div className="dashboard-header">
+        <h1>{currentPage === "Dashboard" ? "My Dashboard" : currentPage}</h1>
+        <UserNav currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      </div>
+
+      {currentPage === "Dashboard" && <UserDashboard />}
 
       {currentPage === "Account" && (
         <UserDetails

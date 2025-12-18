@@ -4,6 +4,7 @@ import "./requestService.css";
 import { requestService } from "../../../services/api/WeServeService";
 import { APIContext } from "../../../context/ContextProvider";
 import LoadingScreen from "../../../core/components/pop_up/progress_bar/LoadingScreen";
+import AppDownloadPopup from "../../../core/components/app_download/AppDownload";
 import DatePicker from "react-datepicker";
 import { RequestProviderDto } from "../../models/RequestProviderDto";
 import { Address } from "../../models/Address";
@@ -131,6 +132,10 @@ const RequestService = () => {
     e.preventDefault();
     requestAProvider();
   };
+
+
+  //For now prompt the user to download the app
+  return (<AppDownloadPopup></AppDownloadPopup>);
 
   if (isLoading) {
     return (

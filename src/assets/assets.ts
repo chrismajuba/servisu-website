@@ -1,5 +1,5 @@
 import weservelogo from "./weservelogo.jpg";
-import weservename from "./weservename.jpg";
+import weservename from "./Servisu-logo.png";
 import acccount_icon from "./account_icon.jpg";
 import search_icon from "./search_icon.jpg";
 import handshake from "./handshake.jpg";
