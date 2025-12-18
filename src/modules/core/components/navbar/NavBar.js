@@ -6,6 +6,7 @@ import SigninPopup from "../../../auth/pop_up/SigninPopup";
 import { APIContext } from "../../../context/ContextProvider";
 import LoadingScreenPopup from "../pop_up/progress_bar/LoadingScreenPopup";
 import MessagePopup from "../pop_up/Popup";
+import { ROUTES } from "../../../../config/routes";
 
 const SIGN_IN = "sign-in";
 const SIGN_UP = "sign-up";
@@ -102,21 +103,21 @@ const NavBar = () => {
           </div>
           <ul className="navbar-list">
             <Link
-              to="/"
+              to={ROUTES.HOME}
               className={currentPage === "home" ? "active" : ""}
               onClick={() => {
                 setCurrentPage("home");
               }}>
               Home
             </Link>
-            <a
-              href="#quick-start"
-              className={currentPage === "quick-start" ? "active" : ""}
+            <Link
+              to={ROUTES.GET_STARTED}
+              className={currentPage === "get-started" ? "active" : ""}
               onClick={() => {
-                setCurrentPage("quick-start");
+                setCurrentPage("get-started");
               }}>
               Get Started
-            </a>
+            </Link>
             {userType === "user" && (
               <Link
                 to="/providers"

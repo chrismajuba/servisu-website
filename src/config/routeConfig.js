@@ -18,6 +18,7 @@ const ProviderRegisterPage = React.lazy(() => import("../pages/service_provider/
 const DataDeletionPage = React.lazy(() => import("../pages/legal/DataDeletionPage"));
 const PrivacyPolicyPage = React.lazy(() => import("../pages/legal/PrivacyPolicyPage"));
 const TermsConditionsPage = React.lazy(() => import("../pages/legal/TermsConditionsPage"));
+const GetStartedPage = React.lazy(() => import("../pages/get_started/GetStartedPage"));
 
 /**
  * Route configuration
@@ -29,6 +30,10 @@ export const routeConfig = {
     {
       path: ROUTES.HOME,
       element: <Home />,
+    },
+    {
+      path: ROUTES.GET_STARTED,
+      element: <GetStartedPage />,
     },
     {
       path: ROUTES.DATA_DELETION,

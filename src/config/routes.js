@@ -29,6 +29,9 @@ export const ROUTES = {
   DATA_DELETION: "/data-deletion",
   PRIVACY_POLICY: "/privacy-policy",
   TERMS_CONDITIONS: "/terms-and-conditions",
+
+  // Onboarding
+  GET_STARTED: "/get-started",
 };
 
 /**
