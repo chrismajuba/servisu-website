@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkservisu_website=self.webpackChunkservisu_website||[]).push([[41],{2041:(e,s,t)=>{t.r(s),t.d(s,{default:()=>c});var n=t(5043),i=t(6813),u=t(3216),a=t(3626),l=t(579);const c=()=>{const e=(0,u.Zp)(),{authDetails:s,loginDetails:t}=(0,n.useContext)(a.E);return null!=t&&null!=s&&s.authenticated&&e("/home"),(0,l.jsx)(i.A,{headerMessage:"Please login",siginT:"signin",onSuccess:()=>e("/home")})}}}]);
+//# sourceMappingURL=41.32df2e2d.chunk.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkservisu_website=self.webpackChunkservisu_website||[]).push([[926],{7926:(e,s,r)=>{r.r(s),r.d(s,{default:()=>o});var i=r(5043),t=r(3851),u=r(3216),n=r(3626),a=r(579);const o=()=>{const e=(0,u.Zp)(),{authDetails:s,providerDetails:r,userType:o}=(0,i.useContext)(n.E);return null!=r&&null!=s&&s.authenticated&&"provider"===o&&e("/provider/account"),(0,a.jsx)(t.A,{headerMessage:"Service Provider Registration",siginT:"signup",onSuccess:()=>e("/provider/login")})}}}]);
+//# sourceMappingURL=926.644c0840.chunk.js.map
