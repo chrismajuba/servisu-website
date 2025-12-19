@@ -28,7 +28,8 @@ export const ROUTES = {
 
   // Legal routes
   DATA_DELETION: "/data-deletion",
-  PRIVACY_POLICY: "/privacy-policy",
+  PRIVACY_POLICY_USER: "/privacy-policy/user",
+  PRIVACY_POLICY_PROVIDER: "/privacy-policy/provider",
   TERMS_CONDITIONS: "/terms-and-conditions",
 
   // Onboarding

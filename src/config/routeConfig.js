@@ -16,7 +16,8 @@ const ProviderPage = React.lazy(() => import("../pages/service_provider/Provider
 const ProviderLoginPage = React.lazy(() => import("../pages/service_provider/ProviderLoginPage"));
 const ProviderRegisterPage = React.lazy(() => import("../pages/service_provider/ProviderRegisterPage"));
 const DataDeletionPage = React.lazy(() => import("../pages/legal/DataDeletionPage"));
-const PrivacyPolicyPage = React.lazy(() => import("../pages/legal/PrivacyPolicyPage"));
+const UserPrivacyPolicyPage = React.lazy(() => import("../pages/legal/UserPrivacyPolicyPage"));
+const ProviderPrivacyPolicyPage = React.lazy(() => import("../pages/legal/ProviderPrivacyPolicyPage"));
 const TermsConditionsPage = React.lazy(() => import("../pages/legal/TermsConditionsPage"));
 const GetStartedPage = React.lazy(() => import("../pages/get_started/GetStartedPage"));
 
@@ -44,8 +45,12 @@ export const routeConfig = {
       element: <DataDeletionPage />,
     },
     {
-      path: ROUTES.PRIVACY_POLICY,
-      element: <PrivacyPolicyPage />,
+      path: ROUTES.PRIVACY_POLICY_USER,
+      element: <UserPrivacyPolicyPage />,
+    },
+    {
+      path: ROUTES.PRIVACY_POLICY_PROVIDER,
+      element: <ProviderPrivacyPolicyPage />,
     },
     {
       path: ROUTES.TERMS_CONDITIONS,
