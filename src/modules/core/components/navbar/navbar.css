@@ -574,12 +574,16 @@
     font-size: 10px;
   }
 
+  .navbar-list {
+    gap: 5px;
+  }
+
   .navbar {
     padding: 10px 15px;
   }
 
   .navbar .logo {
-    width: 100px;
+    width: 80px;
   }
 
   .navbar .button {
@@ -613,10 +617,10 @@
     display: none;
   }
 
-  /* .signin-dropdown {
+  .signin-dropdown {
     min-width: 240px;
     right: -20px;
-  } */
+  }
 
   .auth-buttons-group {
     gap: 6px;
