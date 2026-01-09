@@ -1,17 +1,16 @@
-import React, { useState, useContext } from "react";
-import { APIContext } from "../../modules/context/ContextProvider";
+import React, { useState } from "react";
 import {
   requestAdminToDeleteUserAccount,
   requestAdminToDeleteProviderAccount,
 } from "../../modules/services/api/WeServeService";
 import "./DataDeletionPage.css";
 import "./LegalPages.css";
+import contactInformation from "../../modules/core/components/utils/Utlis";
 
 const DataDeletionPage = () => {
-  const { loginDetails, providerDetails, userType } = useContext(APIContext);
-  
   const [formData, setFormData] = useState({
-    email: loginDetails?.email || providerDetails?.email || "",
+    accountType: "",
+    email: "",
     reason: "",
     otherReason: "",
     confirmDelete: false,
@@ -41,6 +40,11 @@ const DataDeletionPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    if (!formData.accountType) {
+      alert("Please select an account type.");
+      return;
+    }
+    
     if (!formData.confirmDelete || !formData.confirmUnderstand) {
       alert("Please confirm both checkboxes to proceed.");
       return;
@@ -49,7 +53,7 @@ const DataDeletionPage = () => {
     setIsSubmitting(true);
     
     try {
-      if (userType === "provider") {
+      if (formData.accountType === "provider") {
         await requestAdminToDeleteProviderAccount(formData.email);
       } else {
         await requestAdminToDeleteUserAccount(formData.email);
@@ -136,6 +140,21 @@ const DataDeletionPage = () => {
           <h2>Submit Deletion Request</h2>
 
           <div className="form-group">
+            <label htmlFor="accountType">Account Type *</label>
+            <select
+              id="accountType"
+              name="accountType"
+              value={formData.accountType}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="">Select account type...</option>
+              <option value="user">User Account</option>
+              <option value="provider">Service Provider Account</option>
+            </select>
+          </div>
+
+          <div className="form-group">
             <label htmlFor="email">Email Address *</label>
             <input
               type="email"
@@ -218,6 +237,7 @@ const DataDeletionPage = () => {
             className="delete-button"
             disabled={
               isSubmitting ||
+              !formData.accountType ||
               !formData.confirmDelete ||
               !formData.confirmUnderstand
             }
@@ -236,7 +256,7 @@ const DataDeletionPage = () => {
           <div className="legal-footer">
             <p>
               Need help? Contact us at{" "}
-              <a href="mailto:support@servisu.com">support@servisu.com</a>
+              <a href={`mailto:${contactInformation.email}`}>{contactInformation.email}</a>
             </p>
             <p>
               This process complies with GDPR, CCPA, and other applicable data

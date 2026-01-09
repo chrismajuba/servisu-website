@@ -1,12 +1,6 @@
 import React from "react";
 import "./LegalPages.css";
-
-const contactInformation = {
-  email: "support@servisu.com",
-  number: "+1 (555) 123-4567",
-  address: "123 Service Street, Tech City, TC 12345",
-  privacyLastUpdate: "December 18, 2025",
-};
+import contactInformation from "../../modules/core/components/utils/Utlis";
 
 const PrivacyPolicyPage = () => {
   return (

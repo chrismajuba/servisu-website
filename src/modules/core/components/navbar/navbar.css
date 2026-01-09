@@ -503,9 +503,6 @@
 }
 
 @media (max-width: 768px) {
-  .navbar-list {
-    display: none;
-  }
 
   .navbar .menu-toggle {
     display: block;
@@ -573,6 +570,10 @@
 }
 
 @media (max-width: 480px) {
+  .navbar-list a {
+    font-size: 10px;
+  }
+
   .navbar {
     padding: 10px 15px;
   }
@@ -612,10 +613,10 @@
     display: none;
   }
 
-  .signin-dropdown {
+  /* .signin-dropdown {
     min-width: 240px;
     right: -20px;
-  }
+  } */
 
   .auth-buttons-group {
     gap: 6px;

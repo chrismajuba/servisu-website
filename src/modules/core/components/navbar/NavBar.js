@@ -90,9 +90,6 @@ const NavBar = () => {
       <nav className="navbar">
         <div className="navbar-left">
           <div>
-            <button className="menu-toggle" onClick={toggleMenu}>
-              ☰
-            </button>
             <Link to="/">
               <img
                 src={assets.weservename}
