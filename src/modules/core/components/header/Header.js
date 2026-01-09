@@ -13,9 +13,9 @@ const Header = () => {
           Get assistance from a wide range of our devoted and skilled service
           providers!
         </p>
-        <button onClick={() => navigate("/providers")}>
+        {/* <button onClick={() => navigate("/providers")}>
           View Service Providers
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -118,7 +118,7 @@ const NavBar = () => {
               }}>
               Get Started
             </Link>
-            {userType === "user" && (
+            {/* {userType === "user" && (
               <Link
                 to="/providers"
                 className={currentPage === "providers" ? "active" : ""}
@@ -149,7 +149,7 @@ const NavBar = () => {
                 }}>
                 Browse Services
               </Link>
-            )}
+            )} */}
             <a
               href="#footer"
               className={currentPage === "contactus" ? "active" : ""}
@@ -160,8 +160,8 @@ const NavBar = () => {
             </a>
           </ul>
         </div>
-        <div className="navbar-right">
-          {/* User-specific features */}
+        {/*<div className="navbar-right">
+          {/* User-specific features 
           {userType === "user" && (
             <>
               <Link
@@ -193,7 +193,7 @@ const NavBar = () => {
             </>
           )}
 
-          {/* Provider-specific features */}
+          {/* Provider-specific features
           {userType === "provider" && (
             <>
               <Link
@@ -224,9 +224,9 @@ const NavBar = () => {
                 {(providerDetails != null) ? <div className="dot"></div> : <></>}
               </Link>
             </>
-          )}
+          )}*/}
 
-          {/* Authentication buttons for non-logged in users */}
+          {/* Authentication buttons for non-logged in users
           {!loginDetails && !providerDetails && (
             <div className="auth-buttons-group">
               <div className="signin-dropdown-container" ref={dropdownRef}>
@@ -301,10 +301,10 @@ const NavBar = () => {
                 </button>
               </div>
             </div>
-          )}
+          )}*/}
 
           {/* Logout button for logged in users */}
-          {(loginDetails != null || providerDetails != null) && (
+          {/*{(loginDetails != null || providerDetails != null) && (
             <button
               onClick={() => {
                 logout();
@@ -314,7 +314,7 @@ const NavBar = () => {
               <span>Sign Out</span>
             </button>
           )}
-        </div>
+        </div> */}
       </nav>
     </>
   );

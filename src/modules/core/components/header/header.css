@@ -1,12 +1,13 @@
 .header {
+  width: 100%;
   height: 40vw;
-  margin: 30px auto;
   background: url("../../../../../public/images/connecting_people_green.jpg")
     no-repeat;
   background-size: contain;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
   border-bottom: 10px;
+  border-radius: 10px;
 }
 
 .header-contents {
@@ -15,9 +16,9 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 1.5vw;
+  gap: 1vw;
   max-width: 50%;
-  bottom: 35%;
+  bottom: 45%;
   left: 1vw;
   color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

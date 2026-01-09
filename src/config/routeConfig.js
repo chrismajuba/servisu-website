@@ -20,6 +20,7 @@ const UserPrivacyPolicyPage = React.lazy(() => import("../pages/legal/UserPrivac
 const ProviderPrivacyPolicyPage = React.lazy(() => import("../pages/legal/ProviderPrivacyPolicyPage"));
 const TermsConditionsPage = React.lazy(() => import("../pages/legal/TermsConditionsPage"));
 const GetStartedPage = React.lazy(() => import("../pages/get_started/GetStartedPage"));
+const HelpCenterPage = React.lazy(() => import("../pages/help/HelpCenterPage"));
 
 /**
  * Route configuration
@@ -55,6 +56,10 @@ export const routeConfig = {
     {
       path: ROUTES.TERMS_CONDITIONS,
       element: <TermsConditionsPage />,
+    },
+    {
+      path: ROUTES.HELP_CENTER,
+      element: <HelpCenterPage />,
     },
   ],
 

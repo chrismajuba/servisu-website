@@ -34,6 +34,9 @@ export const ROUTES = {
 
   // Onboarding
   GET_STARTED: "/get-started",
+
+  // Help
+  HELP_CENTER: "/help-center",
 };
 
 /**

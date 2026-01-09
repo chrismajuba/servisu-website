@@ -19,7 +19,7 @@ const Explore = () => {
             return (
               <div key={index} className="image-content-container">
                 <img
-                  onClick={() => handleClick(imageData?.id)}
+                  //onClick={() => handleClick(imageData?.id)}
                   key={imageData?.id}
                   src={imageData?.image}
                   alt=""

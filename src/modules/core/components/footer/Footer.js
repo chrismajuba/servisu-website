@@ -2,9 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
 import { assets } from "../../../../assets/assets";
+import contactInformation from "../utils/Utlis";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer className="footer" id="footer">
@@ -21,19 +26,48 @@ const Footer = () => {
         <div className="footer-content-center">
           <h2>Company</h2>
           <ul>
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/providers">Services</Link></li>
-            <li><Link to="/privacy-policy/user">Privacy Policy (Users)</Link></li>
-            <li><Link to="/privacy-policy/provider">Privacy Policy (Providers)</Link></li>
-            <li><Link to="/terms-and-conditions">Terms & Conditions</Link></li>
-            <li><Link to="/data-deletion">Data Deletion</Link></li>
+            <li>
+              <Link to="/home" onClick={handleLinkClick}>
+                Home
+              </Link>
+            </li>
+            {/* <li>
+              <Link to="/providers" onClick={handleLinkClick}>
+                Services
+              </Link>
+            </li> */}
+            <li>
+              <Link to="/help-center" onClick={handleLinkClick}>
+                Help Center
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacy-policy/user" onClick={handleLinkClick}>
+                Privacy Policy (Users)
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacy-policy/provider" onClick={handleLinkClick}>
+                Privacy Policy (Providers)
+              </Link>
+            </li>
+            <li>
+              <Link to="/terms-and-conditions" onClick={handleLinkClick}>
+                Terms & Conditions
+              </Link>
+            </li>
+            <li>
+              <Link to="/data-deletion" onClick={handleLinkClick}>
+                Data Deletion
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="footer-content-right">
           <h2>Get In Touch</h2>
           <ul>
-            <li>011-1111-5555</li>
-            <li>servisu-support@gmail.com</li>
+            <li>{contactInformation.email}</li>
+            <li>{contactInformation.number}</li>
           </ul>
         </div>
       </div>

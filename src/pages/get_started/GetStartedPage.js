@@ -26,12 +26,15 @@ const GetStartedPage = () => {
               <li>Send requests and track progress from your dashboard</li>
             </ul>
             <div className="get-started-cta">
-              <Link to={ROUTES.REGISTER} className="cta-button primary">
+            <ul>
+              <li>Download the Servisu App and get started today!</li>
+            </ul>
+              {/* <Link to={ROUTES.REGISTER} className="cta-button primary">
                 Join as User
               </Link>
               <Link to={ROUTES.PROVIDERS} className="cta-link">
                 Browse services first
-              </Link>
+              </Link> */}
             </div>
           </section>
 
@@ -48,12 +51,15 @@ const GetStartedPage = () => {
               <li>Accept or reject requests directly from your dashboard</li>
             </ul>
             <div className="get-started-cta">
-              <Link to={ROUTES.PROVIDER_REGISTER} className="cta-button secondary">
+            <ul>
+              <li>Download the Servisu Provider App and get started today!</li>
+            </ul>
+              {/* <Link to={ROUTES.PROVIDER_REGISTER} className="cta-button secondary">
                 Join as Provider
               </Link>
               <Link to={ROUTES.PROVIDER_LOGIN} className="cta-link">
                 Already a provider? Sign in
-              </Link>
+              </Link> */}
             </div>
           </section>
 
