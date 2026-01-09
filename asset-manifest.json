@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/servisu-website/static/css/main.bbd2cacc.css",
+    "main.css": "/servisu-website/static/css/main.39a65259.css",
     "main.js": "/servisu-website/static/js/main.4baf0b1d.js",
     "static/css/317.9d6e709d.chunk.css": "/servisu-website/static/css/317.9d6e709d.chunk.css",
     "static/js/317.edefb2a6.chunk.js": "/servisu-website/static/js/317.edefb2a6.chunk.js",
@@ -76,7 +76,7 @@
     "static/media/rating-star.png": "/servisu-website/static/media/rating-star.d0cbd94e0a4a62fc2bf4.png",
     "static/media/loading-spinner.svg": "/servisu-website/static/media/loading-spinner.d352aed0a1bb420d1545c4fa8282410a.svg",
     "index.html": "/servisu-website/index.html",
-    "main.bbd2cacc.css.map": "/servisu-website/static/css/main.bbd2cacc.css.map",
+    "main.39a65259.css.map": "/servisu-website/static/css/main.39a65259.css.map",
     "main.4baf0b1d.js.map": "/servisu-website/static/js/main.4baf0b1d.js.map",
     "317.9d6e709d.chunk.css.map": "/servisu-website/static/css/317.9d6e709d.chunk.css.map",
     "317.edefb2a6.chunk.js.map": "/servisu-website/static/js/317.edefb2a6.chunk.js.map",
@@ -116,7 +116,7 @@
     "144.de4e1ccf.chunk.js.map": "/servisu-website/static/js/144.de4e1ccf.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbd2cacc.css",
+    "static/css/main.39a65259.css",
     "static/js/main.4baf0b1d.js"
   ]
 }
