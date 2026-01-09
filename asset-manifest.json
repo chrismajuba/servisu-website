@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/servisu-website/static/css/main.4deacba2.css",
-    "main.js": "/servisu-website/static/js/main.163e14f8.js",
-    "static/css/317.4d717b9d.chunk.css": "/servisu-website/static/css/317.4d717b9d.chunk.css",
-    "static/js/317.e02f5c62.chunk.js": "/servisu-website/static/js/317.e02f5c62.chunk.js",
+    "main.js": "/servisu-website/static/js/main.89d56faa.js",
+    "static/css/317.9d6e709d.chunk.css": "/servisu-website/static/css/317.9d6e709d.chunk.css",
+    "static/js/317.edefb2a6.chunk.js": "/servisu-website/static/js/317.edefb2a6.chunk.js",
     "static/css/705.6f13b045.chunk.css": "/servisu-website/static/css/705.6f13b045.chunk.css",
     "static/js/705.dc852898.chunk.js": "/servisu-website/static/js/705.dc852898.chunk.js",
     "static/css/780.83268cd4.chunk.css": "/servisu-website/static/css/780.83268cd4.chunk.css",
@@ -33,7 +33,9 @@
     "static/css/643.178cc9aa.chunk.css": "/servisu-website/static/css/643.178cc9aa.chunk.css",
     "static/js/643.f98ffec9.chunk.js": "/servisu-website/static/js/643.f98ffec9.chunk.js",
     "static/css/365.3a62df9e.chunk.css": "/servisu-website/static/css/365.3a62df9e.chunk.css",
-    "static/js/365.4a422394.chunk.js": "/servisu-website/static/js/365.4a422394.chunk.js",
+    "static/js/365.c0abf29e.chunk.js": "/servisu-website/static/js/365.c0abf29e.chunk.js",
+    "static/css/473.d525b5c7.chunk.css": "/servisu-website/static/css/473.d525b5c7.chunk.css",
+    "static/js/473.cb753de8.chunk.js": "/servisu-website/static/js/473.cb753de8.chunk.js",
     "static/js/453.31b809bc.chunk.js": "/servisu-website/static/js/453.31b809bc.chunk.js",
     "static/js/144.de4e1ccf.chunk.js": "/servisu-website/static/js/144.de4e1ccf.chunk.js",
     "static/media/outdoor_cleaner.jpg": "/servisu-website/static/media/outdoor_cleaner.760b8cb573c7e191e97a.jpg",
@@ -75,9 +77,9 @@
     "static/media/loading-spinner.svg": "/servisu-website/static/media/loading-spinner.d352aed0a1bb420d1545c4fa8282410a.svg",
     "index.html": "/servisu-website/index.html",
     "main.4deacba2.css.map": "/servisu-website/static/css/main.4deacba2.css.map",
-    "main.163e14f8.js.map": "/servisu-website/static/js/main.163e14f8.js.map",
-    "317.4d717b9d.chunk.css.map": "/servisu-website/static/css/317.4d717b9d.chunk.css.map",
-    "317.e02f5c62.chunk.js.map": "/servisu-website/static/js/317.e02f5c62.chunk.js.map",
+    "main.89d56faa.js.map": "/servisu-website/static/js/main.89d56faa.js.map",
+    "317.9d6e709d.chunk.css.map": "/servisu-website/static/css/317.9d6e709d.chunk.css.map",
+    "317.edefb2a6.chunk.js.map": "/servisu-website/static/js/317.edefb2a6.chunk.js.map",
     "705.6f13b045.chunk.css.map": "/servisu-website/static/css/705.6f13b045.chunk.css.map",
     "705.dc852898.chunk.js.map": "/servisu-website/static/js/705.dc852898.chunk.js.map",
     "780.83268cd4.chunk.css.map": "/servisu-website/static/css/780.83268cd4.chunk.css.map",
@@ -107,12 +109,14 @@
     "643.178cc9aa.chunk.css.map": "/servisu-website/static/css/643.178cc9aa.chunk.css.map",
     "643.f98ffec9.chunk.js.map": "/servisu-website/static/js/643.f98ffec9.chunk.js.map",
     "365.3a62df9e.chunk.css.map": "/servisu-website/static/css/365.3a62df9e.chunk.css.map",
-    "365.4a422394.chunk.js.map": "/servisu-website/static/js/365.4a422394.chunk.js.map",
+    "365.c0abf29e.chunk.js.map": "/servisu-website/static/js/365.c0abf29e.chunk.js.map",
+    "473.d525b5c7.chunk.css.map": "/servisu-website/static/css/473.d525b5c7.chunk.css.map",
+    "473.cb753de8.chunk.js.map": "/servisu-website/static/js/473.cb753de8.chunk.js.map",
     "453.31b809bc.chunk.js.map": "/servisu-website/static/js/453.31b809bc.chunk.js.map",
     "144.de4e1ccf.chunk.js.map": "/servisu-website/static/js/144.de4e1ccf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4deacba2.css",
-    "static/js/main.163e14f8.js"
+    "static/js/main.89d56faa.js"
   ]
 }
