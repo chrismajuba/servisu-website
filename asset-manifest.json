@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/servisu-website/static/css/main.387bbec2.css",
-    "main.js": "/servisu-website/static/js/main.59931562.js",
+    "main.js": "/servisu-website/static/js/main.4b7d3ff2.js",
     "static/css/39.9c9c52d9.chunk.css": "/servisu-website/static/css/39.9c9c52d9.chunk.css",
     "static/js/39.af793865.chunk.js": "/servisu-website/static/js/39.af793865.chunk.js",
     "static/css/690.e1a85194.chunk.css": "/servisu-website/static/css/690.e1a85194.chunk.css",
@@ -53,10 +53,10 @@
     "static/media/search_icon.jpg": "/servisu-website/static/media/search_icon.ec83794b655fd26003bb.jpg",
     "static/media/weservelogo.jpg": "/servisu-website/static/media/weservelogo.83d07c1690ba2f72328a.jpg",
     "static/media/rating-star.png": "/servisu-website/static/media/rating-star.d0cbd94e0a4a62fc2bf4.png",
-    "static/media/loading-spinner.svg": "/servisu-website/static/media/loading-spinner.2fbe62c91ce5d77ca33855f59c229adc.svg",
+    "static/media/loading-spinner.svg": "/servisu-website/static/media/loading-spinner.d352aed0a1bb420d1545c4fa8282410a.svg",
     "index.html": "/servisu-website/index.html",
     "main.387bbec2.css.map": "/servisu-website/static/css/main.387bbec2.css.map",
-    "main.59931562.js.map": "/servisu-website/static/js/main.59931562.js.map",
+    "main.4b7d3ff2.js.map": "/servisu-website/static/js/main.4b7d3ff2.js.map",
     "39.9c9c52d9.chunk.css.map": "/servisu-website/static/css/39.9c9c52d9.chunk.css.map",
     "39.af793865.chunk.js.map": "/servisu-website/static/js/39.af793865.chunk.js.map",
     "690.e1a85194.chunk.css.map": "/servisu-website/static/css/690.e1a85194.chunk.css.map",
@@ -76,6 +76,6 @@
   },
   "entrypoints": [
     "static/css/main.387bbec2.css",
-    "static/js/main.59931562.js"
+    "static/js/main.4b7d3ff2.js"
   ]
 }
