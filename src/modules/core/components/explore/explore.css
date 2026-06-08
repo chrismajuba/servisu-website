@@ -1,82 +1,51 @@
-.explore-contents{
-    margin-top: 50px;
-
+.explore-contents {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 46px 0 78px;
 }
-
-.explore-contents h2{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    font-size: max(3.5vw,22px);
+.services-list-1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
-
-.explore-contents .services-list-1{
-    padding-top: 50px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    overflow-x: scroll;
+.service-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 45px rgba(15,23,42,.08);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
+.service-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+.service-card img { width: 100%; height: 185px; object-fit: cover; }
+.service-card-body { padding: 18px; }
+.service-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+.service-card p { margin: 0; color: var(--muted); line-height: 1.55; font-size: .94rem; }
+@media (max-width: 1040px) { .services-list-1 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .services-list-1 { grid-template-columns: 1fr; } }
 
-.services-list-1::-webkit-scrollbar{
-    display: none;
+
+/* ServisU enhancement */
+.logo, .navbar-logo, .site-logo {
+  height: 80px !important;
+  width: auto !important;
 }
-
-
-.explore-contents .services-list-1 .image-content-container img{
-    width: 250px;
-    min-width: 80px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.2s;
+.hero-logo {
+  height: 200px !important;
+  width: auto !important;
 }
-
-.explore-contents .services-list-1 .image-content-container img:hover{
-    scale: 1.05;
+.store-badge, .app-store-badge, .google-play-badge {
+  width: 280px !important;
+  max-width: 100%;
+  height: auto !important;
+  transition: all .3s ease;
 }
-
-.explore-contents .services-list-1 .image-content-container p{
-    width: 250px;
-    font-size: 18px;
-    font-weight: 450;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: start;
+.store-badge:hover, .app-store-badge:hover, .google-play-badge:hover {
+  transform: translateY(-4px) scale(1.05);
 }
-
-.explore-contents .services-list-1 .image-content-container .active{
-    border: 10px solid gray;
+a, button {
+  transition: all .25s ease;
 }
-
-.explore-contents hr{
-    margin: 10px 0px;
-    height: 2px;
-    background-color: whitesmoke;
-    border: none;
-}
-
-
-@media (max-width:1080px){
-
-    .explore-contents .services-list-1 .image-content-container img{
-        width: 200px;
-    }
-
-    .explore-contents .services-list-1 .image-content-container p{
-        width: 200px;
-        font-size: 15px;
-        font-weight: 350;
-    }
-    
-}
-
-@media (max-width:750px){
-
-    .explore-contents .services-list-1 .image-content-container img{
-        width: 150px;
-    }
-
-    .explore-contents .services-list-1 .image-content-container p{
-        width: 150px;
-        font-size: 13px;
-        font-weight: 350;
-    }
+a:hover, button:hover {
+  transform: translateY(-2px);
 }

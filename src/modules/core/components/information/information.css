@@ -1,149 +1,56 @@
 .information-content {
-  margin-top: 10px;
-  padding: 20px 20px;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 78px 0 46px;
 }
-
-.information-content h2 {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
-  font-size: max(3.5vw, 22px);
+.information-content > h2, .explore-contents > h2, .app-download-contents h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -.04em;
+  margin: 0 0 28px;
 }
-
 .information-content-container {
-  padding: 10px 50px;
-  margin-top: 30px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
 }
-
-.information-content-container img {
-  width: 300px;
-  min-width: 80px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s;
+.info-card {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
+.info-card:hover { transform: translateY(-8px); box-shadow: 0 32px 90px rgba(15,23,42,.16); }
+.info-card img { height: 220px; width: 100%; object-fit: cover; }
+.info-card div { padding: 24px; }
+.info-card h3 { margin: 0 0 10px; font-size: 1.25rem; }
+.info-card p { margin: 0; color: var(--muted); line-height: 1.75; }
+@media (max-width: 900px) { .information-content-container { grid-template-columns: 1fr; } }
 
-.information-content-container img:hover {
-  scale: 1.05;
+
+/* ServisU enhancement */
+.logo, .navbar-logo, .site-logo {
+  height: 80px !important;
+  width: auto !important;
 }
-
-.information-content-container h3 {
-  width: 300px;
-  margin-top: 15px;
-  font-size: 25px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  text-align: start;
+.hero-logo {
+  height: 200px !important;
+  width: auto !important;
 }
-
-.information-content-container p {
-  margin-top: 10px;
-  width: 300px;
-  font-size: 18px;
-  font-weight: 450;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  text-align: start;
+.store-badge, .app-store-badge, .google-play-badge {
+  width: 280px !important;
+  max-width: 100%;
+  height: auto !important;
+  transition: all .3s ease;
 }
-
-.information-content-container hr {
-  margin-top: 20px;
+.store-badge:hover, .app-store-badge:hover, .google-play-badge:hover {
+  transform: translateY(-4px) scale(1.05);
 }
-
-@media (max-width: 1080px) {
-  .information-content-container img {
-    width: 250px;
-  }
-
-  .information-content-container h3 {
-    width: 250px;
-    font-size: 25px;
-  }
-
-  .information-content-container p {
-    margin-top: 10px;
-    width: 250px;
-    font-size: 15px;
-    font-weight: 350;
-  }
+a, button {
+  transition: all .25s ease;
 }
-
-@media (max-width: 900px) {
-  .information-content-container img {
-    width: 200px;
-  }
-
-  .information-content-container h3 {
-    width: 200px;
-    font-size: 20px;
-  }
-
-  .information-content-container p {
-    margin-top: 10px;
-    width: 200px;
-    font-size: 15px;
-    font-weight: 250;
-  }
-}
-
-@media (max-width: 750px) {
-  .information-content-container {
-    padding: 10px;
-  }
-  .information-content-container img {
-    width: 100%;
-  }
-
-  .information-content-container h3 {
-    width: 100%;
-    font-size: 20px;
-  }
-
-  .information-content-container p {
-    margin-top: 10px;
-    width: 100%;
-    font-size: 15px;
-    font-weight: 350;
-  }
-
-  .information-content-container {
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 483px) {
-  .information-content-container img {
-    width: 100%;
-  }
-
-  .information-content-container {
-    padding: 10px;
-  }
-
-  .information-content-container h3 {
-    width: 100%;
-    font-size: 20px;
-  }
-
-  .information-content-container p {
-    margin-top: 10px;
-    width: 100%;
-    font-size: 15px;
-    font-weight: 350;
-  }
-
-  .information-content-container {
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+a:hover, button:hover {
+  transform: translateY(-2px);
 }

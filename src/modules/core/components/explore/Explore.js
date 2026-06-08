@@ -1,34 +1,26 @@
-import { React, useState } from "react";
+import React from "react";
 import "./explore.css";
 import { OccupationsList } from "../../../../assets/assets";
 
 const Explore = () => {
-  const [occupation] = useState(-1);
+  const services = OccupationsList.filter((imageData) => imageData?.image != null);
 
   return (
-    <div className="explore-contents" id="explore">
-      <h2>Explore</h2>
+    <section className="explore-contents" id="explore">
+      <p className="eyebrow">Explore</p>
+      <h2>Popular services on Servisu</h2>
       <div className="services-list-1">
-        {OccupationsList.filter((imageData) => imageData?.image != null).map(
-          (imageData, index) => {
-            return (
-              <div key={index} className="image-content-container">
-                <img
-                  key={imageData?.id}
-                  src={imageData?.image}
-                  alt=""
-                  className={`image ${
-                    occupation === imageData?.id ? "active" : ""
-                  }`}
-                />
-                <p>{imageData?.description}</p>
-              </div>
-            );
-          }
-        )}
+        {services.map((imageData, index) => (
+          <article key={imageData?.id || index} className="service-card reveal-up" style={{ animationDelay: `${index * 90}ms` }}>
+            <img src={imageData?.image} alt={imageData?.name || "Servisu service"} />
+            <div className="service-card-body">
+              <h3>{imageData?.name}</h3>
+              <p>{imageData?.description}</p>
+            </div>
+          </article>
+        ))}
       </div>
-      <hr></hr>
-    </div>
+    </section>
   );
 };
 

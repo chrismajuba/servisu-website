@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode } from "react";
 
 /**
  * Context value interface

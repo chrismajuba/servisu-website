@@ -65,6 +65,7 @@ const AppRoutes = () => {
             <Route key={index} path={route.path} element={route.element} />
           );
         })}
+        <Route path="*" element={<Navigate to={ROUTES.HOME} replace />} />
       </Routes>
     </Suspense>
   );

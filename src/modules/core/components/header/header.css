@@ -1,113 +1,74 @@
-.header {
-  width: 100%;
-  height: 40vw;
-  background: url("../../../../../public/images/connecting_people_green.jpg")
-    no-repeat;
-  background-size: contain;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.hero {
   position: relative;
-  border-bottom: 10px;
-  border-radius: 10px;
+  overflow: hidden;
+  min-height: 620px;
+  background-image: linear-gradient(90deg, rgba(5, 37, 34, .92), rgba(5, 37, 34, .58), rgba(5, 37, 34, .18)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
 }
-
-.header-contents {
-  animation: fadeIn 3s;
+.hero::after {
+  content: "";
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 1vw;
-  max-width: 50%;
-  bottom: 45%;
-  left: 1vw;
-  color: white;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  inset: auto -10% -24% -10%;
+  height: 250px;
+  background: white;
+  transform: rotate(-3deg);
 }
-
-.header-contents h2 {
-  font-weight: 500;
-  color: white;
-  font-size: max(3.5vw, 22px);
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  min-height: 620px;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  align-items: center;
+  gap: 48px;
+  padding: 60px 0 120px;
 }
-
-.header-contents p {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1.5vw;
-  font-weight: 500;
-  color: white;
+.hero-copy { max-width: 720px; }
+.hero h1 { margin: 0; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .95; letter-spacing: -.06em; }
+.hero-copy > p:not(.eyebrow) { color: rgba(255,255,255,.88); font-size: 1.2rem; line-height: 1.75; max-width: 640px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+.hero-card {
+  justify-self: end;
+  width: 310px;
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.28);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+  animation: float 5s ease-in-out infinite;
 }
+.hero-card span, .hero-card small { display: block; color: rgba(255,255,255,.78); }
+.hero-card strong { display: block; font-size: 2.1rem; margin: 8px 0; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero-card { justify-self: start; } }
+@media (max-width: 520px) { .hero { min-height: 560px; } .hero-grid { min-height: 560px; padding-bottom: 90px; } .hero-card { width: 100%; } }
 
-.header-contents button {
-  border: none;
-  color: white;
-  font-weight: 500;
-  padding: 1vw 2.3vw;
-  background-color: #404040;
-  font-size: max(1.2vw, 13px);
-  border-radius: 50px;
+
+/* ServisU enhancement */
+.logo, .navbar-logo, .site-logo {
+  height: 80px !important;
+  width: auto !important;
 }
-
-.header-contents button:hover {
-  background-color: black;
-  cursor: pointer;
-  scale: 1.05;
-  transition: 1s;
-  border: 2px solid green;
+.hero-logo {
+  height: 200px !important;
+  width: auto !important;
 }
-
-@media (max-width: 1050px) {
-  .header-contents {
-    max-width: 45%;
-  }
+.store-badge, .app-store-badge, .google-play-badge {
+  width: 280px !important;
+  max-width: 100%;
+  height: auto !important;
+  transition: all .3s ease;
 }
-
-@media (max-width: 750px) {
-  .header-contents {
-    left: 1vw;
-    bottom: 40%;
-    max-width: 75%;
-  }
-
-  .header-contents p {
-    font-size: 1.8vw;
-  }
-
-  .header-contents button {
-    padding: 2vw 4vw;
-  }
+.store-badge:hover, .app-store-badge:hover, .google-play-badge:hover {
+  transform: translateY(-4px) scale(1.05);
 }
-
-@media (max-width: 481px) {
-  .header-contents {
-    left: 1vw;
-    bottom: 10%;
-    max-width: 75%;
-  }
-
-  .header-contents h2 {
-    font-weight: 400;
-    color: white;
-    font-size: max(2.5vw, 20px);
-  }
-
-  .header-contents p {
-    font-size: 3vw;
-    font-weight: 400;
-  }
-
-  .header-contents button {
-    font-size: max(1vw, 10px);
-    padding: 1vw 2vw;
-  }
+a, button {
+  transition: all .25s ease;
 }
-
-@media (max-width: 350px) {
-  .header-contents {
-    left: 1vw;
-    max-width: 75%;
-  }
-
-  .header-contents p {
-    display: none;
-  }
+a:hover, button:hover {
+  transform: translateY(-2px);
 }

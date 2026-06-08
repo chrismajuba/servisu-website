@@ -1,56 +1,32 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { assets } from "../../../../assets/assets";
 import "./navbar.css";
-import { APIContext } from "../../../context/ContextProvider";
 import { ROUTES } from "../../../../config/routes";
 
 const NavBar = () => {
-  const [currentPage, setCurrentPage] = useState("home");
-  const {isLoading} = useContext(APIContext);
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
   return (
-    <>
-      <nav className="navbar">
-        <div className="navbar-left">
-          <div>
-            <Link to="/">
-              <img
-                src={assets.weservename}
-                alt="servisu"
-                className="logo"
-              />
-            </Link>
-          </div>
-          <ul className="navbar-list">
-            <Link
-              to={ROUTES.HOME}
-              className={currentPage === "home" ? "active" : ""}
-              onClick={() => {
-                setCurrentPage("home");
-              }}>
-              Home
-            </Link>
-            <Link
-              to={ROUTES.GET_STARTED}
-              className={currentPage === "get-started" ? "active" : ""}
-              onClick={() => {
-                setCurrentPage("get-started");
-              }}>
-              Get Started
-            </Link>
-            <a
-              href="#footer"
-              className={currentPage === "contactus" ? "active" : ""}
-              onClick={() => {
-                setCurrentPage("contactus");
-              }}>
-              Contact Us
-            </a>
-          </ul>
+    <nav className="navbar">
+      <div className="navbar-shell">
+        <Link to={ROUTES.HOME} className="brand" onClick={close} aria-label="Go to Servisu home page">
+          <span className="brand-mark"><img src={assets.servisULogoDark} alt="Servisu" /></span>
+        </Link>
+
+        <button className="menu-toggle" onClick={() => setOpen(!open)} aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div className={`nav-links ${open ? "open" : ""}`}>
+          <NavLink to={ROUTES.HOME} onClick={close}>Home</NavLink>
+          <NavLink to={ROUTES.GET_STARTED} onClick={close}>Get Started</NavLink>
+          <NavLink to={ROUTES.HELP_CENTER} onClick={close}>Help Center</NavLink>
+          <a href="#footer" onClick={close}>Contact Us</a>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 

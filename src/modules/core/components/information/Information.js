@@ -3,43 +3,40 @@ import "./information.css";
 import { assets } from "../../../../assets/assets";
 
 const Information = () => {
+  const cards = [
+    {
+      image: assets.window_cleaner,
+      title: "What are Service Providers?",
+      text: "Service Providers are verified and skilled professionals who specialize in specific occupations. These occupations can range from Car-Washing Services, Gardening Services, Cleaning Services etc.",
+    },
+    {
+      image: assets.connection_you,
+      title: "Our goal as Servisu!",
+      text: "We aim to provide a link between you and a service provider. Our systems and mobile applications aim to ensure the process of requesting for a service is easy and accessible.",
+    },
+    {
+      image: assets.phone_request,
+      title: "Providing services to you",
+      text: "With a click of a button, services such as washing your car, cleaning your yard or cutting your grass are within your hands!",
+    },
+  ];
+
   return (
-    <div className="information-content" id="quick-start">
-      <h2>Quick start</h2>
+    <section className="information-content" id="quick-start">
+      <p className="eyebrow">Quick start</p>
+      <h2>Everything you need to request reliable help</h2>
       <div className="information-content-container">
-        <div className="service-providers">
-          <img src={assets.window_cleaner} alt="" />
-          <h3>What are Service Providers?</h3>
-          <p>
-            Service Providers are verified and skilled professionals who specialize in
-            specific occupations. These occupations can range from Car-Washing
-            Services, Gardening Services, Cleaning Services etc.
-          </p>
-          <hr />
-        </div>
-
-        <div className="we-servce">
-          <img src={assets.connection_you} alt="" />
-          <h3>Our goal as Servisu!</h3>
-          <p>
-            We aim to provide a link between you and a service provider. Our
-            systems and mobile applications aim to ensure the process of
-            requesting for a service is easy and accessible.
-          </p>
-          <hr />
-        </div>
-
-        <div className="services-for-you">
-          <img src={assets.phone_request} alt="" />
-          <h3>Providing services to you</h3>
-          <p>
-            With a click of a button, services such as washing your car,
-            cleaning your yard or cutting your grass are within your hands!
-          </p>
-          <hr />
-        </div>
+        {cards.map((card) => (
+          <article className="info-card reveal-up" key={card.title}>
+            <img src={card.image} alt="" />
+            <div>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          </article>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 

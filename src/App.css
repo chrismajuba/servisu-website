@@ -1,38 +1,27 @@
-.App {
-  text-align: center;
-}
+/* Global app shell styles are in index.css. */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ServisU enhancement */
+.logo, .navbar-logo, .site-logo {
+  height: 80px !important;
+  width: auto !important;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.hero-logo {
+  height: 200px !important;
+  width: auto !important;
 }
-
-.App-link {
-  color: #61dafb;
+.store-badge, .app-store-badge, .google-play-badge {
+  width: 280px !important;
+  max-width: 100%;
+  height: auto !important;
+  transition: all .3s ease;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.store-badge:hover, .app-store-badge:hover, .google-play-badge:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+a, button {
+  transition: all .25s ease;
+}
+a:hover, button:hover {
+  transform: translateY(-2px);
 }

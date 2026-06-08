@@ -25,3 +25,29 @@
   color: #999;
   border-color: #ddd;
 }
+
+
+/* ServisU enhancement */
+.logo, .navbar-logo, .site-logo {
+  height: 80px !important;
+  width: auto !important;
+}
+.hero-logo {
+  height: 200px !important;
+  width: auto !important;
+}
+.store-badge, .app-store-badge, .google-play-badge {
+  width: 280px !important;
+  max-width: 100%;
+  height: auto !important;
+  transition: all .3s ease;
+}
+.store-badge:hover, .app-store-badge:hover, .google-play-badge:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+a, button {
+  transition: all .25s ease;
+}
+a:hover, button:hover {
+  transform: translateY(-2px);
+}

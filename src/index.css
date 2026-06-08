@@ -1,30 +1,96 @@
-*{
-  padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: rgba(15, 23, 42, 0.1);
+  --paper: #ffffff;
+  --soft: #f8fafc;
+  --brand: #0f766e;
+  --brand-dark: #115e59;
+  --accent: #f59e0b;
+  --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+  --radius: 28px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
   margin: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 45%, #f8fafc 100%);
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font: inherit; }
+.app { min-height: 70vh; }
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--brand);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 800;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-primary { background: var(--brand); color: white; box-shadow: 0 18px 35px rgba(15, 118, 110, .25); }
+.btn-soft { background: rgba(255,255,255,.82); color: var(--ink); border: 1px solid rgba(255,255,255,.5); }
+.reveal-up { animation: revealUp .85s ease both; }
+@keyframes revealUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* Smooth hover feedback for normal clickable links across content pages */
+.legal-page a,
+.help-page a,
+.get-started-page a {
+  color: var(--brand-dark);
+  font-weight: 700;
+  transition: color .2s ease, transform .2s ease, text-decoration-color .2s ease;
+  text-decoration: underline;
+  text-decoration-color: rgba(15, 118, 110, .25);
+  text-underline-offset: 4px;
+}
+.legal-page a:hover,
+.help-page a:hover,
+.get-started-page a:hover {
+  color: var(--brand);
+  transform: translateY(-1px);
+  text-decoration-color: var(--brand);
 }
 
-body{
-  min-height: 100vh;
-}
 
-a{
-  text-decoration: none;
-  color: inherit;
+/* ServisU enhancement */
+.logo, .navbar-logo, .site-logo {
+  height: 80px !important;
+  width: auto !important;
 }
-
-.app{
-  width: 80%;
-  margin: auto;
+.hero-logo {
+  height: 200px !important;
+  width: auto !important;
 }
-
-@keyframes fadeIn {
-  0%{
-    opacity: 0;
-  }
-  100%{
-    opacity: 1;
-  }
-  
+.store-badge, .app-store-badge, .google-play-badge {
+  width: 280px !important;
+  max-width: 100%;
+  height: auto !important;
+  transition: all .3s ease;
+}
+.store-badge:hover, .app-store-badge:hover, .google-play-badge:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+a, button {
+  transition: all .25s ease;
+}
+a:hover, button:hover {
+  transform: translateY(-2px);
 }

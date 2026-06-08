@@ -181,7 +181,7 @@ const HelpCenterPage = () => {
             </p>
             <div className="contact-details">
               <p>
-                <strong>Email:</strong> {contactInformation.email}
+                <strong>Email:</strong> <a href={`mailto:${contactInformation.email}`}>{contactInformation.email}</a>
               </p>
               <p>
                 <strong>Phone:</strong> {contactInformation.number}

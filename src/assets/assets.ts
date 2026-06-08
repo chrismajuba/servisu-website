@@ -1,5 +1,7 @@
 import weservelogo from "./weservelogo.jpg";
 import weservename from "./Servisu-logo.png";
+import servisULogoWhite from "./Servisu-logo-transparent-white.png";
+import servisULogoDark from "./Servisu-logo-transparent-dark.png";
 import acccount_icon from "./account_icon.jpg";
 import search_icon from "./search_icon.jpg";
 import handshake from "./handshake.jpg";
@@ -63,6 +65,8 @@ export const assets = {
   connecting_people_wallpaper,
   weservelogo,
   weservename,
+  servisULogoWhite,
+  servisULogoDark,
   acccount_icon,
   search_icon,
   handshake,
