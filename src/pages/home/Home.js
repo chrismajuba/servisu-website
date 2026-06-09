@@ -3,6 +3,7 @@ import "./home.css";
 import Header from "../../modules/core/components/header/Header";
 import Explore from "../../modules/core/components/explore/Explore";
 import AppDownload from "../../modules/core/components/app_download/AppDownload";
+import AppScreenshots from "../../modules/core/components/app_screens/AppScreenshots";
 import Information from "../../modules/core/components/information/Information";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
       <Header />
       <Information />
       <Explore />
+      <AppScreenshots />
       <AppDownload />
     </div>
   );
