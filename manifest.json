@@ -1,11 +1,12 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ServisU",
+  "name": "ServisU | Professional Services At Your Fingertips",
+  "description": "Find trusted service providers, book services quickly and manage requests with ease.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "wsicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
       "src": "logo192.png",
@@ -18,8 +19,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/servisu-website/",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#0f766e",
   "background_color": "#ffffff"
 }

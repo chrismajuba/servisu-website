@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/servisu-website/static/css/main.387bbec2.css",
-    "main.js": "/servisu-website/static/js/main.eefe240e.js",
-    "static/css/264.43fc9fcd.chunk.css": "/servisu-website/static/css/264.43fc9fcd.chunk.css",
-    "static/js/264.18e51cad.chunk.js": "/servisu-website/static/js/264.18e51cad.chunk.js",
+    "main.css": "/servisu-website/static/css/main.473ad710.css",
+    "main.js": "/servisu-website/static/js/main.d3c4cb4a.js",
+    "static/css/483.8d0ac935.chunk.css": "/servisu-website/static/css/483.8d0ac935.chunk.css",
+    "static/js/483.db695d38.chunk.js": "/servisu-website/static/js/483.db695d38.chunk.js",
     "static/css/690.e1a85194.chunk.css": "/servisu-website/static/css/690.e1a85194.chunk.css",
     "static/js/690.a89cb734.chunk.js": "/servisu-website/static/js/690.a89cb734.chunk.js",
     "static/css/249.48ff8673.chunk.css": "/servisu-website/static/css/249.48ff8673.chunk.css",
@@ -16,6 +16,8 @@
     "static/js/365.c0abf29e.chunk.js": "/servisu-website/static/js/365.c0abf29e.chunk.js",
     "static/css/473.0ec115b8.chunk.css": "/servisu-website/static/css/473.0ec115b8.chunk.css",
     "static/js/473.1c91f41e.chunk.js": "/servisu-website/static/js/473.1c91f41e.chunk.js",
+    "static/css/290.977d3f1e.chunk.css": "/servisu-website/static/css/290.977d3f1e.chunk.css",
+    "static/js/290.78b97a8d.chunk.js": "/servisu-website/static/js/290.78b97a8d.chunk.js",
     "static/js/453.31b809bc.chunk.js": "/servisu-website/static/js/453.31b809bc.chunk.js",
     "static/js/455.f40f74c7.chunk.js": "/servisu-website/static/js/455.f40f74c7.chunk.js",
     "static/js/213.73dbc9f1.chunk.js": "/servisu-website/static/js/213.73dbc9f1.chunk.js",
@@ -33,6 +35,9 @@
     "static/media/phone_request.jpg": "/servisu-website/static/media/phone_request.0a53641e39974d3d71f5.jpg",
     "static/media/connecting_people.jpg": "/servisu-website/static/media/connecting_people.72aa59536dc40a47b72c.jpg",
     "static/media/question_mark.jpg": "/servisu-website/static/media/question_mark.225b57634307546124d8.jpg",
+    "static/media/provider-home-screen.jpeg": "/servisu-website/static/media/provider-home-screen.56c28a32a7b697f5f7dd.jpeg",
+    "static/media/provider-wallet-screen.jpeg": "/servisu-website/static/media/provider-wallet-screen.12a2ade2a41ec278ef33.jpeg",
+    "static/media/provider-profile-screen.jpeg": "/servisu-website/static/media/provider-profile-screen.a32ecac61fb45d8028b2.jpeg",
     "static/media/10.png": "/servisu-website/static/media/10.31cae9e91d9630f979d0.png",
     "static/media/home-screen.jpeg": "/servisu-website/static/media/home-screen.5c6bd20dce80fc379a1a.jpeg",
     "static/media/booking-screen.jpeg": "/servisu-website/static/media/booking-screen.aee397053266d51f4a49.jpeg",
@@ -58,12 +63,12 @@
     "static/media/search_icon.jpg": "/servisu-website/static/media/search_icon.ec83794b655fd26003bb.jpg",
     "static/media/weservelogo.jpg": "/servisu-website/static/media/weservelogo.83d07c1690ba2f72328a.jpg",
     "static/media/rating-star.png": "/servisu-website/static/media/rating-star.d0cbd94e0a4a62fc2bf4.png",
-    "static/media/loading-spinner.svg": "/servisu-website/static/media/loading-spinner.2fbe62c91ce5d77ca33855f59c229adc.svg",
     "index.html": "/servisu-website/index.html",
-    "main.387bbec2.css.map": "/servisu-website/static/css/main.387bbec2.css.map",
-    "main.eefe240e.js.map": "/servisu-website/static/js/main.eefe240e.js.map",
-    "264.43fc9fcd.chunk.css.map": "/servisu-website/static/css/264.43fc9fcd.chunk.css.map",
-    "264.18e51cad.chunk.js.map": "/servisu-website/static/js/264.18e51cad.chunk.js.map",
+    "static/media/loading-spinner.svg": "/servisu-website/static/media/loading-spinner.2fbe62c91ce5d77ca33855f59c229adc.svg",
+    "main.473ad710.css.map": "/servisu-website/static/css/main.473ad710.css.map",
+    "main.d3c4cb4a.js.map": "/servisu-website/static/js/main.d3c4cb4a.js.map",
+    "483.8d0ac935.chunk.css.map": "/servisu-website/static/css/483.8d0ac935.chunk.css.map",
+    "483.db695d38.chunk.js.map": "/servisu-website/static/js/483.db695d38.chunk.js.map",
     "690.e1a85194.chunk.css.map": "/servisu-website/static/css/690.e1a85194.chunk.css.map",
     "690.a89cb734.chunk.js.map": "/servisu-website/static/js/690.a89cb734.chunk.js.map",
     "249.48ff8673.chunk.css.map": "/servisu-website/static/css/249.48ff8673.chunk.css.map",
@@ -76,12 +81,14 @@
     "365.c0abf29e.chunk.js.map": "/servisu-website/static/js/365.c0abf29e.chunk.js.map",
     "473.0ec115b8.chunk.css.map": "/servisu-website/static/css/473.0ec115b8.chunk.css.map",
     "473.1c91f41e.chunk.js.map": "/servisu-website/static/js/473.1c91f41e.chunk.js.map",
+    "290.977d3f1e.chunk.css.map": "/servisu-website/static/css/290.977d3f1e.chunk.css.map",
+    "290.78b97a8d.chunk.js.map": "/servisu-website/static/js/290.78b97a8d.chunk.js.map",
     "453.31b809bc.chunk.js.map": "/servisu-website/static/js/453.31b809bc.chunk.js.map",
     "455.f40f74c7.chunk.js.map": "/servisu-website/static/js/455.f40f74c7.chunk.js.map",
     "213.73dbc9f1.chunk.js.map": "/servisu-website/static/js/213.73dbc9f1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.387bbec2.css",
-    "static/js/main.eefe240e.js"
+    "static/css/main.473ad710.css",
+    "static/js/main.d3c4cb4a.js"
   ]
 }
