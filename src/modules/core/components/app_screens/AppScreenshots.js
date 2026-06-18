@@ -62,7 +62,7 @@ const AppScreenshots = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <p className="eyebrow">Inside the app</p>
-        <h2>Simple screens built for quick bookings</h2>
+        <h2>Premium mobile screens built for quick bookings</h2>
         <p>
           Servisu gives users a clean mobile experience to find providers, manage bookings,
           update profiles and stay in control from one place.
@@ -84,9 +84,19 @@ const AppScreenshots = () => {
             whileHover={{ y: -10, scale: 1.02 }}
             transition={{ type: "spring", stiffness: 240, damping: 20 }}
           >
-            <div className="phone-frame">
-              <img src={screen.image} alt={screen.alt} loading="lazy" />
-            </div>
+            <motion.div
+              className="smartphone-mockup"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: index * 0.18 }}
+            >
+              <div className="smartphone-frame">
+                <div className="smartphone-screen">
+                  <img src={screen.image} alt={screen.alt} loading="lazy" />
+                  <span className="glass-reflection reflection-one" aria-hidden="true"></span>
+                  <span className="glass-reflection reflection-two" aria-hidden="true"></span>
+                </div>
+              </div>
+            </motion.div>
             <div className="app-screen-copy">
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h3>{screen.title}</h3>

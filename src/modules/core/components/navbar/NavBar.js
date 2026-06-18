@@ -22,6 +22,7 @@ const NavBar = () => {
         <div className={`nav-links ${open ? "open" : ""}`}>
           <NavLink to={ROUTES.HOME} onClick={close}>Home</NavLink>
           <NavLink to={ROUTES.GET_STARTED} onClick={close}>Get Started</NavLink>
+          <NavLink to={ROUTES.PROVIDERS} onClick={close}>For Providers</NavLink>
           <NavLink to={ROUTES.HELP_CENTER} onClick={close}>Help Center</NavLink>
           <a href="#footer" onClick={close}>Contact Us</a>
         </div>

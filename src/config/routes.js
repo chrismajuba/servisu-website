@@ -19,6 +19,9 @@ export const ROUTES = {
 
   // Help
   HELP_CENTER: "/help-center",
+
+  // Providers
+  PROVIDERS: "/providers",
 };
 
 /**
