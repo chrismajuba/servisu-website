@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./LegalPages.css";
 import contactInformation from "../../modules/core/components/utils/Utlis";
+import { ROUTES } from "../../config/routes";
 
 const UserPrivacyPolicyPage = () => {
   return (
@@ -104,8 +106,10 @@ const UserPrivacyPolicyPage = () => {
             <p>
               You have the right to access, update, or delete your personal
               information. You may also opt out of certain communications from us.
-              To exercise these rights, please contact us using the information
-              provided below.
+              To delete your account, visit our{" "}
+              <Link to={ROUTES.DATA_DELETION}>Delete my account</Link> page and
+              verify ownership with an email code. You can also contact us using
+              the information provided below.
             </p>
           </section>
 

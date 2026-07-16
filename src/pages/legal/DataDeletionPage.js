@@ -1,84 +1,148 @@
 import React, { useState } from "react";
 import {
-  requestAdminToDeleteUserAccount,
-  requestAdminToDeleteProviderAccount,
+  requestUserAccountDeletion,
+  confirmUserAccountDeletion,
+  requestProviderAccountDeletion,
+  confirmProviderAccountDeletion,
 } from "../../modules/services/api/WeServeService";
 import "./DataDeletionPage.css";
 import "./LegalPages.css";
 import contactInformation from "../../modules/core/components/utils/Utlis";
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const GENERIC_REQUEST_MESSAGE =
+  "If an account exists for this email, a verification code has been sent. Please check your inbox.";
+
+const CONFIRM_SUCCESS_MESSAGE =
+  "Your account has been scheduled for deletion and will be removed within 30 days.";
+
+const INVALID_CODE_MESSAGE =
+  "Invalid or expired verification code. Request a new one.";
+
+const GENERIC_ERROR_MESSAGE = "Something went wrong. Please try again.";
+
 const DataDeletionPage = () => {
-  const [formData, setFormData] = useState({
-    accountType: "",
-    email: "",
-    reason: "",
-    otherReason: "",
-    confirmDelete: false,
-    confirmUnderstand: false,
-  });
+  const [step, setStep] = useState("request");
+  const [accountType, setAccountType] = useState("user");
+  const [email, setEmail] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [codeError, setCodeError] = useState("");
+  const [formError, setFormError] = useState("");
+  const [requestMessage, setRequestMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
-  const deletionReasons = [
-    { value: "", label: "Select a reason..." },
-    { value: "no_longer_needed", label: "I no longer need this service" },
-    { value: "privacy_concerns", label: "Privacy concerns" },
-    { value: "switching_service", label: "Switching to another service" },
-    { value: "too_many_emails", label: "Receiving too many emails" },
-    { value: "difficult_to_use", label: "Service is difficult to use" },
-    { value: "other", label: "Other reason" },
-  ];
-
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+  const validateEmail = (value) => {
+    if (!value.trim()) {
+      return "Please enter your email address.";
+    }
+    if (!EMAIL_REGEX.test(value.trim())) {
+      return "Please enter a valid email address.";
+    }
+    return "";
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!formData.accountType) {
-      alert("Please select an account type.");
-      return;
+  const requestDeletion = async () => {
+    if (accountType === "provider") {
+      return requestProviderAccountDeletion(email.trim());
     }
-    
-    if (!formData.confirmDelete || !formData.confirmUnderstand) {
-      alert("Please confirm both checkboxes to proceed.");
-      return;
-    }
+    return requestUserAccountDeletion(email.trim());
+  };
 
+  const confirmDeletion = async () => {
+    if (accountType === "provider") {
+      return confirmProviderAccountDeletion(
+        email.trim(),
+        verificationCode.trim()
+      );
+    }
+    return confirmUserAccountDeletion(email.trim(), verificationCode.trim());
+  };
+
+  const handleRequestCode = async (e) => {
+    e.preventDefault();
+    setFormError("");
+    setCodeError("");
+
+    const validationError = validateEmail(email);
+    if (validationError) {
+      setEmailError(validationError);
+      return;
+    }
+    setEmailError("");
     setIsSubmitting(true);
-    
+
     try {
-      if (formData.accountType === "provider") {
-        await requestAdminToDeleteProviderAccount(formData.email);
-      } else {
-        await requestAdminToDeleteUserAccount(formData.email);
-      }
-      setSubmitted(true);
+      const response = await requestDeletion();
+      setRequestMessage(response?.data?.message || GENERIC_REQUEST_MESSAGE);
+      setStep("confirm");
     } catch (error) {
-      alert(error.response?.data?.errorMessage || "Failed to submit request. Please try again.");
+      setFormError(GENERIC_ERROR_MESSAGE);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  if (submitted) {
+  const handleConfirmDeletion = async (e) => {
+    e.preventDefault();
+    setFormError("");
+    setCodeError("");
+
+    if (!verificationCode.trim()) {
+      setCodeError("Please enter the verification code from your email.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await confirmDeletion();
+      setStep("done");
+    } catch (error) {
+      if (error.response?.status === 400) {
+        setCodeError(INVALID_CODE_MESSAGE);
+      } else {
+        setFormError(GENERIC_ERROR_MESSAGE);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleResendCode = async () => {
+    setFormError("");
+    setCodeError("");
+    setVerificationCode("");
+    setIsSubmitting(true);
+
+    try {
+      const response = await requestDeletion();
+      setRequestMessage(response?.data?.message || GENERIC_REQUEST_MESSAGE);
+    } catch (error) {
+      setFormError(GENERIC_ERROR_MESSAGE);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  if (step === "done") {
     return (
       <div className="legal-page">
         <div className="legal-container">
-          <div className="success-message">
-            <div className="success-icon"></div>
-            <h2>Request Submitted</h2>
+          <div className="success-message" role="status">
+            <div className="success-icon" aria-hidden="true" />
+            <h1>Account deletion scheduled</h1>
+            <p>{CONFIRM_SUCCESS_MESSAGE}</p>
             <p>
-              Your data deletion request has been received. We will process your
-              request within 30 days and send a confirmation to your email.
+              You will be signed out of all sessions. If you change your mind,
+              contact us before the deletion is completed.
             </p>
-            <p className="reference-note">
-              Reference: #{Date.now().toString(36).toUpperCase()}
+            <p className="legal-footer">
+              Need help?{" "}
+              <a href={`mailto:${contactInformation.email}`}>
+                {contactInformation.email}
+              </a>
             </p>
           </div>
         </div>
@@ -90,177 +154,211 @@ const DataDeletionPage = () => {
     <div className="legal-page">
       <div className="legal-container">
         <div className="legal-header">
-          <h1>Data Deletion & Account Closure</h1>
+          <h1>Delete my account</h1>
         </div>
 
         <div className="legal-content">
           <p className="intro-text">
-            We're sorry to see you go. Please review the information below before
-            submitting your request.
+            Request a verification code by email, then confirm to schedule
+            permanent account deletion. This page works without signing in.
           </p>
 
-          <div className="deletion-info-cards">
-            <div className="info-card warning">
-              <div className="info-content">
-                <h3>What happens when you delete your account?</h3>
-                <ul>
-                  <li>All your personal data will be permanently deleted</li>
-                  <li>Your account cannot be recovered after deletion</li>
-                  <li>Any active service requests will be cancelled</li>
-                  <li>Your reviews and ratings will be anonymized</li>
-                </ul>
-              </div>
-            </div>
+          <ul className="deletion-summary" aria-label="What to expect">
+            <li>A verification email will be sent to the address you provide</li>
+            <li>
+              After confirmation, your account is scheduled for deletion within
+              30 days
+            </li>
+            <li>All sessions will be signed out</li>
+          </ul>
 
-            <div className="info-card">
-              <div className="info-content">
-                <h3>Data we will delete</h3>
-                <ul>
-                  <li>Personal information (name, email, phone)</li>
-                  <li>Profile data and preferences</li>
-                  <li>Service request history</li>
-                  <li>Payment information (if stored)</li>
-                </ul>
-              </div>
-            </div>
+          {step === "request" && (
+            <form
+              className="deletion-form"
+              onSubmit={handleRequestCode}
+              noValidate
+            >
+              <h2>Request deletion</h2>
 
-            <div className="info-card">
-              <div className="info-content">
-                <h3>Processing time</h3>
-                <p>
-                  Your request will be processed within <strong>30 days</strong>.
-                  You will receive a confirmation email once your data has been
-                  deleted.
+              <fieldset className="form-group account-type-group">
+                <legend>Account type</legend>
+                <div
+                  className="account-type-toggle"
+                  role="radiogroup"
+                  aria-label="Account type"
+                >
+                  <label
+                    className={`account-type-option ${
+                      accountType === "user" ? "selected" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="accountType"
+                      value="user"
+                      checked={accountType === "user"}
+                      onChange={() => setAccountType("user")}
+                      disabled={isSubmitting}
+                    />
+                    Client (User)
+                  </label>
+                  <label
+                    className={`account-type-option ${
+                      accountType === "provider" ? "selected" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="accountType"
+                      value="provider"
+                      checked={accountType === "provider"}
+                      onChange={() => setAccountType("provider")}
+                      disabled={isSubmitting}
+                    />
+                    Service Provider
+                  </label>
+                </div>
+              </fieldset>
+
+              <div className="form-group">
+                <label htmlFor="email">Email address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (emailError) setEmailError("");
+                  }}
+                  placeholder="Enter your account email"
+                  autoComplete="email"
+                  aria-invalid={!!emailError}
+                  aria-describedby={emailError ? "email-error" : undefined}
+                  disabled={isSubmitting}
+                  required
+                />
+                {emailError && (
+                  <p id="email-error" className="field-error" role="alert">
+                    {emailError}
+                  </p>
+                )}
+              </div>
+
+              {formError && (
+                <p className="form-error" role="alert">
+                  {formError}
                 </p>
-              </div>
-            </div>
-          </div>
+              )}
 
-        <form className="deletion-form" onSubmit={handleSubmit}>
-          <h2>Submit Deletion Request</h2>
-
-          <div className="form-group">
-            <label htmlFor="accountType">Account Type *</label>
-            <select
-              id="accountType"
-              name="accountType"
-              value={formData.accountType}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="">Select account type...</option>
-              <option value="user">User Account</option>
-              <option value="provider">Service Provider Account</option>
-            </select>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email">Email Address *</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="Enter your account email"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="reason">Reason for leaving *</label>
-            <select
-              id="reason"
-              name="reason"
-              value={formData.reason}
-              onChange={handleInputChange}
-              required
-            >
-              {deletionReasons.map((reason) => (
-                <option key={reason.value} value={reason.value}>
-                  {reason.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {formData.reason === "other" && (
-            <div className="form-group">
-              <label htmlFor="otherReason">Please specify</label>
-              <textarea
-                id="otherReason"
-                name="otherReason"
-                value={formData.otherReason}
-                onChange={handleInputChange}
-                placeholder="Tell us more about your reason..."
-                rows={3}
-              />
-            </div>
+              <button
+                type="submit"
+                className="delete-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <span className="spinner" aria-hidden="true" />
+                    Sending code...
+                  </>
+                ) : (
+                  "Request code"
+                )}
+              </button>
+            </form>
           )}
 
-          <div className="form-group checkbox-group">
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                name="confirmDelete"
-                checked={formData.confirmDelete}
-                onChange={handleInputChange}
-                required
-              />
-              <span className="checkmark"></span>
-              <span>
-                I understand that my account and all associated data will be
-                permanently deleted and cannot be recovered.
-              </span>
-            </label>
-          </div>
+          {step === "confirm" && (
+            <form
+              className="deletion-form"
+              onSubmit={handleConfirmDeletion}
+              noValidate
+            >
+              <h2>Confirm deletion</h2>
 
-          <div className="form-group checkbox-group">
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                name="confirmUnderstand"
-                checked={formData.confirmUnderstand}
-                onChange={handleInputChange}
-                required
-              />
-              <span className="checkmark"></span>
-              <span>
-                I confirm that I want to delete my account and all my personal
-                data from Servisu.
-              </span>
-            </label>
-          </div>
+              <p className="request-success" role="status">
+                {requestMessage || GENERIC_REQUEST_MESSAGE}
+              </p>
 
-          <button
-            type="submit"
-            className="delete-button"
-            disabled={
-              isSubmitting ||
-              !formData.accountType ||
-              !formData.confirmDelete ||
-              !formData.confirmUnderstand
-            }
-          >
-            {isSubmitting ? (
-              <>
-                <span className="spinner"></span>
-                Processing...
-              </>
-            ) : (
-              "Submit Deletion Request"
-            )}
-          </button>
-        </form>
+              <div className="form-group">
+                <label htmlFor="email-readonly">Email address</label>
+                <input
+                  type="email"
+                  id="email-readonly"
+                  value={email}
+                  readOnly
+                  disabled
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="verificationCode">Verification code</label>
+                <input
+                  type="text"
+                  id="verificationCode"
+                  name="verificationCode"
+                  value={verificationCode}
+                  onChange={(e) => {
+                    setVerificationCode(e.target.value);
+                    if (codeError) setCodeError("");
+                  }}
+                  placeholder="Enter the code from your email"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  aria-invalid={!!codeError}
+                  aria-describedby={codeError ? "code-error" : undefined}
+                  disabled={isSubmitting}
+                  required
+                />
+                {codeError && (
+                  <p id="code-error" className="field-error" role="alert">
+                    {codeError}
+                  </p>
+                )}
+              </div>
+
+              {formError && (
+                <p className="form-error" role="alert">
+                  {formError}
+                </p>
+              )}
+
+              <button
+                type="submit"
+                className="delete-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <span className="spinner" aria-hidden="true" />
+                    Confirming...
+                  </>
+                ) : (
+                  "Confirm deletion"
+                )}
+              </button>
+
+              <button
+                type="button"
+                className="secondary-button"
+                onClick={handleResendCode}
+                disabled={isSubmitting}
+              >
+                Request a new code
+              </button>
+            </form>
+          )}
 
           <div className="legal-footer">
             <p>
               Need help? Contact us at{" "}
-              <a href={`mailto:${contactInformation.email}`}>{contactInformation.email}</a>
+              <a href={`mailto:${contactInformation.email}`}>
+                {contactInformation.email}
+              </a>
             </p>
             <p>
-              This process complies with GDPR, CCPA, and other applicable data
-              protection regulations.
+              This process complies with POPIA and applicable app store account
+              deletion requirements.
             </p>
           </div>
         </div>
@@ -270,4 +368,3 @@ const DataDeletionPage = () => {
 };
 
 export default DataDeletionPage;
-

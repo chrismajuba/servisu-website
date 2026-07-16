@@ -1,4 +1,7 @@
 import axios from "axios";
+import { DeleteAccountRequestDto } from "../../auth/models/DeleteAccountRequestDto";
+import { VerificationDto } from "../../auth/models/VerificationDto";
+
 const servisuAPI = axios.create({
   baseURL: "https://we-serve-api.onrender.com",
   withCredentials: true,
@@ -7,14 +10,36 @@ const servisuAPI = axios.create({
   },
 });
 
-const requestAdminToDeleteUserAccount = (
-  email: string) =>
-  servisuAPI.delete(`/servisu/api/v1/users/delete-account/${email}`);
+const requestUserAccountDeletion = (email: string) =>
+  servisuAPI.post(
+    "/servisu/api/v1/users/account/delete-account",
+    new DeleteAccountRequestDto(email)
+  );
 
-const requestAdminToDeleteProviderAccount = (email: string) =>
-  servisuAPI.put(`/servisu/api/v1/service-providers/delete-account/${email}`);
+const confirmUserAccountDeletion = (email: string, verificationCode: string) =>
+  servisuAPI.post(
+    "/servisu/api/v1/users/account/delete-account/confirm",
+    new VerificationDto(email, verificationCode)
+  );
+
+const requestProviderAccountDeletion = (email: string) =>
+  servisuAPI.post(
+    "/servisu/api/v1/service-providers/account/delete-account",
+    new DeleteAccountRequestDto(email)
+  );
+
+const confirmProviderAccountDeletion = (
+  email: string,
+  verificationCode: string
+) =>
+  servisuAPI.post(
+    "/servisu/api/v1/service-providers/account/delete-account/confirm",
+    new VerificationDto(email, verificationCode)
+  );
 
 export {
-  requestAdminToDeleteUserAccount,
-  requestAdminToDeleteProviderAccount,
+  requestUserAccountDeletion,
+  confirmUserAccountDeletion,
+  requestProviderAccountDeletion,
+  confirmProviderAccountDeletion,
 };

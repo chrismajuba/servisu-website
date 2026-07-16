@@ -38,6 +38,11 @@
 .legal-section h2 { margin: 0 0 12px; font-size: 1.45rem; letter-spacing: -.02em; }
 .legal-section h3 { margin: 22px 0 10px; }
 .legal-section p, .legal-section li { color: var(--muted); line-height: 1.75; }
+.legal-section a {
+  color: var(--brand-dark);
+  font-weight: 700;
+  text-decoration: underline;
+}
 .legal-section ul, .legal-section ol { padding-left: 22px; }
 .contact-details {
   background: #f8fafc;

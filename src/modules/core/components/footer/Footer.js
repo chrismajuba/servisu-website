@@ -31,7 +31,7 @@ const Footer = () => {
             <li><Link to="/privacy-policy/user" onClick={handleLinkClick}>Privacy Policy (Users)</Link></li>
             <li><Link to="/privacy-policy/provider" onClick={handleLinkClick}>Privacy Policy (Providers)</Link></li>
             <li><Link to="/terms-and-conditions" onClick={handleLinkClick}>Terms & Conditions</Link></li>
-            <li><Link to="/data-deletion" onClick={handleLinkClick}>Data Deletion</Link></li>
+            <li><Link to="/data-deletion" onClick={handleLinkClick}>Delete my account</Link></li>
           </ul>
         </div>
         <div className="footer-content-right">

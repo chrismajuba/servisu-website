@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./HelpCenterPage.css";
 import "../legal/LegalPages.css";
 import contactInformation from "../../modules/core/components/utils/Utlis";
+import { ROUTES } from "../../config/routes";
 
 const HelpCenterPage = () => {
   const [openSection, setOpenSection] = useState(null);
@@ -96,8 +98,16 @@ const HelpCenterPage = () => {
         },
         {
           question: "How do I delete my account?",
-          answer:
-            "You can request account deletion by visiting our Data Deletion page or use the app built in functionality under the 'Profile' screen. Your request will be processed within 30 days.",
+          answer: (
+            <>
+              Visit our{" "}
+              <Link to={ROUTES.DATA_DELETION}>Delete my account</Link> page
+              (no sign-in required), choose Client or Service Provider, request
+              a verification code by email, then confirm. Your account is
+              scheduled for deletion within 30 days. You can also use the
+              built-in option under Profile in the app.
+            </>
+          ),
         },
         {
           question: "Is my data secure?",
