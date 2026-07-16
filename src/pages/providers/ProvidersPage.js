@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion } from "../../lib/motionStub";
 import "../../modules/core/components/app_screens/appScreenshots.css";
 import "./providersPage.css";
 import providerHome from "../../assets/app-screens/provider-home-screen.jpeg";

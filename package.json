@@ -17,8 +17,7 @@
     "react-scripts": "^5.0.1",
     "reactstrap": "^9.2.3",
     "tsc": "^2.0.4",
-    "web-vitals": "^2.1.4",
-    "framer-motion": "^11.18.2"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

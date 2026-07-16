@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "../../../../lib/motionStub";
 import "./appScreenshots.css";
 import homeScreen from "../../../../assets/app-screens/home-screen.jpeg";
 import providersScreen from "../../../../assets/app-screens/providers-screen.jpeg";

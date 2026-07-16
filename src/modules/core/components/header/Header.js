@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "../../../../lib/motionStub";
 import "./header.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../../config/routes";
