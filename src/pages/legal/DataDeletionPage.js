@@ -356,10 +356,6 @@ const DataDeletionPage = () => {
                 {contactInformation.email}
               </a>
             </p>
-            <p>
-              This process complies with POPIA and applicable app store account
-              deletion requirements.
-            </p>
           </div>
         </div>
       </div>
