@@ -6,21 +6,26 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ContextProvider } from "./modules/context/ContextProvider";
 
-// Extract basename from homepage for GitHub Pages deployment
-// In development, process.env.PUBLIC_URL is empty, so basename will be empty
-// In production on GitHub Pages, it will be '/servisu-website'
+// Basename from homepage for production deploys.
+// Custom domain (servisu.co.za): PUBLIC_URL pathname is "/" → treat as no basename.
+// Project Pages path (/repo-name): pathname becomes the basename.
 const getBasename = () => {
-  const publicUrl = process.env.PUBLIC_URL || '';
-  if (publicUrl) {
-    try {
-      const url = new URL(publicUrl);
-      return url.pathname;
-    } catch (e) {
-      // If PUBLIC_URL is just a path like '/servisu-website'
-      return publicUrl;
-    }
+  const publicUrl = process.env.PUBLIC_URL || "";
+  if (!publicUrl) {
+    return "";
   }
-  return '';
+  try {
+    const pathname = new URL(publicUrl, window.location.origin).pathname;
+    if (!pathname || pathname === "/") {
+      return "";
+    }
+    return pathname.replace(/\/$/, "") || "";
+  } catch (e) {
+    if (publicUrl === "/") {
+      return "";
+    }
+    return publicUrl.replace(/\/$/, "");
+  }
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

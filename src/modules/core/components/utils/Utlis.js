@@ -9,7 +9,7 @@ class ContactInformation {
     this.email = "servisu.assistance@gmail.com";
     this.adminEmail = "servisu.assistance@gmail.com";
     this.number = "+27678679119";
-    this.website = "https://chrismajuba.github.io/servisu-website/";
+    this.website = "https://servisu.co.za/";
     this.address = "Protea Glen Extension 11, Soweto, 1819";
     this.privacyLastUpdate = new Date(2025, 9, 10).toLocaleDateString();
     this.termsLastUpdate = new Date(2025, 9, 10).toLocaleDateString();
