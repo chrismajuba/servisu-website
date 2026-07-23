@@ -28,3 +28,9 @@ key.pem
 
 # Local environment variables
 .env
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
