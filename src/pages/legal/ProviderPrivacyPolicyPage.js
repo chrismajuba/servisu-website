@@ -9,137 +9,262 @@ const ProviderPrivacyPolicyPage = () => {
     <div className="legal-page">
       <div className="legal-container">
         <div className="legal-header">
-          <h1>Privacy Policy - For Service Providers</h1>
+          <h1>Privacy Policy for Service Providers (Partners)</h1>
         </div>
 
         <div className="legal-content">
           <section className="legal-section">
-            <h2>Information We Collect</h2>
             <p>
-              We collect information you provide directly to us, such as when you
-              create an account, provide a service or contact us for support. This
-              may include:
+              Servisu Technologies (Pty) Ltd (referred to as &quot;the Company&quot;,
+              &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the Servisu
+              mobile application and platform. The Company acts as the Responsible
+              Party as defined under the Protection of Personal Information Act,
+              No. 4 of 2013 (POPIA).
+            </p>
+            <p>
+              This Privacy Policy governs how we collect, process, and safeguard
+              the personal information of independent service providers,
+              contractors, and partners (&quot;Provider&quot;, &quot;you&quot;, or
+              &quot;your&quot;) who use our platform to market and deliver services
+              to clients.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>1. Information We Collect</h2>
+            <p>
+              To verify your profile, secure our platform, and facilitate consumer
+              bookings, we collect the following personal information in
+              compliance with POPIA:
             </p>
             <ul>
               <li>
-                <strong>Personal Information:</strong> Your name, email address,
-                phone number, and other contact information
+                <strong>Personal &amp; business identifiable information:</strong>{" "}
+                Your full name, email address, mobile phone number, profile
+                photograph, and business details (if applicable).
               </li>
               <li>
-                <strong>Address Details:</strong> Your home address, work address,
-                and other location information you provide
+                <strong>Verification &amp; compliance data:</strong> Your South
+                African Identity Number (ID), proof of residence, and any trade
+                certifications or licenses required to verify your qualifications
+                and background.
               </li>
               <li>
-                <strong>Location Data:</strong> GPS coordinates and location
-                details when you provide services to our users or use
-                location-based features
+                <strong>Financial information:</strong> Your South African bank
+                account details (account name, number, branch code) required to
+                process automated weekly or monthly payouts for completed
+                services.
               </li>
               <li>
-                <strong>Service Management:</strong> Information about the
-                services you provide and how you manage them
+                <strong>Geospatial &amp; location data:</strong> Precise real-time
+                GPS coordinates from your mobile device.
               </li>
               <li>
-                <strong>Device Information:</strong> Information about your
-                device, including device identifiers (iOS or Android)
+                <strong>Performance metrics:</strong> Service ratings, reviews
+                from clients, cancellation rates, and operational transaction
+                history on the platform.
+              </li>
+              <li>
+                <strong>Device data:</strong> Device identifiers (iOS or Android
+                IDs), IP address, and application performance crash logs.
               </li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>How We Use Your Information</h2>
-            <p>We use the information we collect to:</p>
+            <h2>2. Crucial Disclosure: Background Location Tracking</h2>
+            <p>
+              To effectively dispatch jobs based on where you are right now, the
+              Servisu Provider App collects precise location data from your mobile
+              device.
+            </p>
+            <div className="legal-callout" role="note">
+              <strong>Background processing:</strong> This location tracking
+              occurs both when the app is open and running in the foreground, and
+              when the app is closed, running in the background, or not actively
+              in use.
+            </div>
+            <p>We process this background location data strictly to:</p>
             <ul>
-              <li>Provide and maintain our service booking platform</li>
-              <li>Market your services and connect you with clients (users)</li>
               <li>
-                Use your address and location data to match you with nearby users
-                and ensure accurate service delivery
+                Determine your proximity to active user service requests and send
+                you nearby jobs.
               </li>
-              <li>Send you technical notices, updates, and support messages</li>
               <li>
-                Communicate with you about services, bookings, and promotional
-                offers
+                Allow clients to track your estimated arrival time (ETA) once you
+                accept a booking.
               </li>
-              <li>Improve our services and develop new features</li>
-              <li>Ensure the safety and security of our platform</li>
+              <li>
+                Ensure safety monitoring while you are traveling to or performing
+                a service at a client&apos;s location.
+              </li>
+            </ul>
+            <p>
+              You can turn off location services at any time via your device
+              settings, but doing so will prevent you from receiving new job
+              alerts on the platform.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>3. Lawful Basis and Purpose of Processing</h2>
+            <p>
+              In terms of Condition 3 of POPIA, your data is processed based on
+              the Performance of a Contract (your provider agreement with us) and
+              our Legitimate Business Interest in protecting marketplace safety.
+              We use this data to:
+            </p>
+            <ul>
+              <li>
+                Authenticate your identity and perform necessary background
+                vetting checks.
+              </li>
+              <li>
+                Market your services, display your public profile, and connect you
+                with matching clients.
+              </li>
+              <li>
+                Calculate distances, route directions, and facilitate accurate
+                client billing.
+              </li>
+              <li>
+                Process secure financial payouts directly into your verified bank
+                account via our payment partners.
+              </li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>Information Sharing</h2>
+            <h2>4. Information Sharing and Operators</h2>
             <p>
-              We do not sell, trade, or otherwise transfer your personal
-              information to third parties without your consent, except as
-              described below:
+              We only share your information with parties directly involved in
+              fulfilling platform transactions:
             </p>
             <ul>
               <li>
-                <strong>Users:</strong> We may share your contact information,
-                address, and location data with users who will request your
-                services. This information is shared only to the extent necessary
-                to complete the requested service.
+                <strong>Platform users (Clients):</strong> Once you accept a
+                booking, we share your name, phone number, profile photo, business
+                rating, and live GPS location with the client so they can identify
+                you and coordinate the service.
               </li>
               <li>
-                <strong>Legal Requirements:</strong> We may disclose your
-                information if required by law or to protect our rights, property,
-                or safety, or that of our users.
+                <strong>Vetting operators:</strong> We may share your ID number
+                with accredited third-party background screening services to
+                verify your identity and criminal clearance.
               </li>
               <li>
-                <strong>Business Transfers:</strong> In the event of a merger,
-                acquisition, or sale of assets, your information may be
-                transferred as part of that transaction.
+                <strong>Banking and payout gateways:</strong> Your banking
+                information is processed securely by our contracted financial
+                operators to execute your payouts.
               </li>
             </ul>
           </section>
 
           <section className="legal-section">
-            <h2>Data Security</h2>
+            <h2>5. Cross-Border Data Transfers (Cloud Infrastructure)</h2>
             <p>
-              We implement appropriate security measures to protect your personal
-              information against unauthorized access, alteration, disclosure, or
-              destruction. However, no method of transmission over the internet is
-              100% secure.
+              Your data may be stored on secure, encrypted cloud servers hosted
+              outside South Africa (such as AWS, Google Cloud, or Microsoft
+              Azure). In terms of Section 72 of POPIA, we ensure all global
+              infrastructure providers adhere to strict data security frameworks
+              equivalent to or stronger than POPIA laws.
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>Your Rights</h2>
+            <h2>6. Data Security and Retention Policy</h2>
             <p>
-              You have the right to access, update, or delete your personal
-              information. You may also opt out of certain communications from us.
-              To delete your account, visit our{" "}
-              <Link to={ROUTES.DATA_DELETION}>Delete my account</Link> page and
-              verify ownership with an email code. You can also contact us using
-              the information provided below.
+              We use end-to-end encryption and secure database access protocols to
+              safeguard your personal data.
+            </p>
+            <p>
+              <strong>Retention:</strong> We retain your account, identity
+              verification, and financial history for as long as you maintain an
+              active provider profile. If you choose to close your account,
+              certain transaction and financial records will be retained for the
+              minimum statutory period mandated by the South African Companies Act
+              and SARS tax compliance laws.
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>Contact Us</h2>
+            <h2>7. Your Legal Rights Under POPIA</h2>
             <p>
-              If you have any questions about this Privacy Policy, please contact
-              us at:
+              You hold the following rights under POPIA, which you can exercise by
+              reaching out to our Information Officer:
+            </p>
+            <ul>
+              <li>
+                <strong>Right of access (Section 23):</strong> Request a full
+                record of the data we hold regarding your business profile.
+              </li>
+              <li>
+                <strong>Right to correction (Section 24):</strong> Request
+                immediate updates to inaccurate financial, contact, or
+                verification data.
+              </li>
+              <li>
+                <strong>Right to account deletion:</strong> You can request
+                account closure and data deletion via Settings &gt; Profile &gt;
+                Delete Provider Account inside the app or through our{" "}
+                <Link to={ROUTES.DATA_DELETION}>Delete my account</Link> page.
+                Personal identifiers will be permanently scrubbed or anonymized
+                within 30 days, subject to legal record-keeping limitations.
+              </li>
+            </ul>
+          </section>
+
+          <section className="legal-section">
+            <h2>8. Contact Us &amp; Information Officer Details</h2>
+            <p>
+              For any privacy queries, or to exercise your POPIA data rights,
+              please contact our designated Information Officer:
             </p>
             <div className="contact-details">
               <p>
-                <strong>Email:</strong> <a href={`mailto:${contactInformation.email}`}>{contactInformation.email}</a>
+                <strong>Information Officer:</strong>{" "}
+                {contactInformation.informationOfficer}
               </p>
               <p>
-                <strong>Phone:</strong> {contactInformation.number}
+                <strong>Company name:</strong> {contactInformation.companyName}
               </p>
               <p>
-                <strong>Address:</strong> {contactInformation.address}
+                <strong>Email:</strong>{" "}
+                <a href={`mailto:${contactInformation.adminEmail}`}>
+                  {contactInformation.adminEmail}
+                </a>
+              </p>
+              <p>
+                <strong>Physical address:</strong> {contactInformation.address}
               </p>
             </div>
           </section>
 
           <section className="legal-section">
-            <h2>Changes to This Policy</h2>
+            <h2>9. Complaints to the Information Regulator</h2>
             <p>
-              We may update this Privacy Policy from time to time. We will notify
-              you of any changes by posting the new Privacy Policy on this page
-              and updating the "Last Updated" date.
+              If you believe your personal information has been handled unlawfully
+              under POPIA, you have the right to lodge a formal complaint with the
+              South African Information Regulator:
             </p>
+            <ul>
+              <li>
+                <strong>Website:</strong>{" "}
+                <a
+                  href="https://inforegulator.org.za"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  inforegulator.org.za
+                </a>
+              </li>
+              <li>
+                <strong>Email:</strong>{" "}
+                <a href="mailto:complaints.IR@inforegulator.org.za">
+                  complaints.IR@inforegulator.org.za
+                </a>
+              </li>
+            </ul>
           </section>
 
           <div className="legal-footer">
@@ -152,4 +277,3 @@ const ProviderPrivacyPolicyPage = () => {
 };
 
 export default ProviderPrivacyPolicyPage;
-

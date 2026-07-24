@@ -50,6 +50,38 @@
   border-radius: 18px;
   padding: 16px 18px;
 }
+.legal-callout,
+.legal-notice {
+  margin: 16px 0;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 118, 110, 0.22);
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--muted);
+  line-height: 1.7;
+}
+.legal-notice {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.12);
+}
+.legal-disclaimer {
+  border: 2px solid rgba(15, 23, 42, 0.18);
+  background: linear-gradient(180deg, #fff7ed, #ffffff);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+}
+.legal-disclaimer h2 {
+  color: #9a3412;
+}
+.legal-disclaimer-lead,
+.legal-disclaimer p,
+.legal-disclaimer li {
+  color: #1e293b;
+  font-weight: 600;
+}
+.legal-disclaimer-lead {
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
 .legal-footer { text-align: center; color: var(--muted); font-weight: 700; padding: 8px 0 0; }
 .cta-button, .cta-link {
   display: inline-flex;

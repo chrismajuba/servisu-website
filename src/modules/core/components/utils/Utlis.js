@@ -6,13 +6,15 @@ export const Paths = {
 
 class ContactInformation {
   constructor() {
-    this.email = "servisu.assistance@gmail.com";
-    this.adminEmail = "servisu.assistance@gmail.com";
+    this.email = "support@servisu.co.za";
+    this.adminEmail = "admin@servisu.co.za";
     this.number = "+27678679119";
-    this.website = "https://servisu.co.za/";
     this.address = "Protea Glen Extension 11, Soweto, 1819";
-    this.privacyLastUpdate = new Date(2025, 9, 10).toLocaleDateString();
-    this.termsLastUpdate = new Date(2025, 9, 10).toLocaleDateString();
+    this.companyName = "Servisu Technologies (Pty) Ltd";
+    this.companyRegistration = "2026/503669/07";
+    this.informationOfficer = "Information Officer";
+    this.privacyLastUpdate = "July 2026";
+    this.termsLastUpdate = "July 2026";
   }
 }
 const contactInformation = new ContactInformation();
