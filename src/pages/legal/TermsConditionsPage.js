@@ -22,258 +22,218 @@ const TermsConditionsPage = () => {
           </section>
 
           <section className="legal-section">
-            <h2>1. Introduction and Platform Nature</h2>
+            <h2>1. Introduction, Platform Nature, and Merchant of Record</h2>
             <p>
-              These Terms and Conditions govern your access to and use of the
-              Servisu mobile application, website, and digital matching software.
+              <strong>1.1 Platform nature:</strong> Servisu operates an online
+              technology platform connecting independent consumers
+              (&quot;Clients&quot;) seeking manual or home services with independent
+              third-party service providers (&quot;Providers&quot;). Servisu provides
+              software infrastructure and does not directly perform plumbing,
+              electrical, gardening, or manual services.
             </p>
-            <div className="legal-callout" role="note">
-              <strong>Critical venue disclosure:</strong> Servisu is purely an
-              online technology platform. We do not provide plumbing, gardening,
-              car washing, or any other manual services ourselves. Our
-              application functions strictly as an intermediary infrastructure
-              that connects independent customers (&quot;Clients&quot;) with
-              independent third-party service providers (&quot;Providers&quot;).
-            </div>
+            <p>
+              <strong>1.2 Merchant of Record:</strong> For all electronic payments
+              processed through the Servisu mobile application or website, Servisu
+              Technologies (Pty) Ltd acts as the{" "}
+              <strong>Merchant of Record (MoR)</strong>. Servisu is responsible for
+              payment collection, transaction processing, customer payment support,
+              chargeback administration, and issuing refunds directly to Clients in
+              accordance with these Terms.
+            </p>
           </section>
 
           <section className="legal-section">
-            <h2>2. Eligibility &amp; Account Responsibilities</h2>
-            <p>By creating an account on the platform, you warrant that:</p>
-            <ul>
-              <li>
-                You are at least 18 years of age and hold the legal capacity to
-                enter into a binding contract in the Republic of South Africa.
-              </li>
-              <li>
-                All registration data you provide is accurate, current, and true.
-              </li>
-              <li>
-                You are entirely responsible for maintaining the confidentiality
-                of your login credentials and for all activities that occur under
-                your account.
-              </li>
-            </ul>
+            <h2>2. Eligibility, Provider Vetting, and FICA Compliance</h2>
+            <p>
+              <strong>2.1 General eligibility:</strong> By creating an account, you
+              warrant that you are at least 18 years of age and hold full legal
+              capacity in the Republic of South Africa.
+            </p>
+            <p>
+              <strong>2.2 Provider verification &amp; KYC/FICA:</strong> Prior to
+              accepting bookings or receiving any payout disbursements, all
+              Providers must complete Servisu&apos;s mandatory verification
+              process. This includes providing valid South African identity
+              documentation, proof of residential address, trade certifications
+              (where applicable), and verified South African banking details
+              registered in the Provider&apos;s legal name. Servisu reserves the
+              right to withhold platform access or payouts to any unverified
+              account.
+            </p>
           </section>
 
           <section className="legal-section">
-            <h2>3. Service Bookings &amp; Allocation</h2>
+            <h2>3. Bookings, Payment Authorization, and Fund Collection</h2>
             <p>
-              A booking submitted by a Client constitutes an offer for service,
-              which is subject to voluntary acceptance by an independent Provider.
+              <strong>3.1 Booking acceptance:</strong> A booking request submitted
+              by a Client constitutes an offer for service, which becomes binding
+              upon voluntary acceptance by an independent Provider.
             </p>
-            <ul>
-              <li>
-                Servisu does not guarantee that a booking request will be accepted
-                by a Provider, nor do we guarantee provider availability.
-              </li>
-              <li>
-                Once a booking is accepted, a direct contract is created between
-                the Client and the Provider. Servisu is not a party to that
-                operational service contract.
-              </li>
-            </ul>
+            <p>
+              <strong>3.2 Payment trigger &amp; capture:</strong> Upon Provider
+              acceptance, the total agreed booking fee is debited from the
+              Client&apos;s linked payment method via our integrated payment
+              gateway. All payments are collected directly by Servisu Technologies
+              (Pty) Ltd as Merchant of Record.
+            </p>
+            <p>
+              <strong>3.3 Custody of funds:</strong> Funds collected from Clients
+              are safely held within Servisu&apos;s merchant account structure
+              until the underlying service is successfully completed, subject to
+              the bi-weekly payout schedule outlined in Section 4.
+            </p>
           </section>
 
           <section className="legal-section">
-            <h2>4. Payments, Fees, and Immediate Capture</h2>
+            <h2>4. Service Provider Payouts and Disbursements</h2>
             <p>
-              All payments for services booked via the application must be
-              processed through our integrated, secure payment gateway
-              infrastructure.
+              <strong>4.1 Payout schedule:</strong> Earnings derived from completed
+              and verified bookings are disbursed to Providers on a bi-weekly
+              schedule (every second Sunday) directly into their verified South
+              African bank accounts via automated electronic funds transfer (EFT).
             </p>
-            <ul>
-              <li>
-                <strong>Payment trigger:</strong> When a Client submits a service
-                request, no funds are deducted. The payment requirement is only
-                triggered once an independent Provider formally accepts the
-                request.
-              </li>
-              <li>
-                <strong>Immediate capture:</strong> Upon provider acceptance, the
-                full service fee is debited and captured immediately from the
-                Client&apos;s linked card or account. This secure payment confirms
-                the booking and authorizes the Provider to proceed to the job.
-              </li>
-            </ul>
-
-            <h3>Ancillary costs &amp; scope changes (off-platform arrangements)</h3>
             <p>
-              Any extra costs for unforeseen materials, specialized equipment,
-              extended travel, or changes to the physical scope of work must be
-              mutually agreed upon directly between the Client and the Provider.
+              <strong>4.2 Platform service fee:</strong> Servisu deducts a
+              pre-disclosed platform commission from the gross booking amount prior
+              to executing the bi-weekly payout to the Provider.
+            </p>
+            <p>
+              <strong>4.3 Dispute holds:</strong> Servisu reserves the right to
+              suspend or delay payout disbursements to a Provider for any booking
+              that is subject to an active Client complaint, non-delivery report,
+              or chargeback investigation.
+            </p>
+          </section>
+
+          <section className="legal-section">
+            <h2>5. In-App Scope Adjustments and Payments Security</h2>
+            <p>
+              <strong>5.1 Platform transaction security:</strong> To protect both
+              Clients and Providers, all financial transactions related to a
+              booking—including initial service fees, extra labor hours, or agreed
+              material costs—must be authorized and processed exclusively through
+              the Servisu Application payment gateway.
             </p>
             <div className="legal-notice" role="note">
-              <strong>Important notice:</strong> The Servisu platform currently
-              only facilitates and processes the single primary transaction
-              generated upon booking acceptance. The platform does not possess the
-              infrastructure to process secondary or add-on digital payments.
-            </div>
-            <p>
-              Consequently, any ancillary costs or adjusted fees must be settled
-              directly between the Client and the Provider outside of the
-              application (for example, via physical cash or private electronic
-              funds transfer). All such off-platform transactions are conducted
-              entirely at the parties&apos; own risk. Servisu does not track,
-              verify, or secure offline payments, and assumes absolute zero
-              liability for any financial disputes, losses, or failed cash/EFT
-              transactions occurring outside the software.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2>5. Cancellations and Full Refund Policy</h2>
-            <p>
-              Servisu protects your funds if a booking falls through. A full
-              refund of the captured service fee will be processed back to the
-              Client under the following explicit conditions:
-            </p>
-            <ul>
-              <li>
-                <strong>Eligible user cancellation:</strong> The Client cancels
-                the booking within the platform&apos;s specified flexible
-                cancellation window (for example, before the Provider has
-                dispatched or within the app&apos;s designated time frame).
-              </li>
-              <li>
-                <strong>Provider default (no-show):</strong> The assigned Provider
-                misses the scheduled service date/time, fails to arrive, or
-                defaults on the accepted request.
-              </li>
-              <li>
-                <strong>Banking processing delays:</strong> Once a full refund is
-                triggered by our backend engine, the funds are reversed
-                immediately via our payment gateway.
-              </li>
-            </ul>
-            <div className="legal-notice" role="note">
-              <strong>Important notice:</strong> In compliance with South African
-              banking networks, processed refunds can take between 3 to 7 business
-              days to clear and reflect in your bank account balance. Servisu has
-              no control over these interbank clearing windows.
+              <strong>5.2 Prohibition of unmonitored cash transactions:</strong>{" "}
+              Servisu explicitly prohibits off-platform cash transactions for core
+              booking fees. Payments made outside the Application circumvent
+              platform dispute protection, void Servisu&apos;s refund guarantee,
+              and violate these Terms of Use.
             </div>
           </section>
 
           <section className="legal-section">
-            <h2>6. Independent Contractor Status (No Employment Relationship)</h2>
+            <h2>6. Cancellation and Refund Policy</h2>
             <p>
-              It is explicitly agreed and understood that all Service Providers
-              operating on the Servisu platform are Independent Contractors
-              operating as separate businesses.
+              Servisu guarantees Client fund protection under the following
+              explicit conditions:
             </p>
-            <ul>
-              <li>
-                Providers are not employees, agents, or representatives of
-                Servisu.
-              </li>
-              <li>
-                There is no employment relationship created under the South
-                African Labour Relations Act (LRA) or the Basic Conditions of
-                Employment Act (BCEA).
-              </li>
-              <li>
-                Providers retain absolute discretion over their working hours,
-                methods, clothing, and whether to accept or decline platform job
-                alerts. Each Provider is solely responsible for their own tax
-                compliance (Income Tax/VAT), public liability insurance, and trade
-                certifications.
-              </li>
-            </ul>
+            <p>
+              <strong>6.1 Eligible Client cancellations:</strong> If a Client
+              cancels a booking within the allowable flexible cancellation window
+              specified in the app prior to Provider dispatch, a full refund will
+              be processed back to the original payment method.
+            </p>
+            <p>
+              <strong>6.2 Provider default / no-show:</strong> If an assigned
+              Provider fails to arrive or defaults on an accepted job, Servisu will
+              immediately issue a full refund of the captured booking fee.
+            </p>
+            <p>
+              <strong>6.3 Processing windows:</strong> All approved refunds are
+              initiated immediately by Servisu via our payment gateway provider.
+              Standard interbank clearing times in South Africa typically range
+              from 3 to 7 business days for refunded amounts to reflect in the
+              Client&apos;s bank account.
+            </p>
           </section>
 
-          <section className="legal-section legal-disclaimer" id="limitation-of-liability">
-            <h2>7. Consumer Protection Act Section 49 Legal Disclaimer</h2>
+          <section className="legal-section">
+            <h2>7. Independent Contractor Status</h2>
+            <p>
+              <strong>7.1 No employment relationship:</strong> Service Providers
+              operating on the Servisu platform are independent contractors.
+              Nothing in these Terms creates an employer-employee relationship
+              under the South African Labour Relations Act (LRA) or Basic
+              Conditions of Employment Act (BCEA).
+            </p>
+            <p>
+              <strong>7.2 Provider autonomy &amp; tax liability:</strong> Providers
+              retain full autonomy over their working hours and job acceptance.
+              Each Provider is solely responsible for their own tax compliance
+              (SARS Income Tax/VAT), public liability insurance, and tools of
+              trade.
+            </p>
+          </section>
+
+          <section
+            className="legal-section legal-disclaimer"
+            id="limitation-of-liability"
+          >
+            <h2>8. Consumer Protection Act (CPA Section 49) Legal Disclaimer</h2>
             <p className="legal-disclaimer-lead">
               Please read this section carefully. By accepting these Terms, you
-              explicitly assume risk and waive specific legal rights against
-              Servisu.
+              explicitly acknowledge the allocation of risk below.
             </p>
             <p>
-              <strong>Limitation of liability &amp; indemnity:</strong> To the
+              <strong>8.1 Limitation of operational liability:</strong> To the
               maximum extent permitted under Section 49 of the Consumer Protection
-              Act (CPA), Servisu shall not be liable for any direct, indirect,
-              incidental, special, or consequential damages, losses, or
-              liabilities incurred by any user (Client or Provider).
+              Act (CPA), Servisu&apos;s operational liability is limited strictly
+              to the administration of the software platform and payment
+              processing as Merchant of Record.
             </p>
-            <p>This exclusion includes, but is not limited to:</p>
-            <ol>
-              <li>
-                Property damage, theft, or personal injury caused by the
-                negligence, malfeasance, or conduct of an independent Service
-                Provider during a booking.
-              </li>
-              <li>Poor workmanship or unfulfilled service expectations.</li>
-              <li>
-                Financial losses arising from system downtime, payment gateway
-                timeouts, or transactions independently settled in cash outside
-                the application.
-              </li>
-            </ol>
             <p>
-              You hereby indemnify and hold Servisu harmless against any claims,
-              damages, costs, or legal fees arising directly or indirectly from
-              your interactions, agreements, and transactions entered into via the
-              marketplace venue.
+              <strong>8.2 Exclusion of direct workmanship claims:</strong> Servisu
+              shall not be liable for direct property damage, personal injury, or
+              poor workmanship caused by the independent conduct or negligence of
+              a Provider during a booking. However, Servisu will actively mediate
+              disputes and facilitate payment adjustments or refunds where service
+              non-delivery or gross negligence is established.
+            </p>
+            <p>
+              <strong>8.3 Indemnity:</strong> Users agree to indemnify and hold
+              Servisu harmless against claims, damages, or costs arising from
+              off-platform agreements made in violation of Section 5.2.
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>8. Platform Misuse and User Conduct</h2>
+            <h2>9. User Conduct, Anti-Fraud, and Chargebacks</h2>
             <p>
-              Abusive, discriminatory, unsafe, or fraudulent behavior by either a
-              Client or a Provider will not be tolerated. Servisu reserves the
-              immediate right to suspend, freeze, or permanently terminate any
-              account that violates local criminal statutes, demeans other users,
-              or initiates fraudulent chargebacks on payment systems.
+              <strong>9.1 Account suspension:</strong> Servisu maintains a
+              zero-tolerance policy for fraudulent booking activities, abusive
+              behavior, or frivolous payment chargebacks. Accounts found engaging
+              in illegal acts or payment manipulation will be permanently
+              terminated.
+            </p>
+            <p>
+              <strong>9.2 Chargeback dispute rights:</strong> As the Merchant of
+              Record, Servisu reserves the right to submit platform telemetry
+              logs, GPS check-ins, and in-app communication logs to banking
+              institutions to defend against unauthorized or fraudulent chargeback
+              claims filed by Clients.
             </p>
           </section>
 
           <section className="legal-section">
-            <h2>9. Dispute Resolution &amp; Governing Law</h2>
-            <ul>
-              <li>
-                <strong>Initial resolution:</strong> If a dispute arises between a
-                Client and a Provider regarding service delivery, users must first
-                attempt to resolve the issue directly using our in-app dispute
-                reporting portal.
-              </li>
-              <li>
-                <strong>Platform intervention:</strong> Servisu may investigate
-                the complaint and look at internal telemetry, logs, and messaging
-                metadata to issue a final administrative determination regarding
-                platform access or payment adjustments.
-              </li>
-              <li>
-                <strong>Jurisdiction:</strong> These terms are governed entirely
-                by the laws of the Republic of South Africa. Any legal proceedings
-                must be initiated within the jurisdiction of the courts of South
-                Africa.
-              </li>
-            </ul>
-          </section>
-
-          <section className="legal-section">
-            <h2>10. Modifications to Terms</h2>
+            <h2>10. Governing Law and Jurisdiction</h2>
             <p>
-              We reserve the right to amend these Terms and Conditions at any
-              point to account for feature releases, security patches, or
-              legislative shifts. Changes will be updated publicly on this page.
-              Your continued interaction with the app after an update serves as
-              your legal acceptance of the new framework.
+              These Terms are governed entirely by the laws of the Republic of
+              South Africa. Any legal disputes arising under these Terms shall be
+              subject to the jurisdiction of the competent courts of South Africa.
             </p>
           </section>
 
           <section className="legal-section">
             <h2>Contact Us</h2>
-            <p>
-              For legal queries or formal notices, please reach out to us at:
-            </p>
             <div className="contact-details">
               <p>
-                <strong>Company:</strong> Servisu Technologies (Pty) Ltd
+                <strong>Company:</strong> {contactInformation.companyName}
               </p>
               <p>
-                <strong>Registration number:</strong> 2026/503669/07
+                <strong>Registration number:</strong>{" "}
+                {contactInformation.companyRegistration}
               </p>
               <p>
                 <strong>Email:</strong>{" "}
@@ -282,7 +242,7 @@ const TermsConditionsPage = () => {
                 </a>
               </p>
               <p>
-                <strong>Physical address:</strong> {contactInformation.address}
+                <strong>Address:</strong> {contactInformation.address}
               </p>
             </div>
           </section>
